@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_id: 1
+  school_id: 1
+  grade: MyString
+  content_area: MyString
+  active: false
+
+two:
+  teacher_id: 1
+  school_id: 1
+  grade: MyString
+  content_area: MyString
+  active: false

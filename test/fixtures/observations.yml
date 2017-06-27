@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  classroom_id: 1
+  specialist_id: 1
+  principal_id: 1
+  comments: MyString
+
+two:
+  classroom_id: 1
+  specialist_id: 1
+  principal_id: 1
+  comments: MyString

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Classrooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Teacher</th>
+      <th>School</th>
+      <th>Grade</th>
+      <th>Content area</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classrooms.each do |classroom| %>
+      <tr>
+        <td><%= classroom.teacher_id %></td>
+        <td><%= classroom.school_id %></td>
+        <td><%= classroom.grade %></td>
+        <td><%= classroom.content_area %></td>
+        <td><%= classroom.active %></td>
+        <td><%= link_to 'Show', classroom %></td>
+        <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+        <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Classroom', new_classroom_path %>

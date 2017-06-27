@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @training_session.user_id %>
+</p>
+
+<p>
+  <strong>Training:</strong>
+  <%= @training_session.training_id %>
+</p>
+
+<p>
+  <strong>Is leader:</strong>
+  <%= @training_session.is_leader %>
+</p>
+
+<%= link_to 'Edit', edit_training_session_path(@training_session) %> |
+<%= link_to 'Back', training_sessions_path %>

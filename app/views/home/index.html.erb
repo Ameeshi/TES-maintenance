@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css">-->
     <!-- Google fonts - Roboto -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"> -->
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.sea.css" id="theme-stylesheet">
+<!--    <link rel="stylesheet" href="css/style.sea.css" id="theme-stylesheet">-->
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+<!--    <link rel="stylesheet" href="css/custom.css">-->
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- Font Awesome CDN-->
     <!-- you can replace it by local Font Awesome-->
     <!-- <script src="https://use.fontawesome.com/99347ac47f.js"></script> -->
-    <link rel="stylesheet" href="css/font-awesome.css">
+<!--    <link rel="stylesheet" href="css/font-awesome.css">-->
     <!-- Font Icons CSS-->
     <!-- <link rel="stylesheet" href="https://file.myfontastic.com/da58YPMQ7U5HY8Rb6UxkNf/icons.css"> -->
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -100,6 +100,13 @@
                   </ul>
                 </li>
                 <!-- Logout    -->
+                <% if user_signed_in? %>
+                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                <% else %>
+                  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                <% end %>
                 <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
@@ -702,6 +709,7 @@
       </div>
     </div>
     <!-- Javascript files-->
+<!--
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -710,6 +718,7 @@
     <script src="js/Chart.min.js"></script>
     <script src="js/charts-home.js"></script>
     <script src="js/front.js"></script>
+-->
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
     <script>

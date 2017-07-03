@@ -1,5 +1,5 @@
 /*global $, document, Chart, LINECHART, data, options, window*/
-$(document).ready(function () {
+$(document).on("turbolinks:load", function () {
 
     'use strict';
 

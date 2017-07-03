@@ -167,6 +167,11 @@ button, input {
 }
 
 /*=== Helpers ===*/
+.bg-sea {
+  background: #379392 !important;
+  color: #fff;
+}
+
 .bg-red {
   background: #ff7676 !important;
   color: #fff;

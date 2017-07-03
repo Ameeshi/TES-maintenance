@@ -12,15 +12,18 @@
       <div class="navbar-holder d-flex align-items-center justify-content-between">
         <!-- Navbar Header-->
         <div class="navbar-header">
-          <!-- Navbar Brand --><a href="index.html" class="navbar-brand">
+          <!-- Navbar Brand -->
+          <a href="index.html" class="navbar-brand">
             <div class="brand-text brand-big hidden-lg-down"><span>Teacher </span><strong>Evaluation</strong> System</div>
-            <div class="brand-text brand-small">MoE <strong>TES</strong></div></a>
-          <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+            <div class="brand-text brand-small">MoE <strong>TES</strong></div>
+          </a>
+          <!-- Toggle Button-->
+          <a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
         </div>
         <!-- Navbar Menu -->
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
           <!-- Search-->
-          <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
+          <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="fa fa-search"></i></a></li>
           <!-- Notifications-->
           <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
             <ul aria-labelledby="notifications" class="dropdown-menu">
@@ -69,14 +72,20 @@
             </ul>
           </li>
           <!-- Logout    -->
+<!--
           <% if user_signed_in? %>
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            
           <% else %>
             <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
             <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
           <% end %>
-          <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+-->
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, :class => 'nav-link logout' do %>
+              Logout<i class="fa fa-sign-out"></i>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  
   resources :observations
   resources :training_sessions
   resources :trainings
   resources :classrooms
   resources :schools
-  devise_for :users
 
   root to: "home#index"
   get 'home', to: redirect('/')

@@ -4,6 +4,27 @@
 
   <div class="field">
     <div class="form-group">
+      <%= f.text_field :first_name, id:"register-first-name", class: "input-material" %>
+      <label for="register-first-name" class="label-material">First Name</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="form-group">
+      <%= f.text_field :last_name, id:"register-last-name", class: "input-material" %>
+      <label for="register-last-name" class="label-material">Last Name</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="form-group">
+      <%= f.text_field :username, id:"register-username", class: "input-material" %>
+      <label for="register-username" class="label-material">Username</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="form-group">
       <%= f.email_field :email, id:"register-email", class: "input-material" %>
       <label for="register-email" class="label-material">Email</label>
     </div>

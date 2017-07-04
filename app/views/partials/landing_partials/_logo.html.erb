@@ -1,0 +1,14 @@
+<!-- Logo Options -->
+<div class="logo">
+  <h1>
+    <% if controller.controller_name == "sessions" %>
+      Log In
+    <% elsif controller.controller_name == "registrations" %>
+      Sign Up
+    <% elsif current_page?(new_user_password_path) %>
+      Forgot Password
+    <% end %>
+  </h1>
+</div>
+<h2>Teacher Evaluation System</h2>
+<p>Developed for the Ministry of Education</p>

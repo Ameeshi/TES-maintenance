@@ -71,16 +71,6 @@
               <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages    </strong></a></li>
             </ul>
           </li>
-          <!-- Logout    -->
-<!--
-          <% if user_signed_in? %>
-            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-          <% end %>
--->
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, :class => 'nav-link logout' do %>
               Logout<i class="fa fa-sign-out"></i>

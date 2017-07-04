@@ -1,0 +1,19 @@
+<!-- Login Form -->
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <div class="form-group">
+      <%= f.email_field :email, id:"email-login", class: "input-material" %>
+      <label for="email-login" class="label-material">User Name</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="form-group">
+      <%= f.password_field :password, id:"password-login", autocomplete: "off", class: "input-material" %>
+      <label for="password-login" class="label-material">Password</label>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Log in", class:"btn btn-primary" %>
+  </div>
+<% end %>

@@ -3,23 +3,10 @@
   <%= render "partials/head" %>
 
   <body>
-    <div class="page home-page">
-      <%= render "partials/navbar" %>
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-    
-      <div class="page-content d-flex align-items-stretch">
-        <%= render "partials/sidebar" %>
-        <div class="content-inner">
-          <%= yield %>
-          <%= render "partials/footer" %>
-        </div>
-      </div>
-      
-    </div>
+    <% if controller.controller_name == "sessions" || current_page?(new_user_registration_path) || current_page?(new_user_password_path) %>
+      <%= render "partials/landing_partials/landing" %>
+    <% else %>
+      <%= render "partials/main" %>
+    <% end %>
   </body>
 </html>

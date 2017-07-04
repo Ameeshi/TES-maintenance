@@ -1,0 +1,13 @@
+<!-- Main Theme Section -->
+<div class="page home-page">
+  <%= render "partials/navbar" %>
+
+  <div class="page-content d-flex align-items-stretch">
+    <%= render "partials/sidebar" %>
+    <div class="content-inner">
+      <%= yield %>
+      <%= render "partials/footer" %>
+    </div>
+  </div>
+
+</div>

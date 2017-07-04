@@ -494,7 +494,7 @@ nav.side-navbar.shrinked a:hover i {
 }
 
 nav.side-navbar.shrinked a i {
-  margin-right: 0;
+  margin: auto;
   margin-bottom: 5px;
   display: block;
   font-size: 1.6em;
@@ -1746,7 +1746,7 @@ section.forms .line {
   height: 100%;
   display: block;
   z-index: -1;
-  background: url(../img/bg.jpg);
+  background: url(bg.jpg);
   background-size: cover;
   -webkit-filter: blur(10px);
   filter: blur(10px);

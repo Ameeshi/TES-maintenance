@@ -10,22 +10,34 @@
   </div>
   <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
   <ul class="list-unstyled">
-    <li class="active"> <a href="./"><i class="fa fa-home"></i>Home</a></li>
-    <li> <a href="teachers.html"> <i class="fa fa-users"></i>Teachers</a></li>
-    <li> <a href="schools.html"> <i class="fa fa-graduation-cap"></i>Schools</a></li>
-    <li> <a href="observations.html"> <i class="fa fa-eye"></i>Observations</a></li>
-    <li><a href="#training-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-pencil-square-o"></i>Trainings </a>
+    <li class="active"> 
+      <%= link_to root_path do %>
+        <i class="fa fa-home fa-fw"></i>Home
+      <% end %>
+    </li>
+    <li> <a href="teachers.html"> <i class="fa fa-users fa-fw"></i>Teachers</a></li>
+    <li> <a href="schools.html"> <i class="fa fa-graduation-cap fa-fw"></i>Schools</a></li>
+    <li> <a href="observations.html"> <i class="fa fa-eye fa-fw"></i>Observations</a></li>
+    <li><a href="#training-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-pencil-square-o fa-fw"></i>Trainings </a>
       <ul id="training-drop" class="collapse list-unstyled">
-        <li><a href="trainings.html"><i class="fa fa-calendar-check-o"></i>My Trainings</a></li>
-        <li><a href="trainings.html"><i class="fa fa-list"></i>All Trainings</a></li>
-        <li><a href="trainings.html"><i class="fa fa-plus"></i>New Training</a></li>
+        <li><a href="trainings.html"><i class="fa fa-calendar-check-o fa-fw"></i>My Trainings</a></li>
+        <li><a href="trainings.html"><i class="fa fa-list fa-fw"></i>All Trainings</a></li>
+        <li><a href="trainings.html"><i class="fa fa-plus fa-fw"></i>New Training</a></li>
       </ul>
     </li>
-    <li><a href="#settings-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-gear"></i>Settings </a>
+    <li><a href="#settings-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-gear fa-fw"></i>Settings </a>
       <ul id="settings-drop" class="collapse list-unstyled">
-        <li><a href="trainings.html"><i class="fa fa-user"></i>My Account</a></li>
-        <li><a href="trainings.html"><i class="fa fa-wrench"></i>Edit Account</a></li>
-        <li><a href="trainings.html"><i class="fa fa-sign-out"></i>Log Out</a></li>
+        <li><a href="trainings.html"><i class="fa fa-user fa-fw"></i>My Account</a></li>
+        <li>
+          <%= link_to edit_user_registration_path do %>
+            <i class="fa fa-wrench fa-fw"></i>Edit Account
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out fa-fw"></i>Logout
+          <% end %>
+        </li>
       </ul>
     </li>
   </ul>

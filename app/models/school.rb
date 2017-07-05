@@ -15,7 +15,7 @@ class School < ApplicationRecord
   # Validations
   validates_presence_of :name, :state
   validates_inclusion_of :state, in: STATES_LIST.map{|key, value| value}, message: "is not an option"
-  validates_inclusion_of :state, in: STATES_LIST.to_h.values, message: "is not an option"
+#  validates_inclusion_of :state, in: STATES_LIST.to_h.values, message: "is not an option"
   validate :school_is_not_a_duplicate, on: :create
 
   def already_exists?

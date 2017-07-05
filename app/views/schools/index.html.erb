@@ -1,3 +1,4 @@
+<!--
 <p id="notice"><%= notice %></p>
 
 <h1>Schools</h1>
@@ -31,3 +32,202 @@
 <br>
 
 <%= link_to 'New School', new_school_path %>
+
+-->
+<!-- Page Header-->
+<header class="page-header">
+  <div class="container-fluid">
+    <h2 class="no-margin-bottom">Schools</h2>
+  </div>
+</header>
+<%= render "partials/alerts" %>
+
+<!-- List of Schools -->
+<section class="dashboard-counts no-padding-bottom">
+  <div class="container-fluid">
+    <div class="row bg-white has-shadow">
+      <% @schools.each do |school| %>
+        <div class="col-xl-4 col-sm-6">
+          <%= link_to school do %>
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span><%= school.name %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="school.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Aimeliik<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Airai<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Angaur<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>GB Harris<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Ibobang<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>JFK (Kayangel)<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Koror<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Melekeok<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Meyuns<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Ngaraard<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Ngarchelong<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Ngardmau<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Ngeremlengui<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Palau<br>High<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Peleliu<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Pula Anna<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-4 col-sm-6">
+        <a href="schools.html">
+          <div class="item d-flex align-items-center">
+            <div class="title">
+              <span>Sonsorol<br>Elementary<br>School</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section></section>

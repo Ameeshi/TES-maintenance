@@ -10,15 +10,15 @@
   </div>
   <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
   <ul class="list-unstyled">
-    <li class="active"> 
+    <li class="<%= 'active' if params[:controller] == 'home' %>"> 
       <%= link_to root_path do %>
         <i class="fa fa-home fa-fw"></i>Home
       <% end %>
     </li>
-    <li> <a href="teachers.html"> <i class="fa fa-users fa-fw"></i>Teachers</a></li>
-    <li> <a href="schools.html"> <i class="fa fa-graduation-cap fa-fw"></i>Schools</a></li>
-    <li> <a href="observations.html"> <i class="fa fa-eye fa-fw"></i>Observations</a></li>
-    <li><a href="#training-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-pencil-square-o fa-fw"></i>Trainings </a>
+    <li class="<%= 'active' if params[:controller] == 'teachers' %>"> <a href="teachers.html"> <i class="fa fa-users fa-fw"></i>Teachers</a></li>
+    <li class="<%= 'active' if params[:controller] == 'schools' %>"> <a href="schools.html"> <i class="fa fa-graduation-cap fa-fw"></i>Schools</a></li>
+    <li class="<%= 'active' if params[:controller] == 'observations' %>"> <a href="observations.html"> <i class="fa fa-eye fa-fw"></i>Observations</a></li>
+    <li class="<%= 'active' if params[:controller] == 'trainings' %>"><a href="#training-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-pencil-square-o fa-fw"></i>Trainings </a>
       <ul id="training-drop" class="collapse list-unstyled">
         <li><a href="trainings.html"><i class="fa fa-calendar-check-o fa-fw"></i>My Trainings</a></li>
         <li><a href="trainings.html"><i class="fa fa-list fa-fw"></i>All Trainings</a></li>

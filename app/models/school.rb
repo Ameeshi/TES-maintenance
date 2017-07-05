@@ -7,6 +7,8 @@ class School < ApplicationRecord
   # Relationships
   has_many :classrooms
   has_many :observations, through: :classrooms
+  has_many :teachers, through: :classrooms, class_name: "User"
+  has_one :principal, class_name: "User"
   # Need to add relationships with Teachers and Principals. Still have to decide whether to extend user class
 
   # Scopes

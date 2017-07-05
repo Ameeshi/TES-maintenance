@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  # Scopes
+  
   ############ Role methods ############
   # Shouldn't be necessary because no one should have more than
   # one role, but it's a safeguard

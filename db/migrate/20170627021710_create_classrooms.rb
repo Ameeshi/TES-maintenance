@@ -5,7 +5,7 @@ class CreateClassrooms < ActiveRecord::Migration[5.0]
       t.integer :school_id
       t.string :grade
       t.string :content_area
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps
     end

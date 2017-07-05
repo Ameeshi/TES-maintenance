@@ -3,7 +3,7 @@ class CreateTrainingSessions < ActiveRecord::Migration[5.0]
     create_table :training_sessions do |t|
       t.integer :user_id
       t.integer :training_id
-      t.boolean :is_leader
+      t.boolean :is_leader, default: false
 
       t.timestamps
     end

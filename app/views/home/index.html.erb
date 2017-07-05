@@ -7,7 +7,7 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Dashboard</h2>
+    <h2 class="no-margin-bottom"><%= current_user.highestRole %> Dashboard</h2>
   </div>
 </header>
 <%= render "partials/alerts" %>
@@ -31,7 +31,7 @@
       <div class="col-xl-3 col-sm-6">
         <a href="schools.html">
           <div class="item d-flex align-items-center">
-            <div class="icon bg-blue"><i class="icon-user"></i></div>
+            <div class="icon bg-blue"><i class="fa fa-users"></i></div>
             <div class="title">
               <span>Total<br>Teachers</span>
               <div class="number"><strong>70</strong></div>
@@ -43,7 +43,7 @@
       <div class="col-xl-3 col-sm-6">
         <a href="schools.html">
           <div class="item d-flex align-items-center">
-            <div class="icon bg-green"><i class="icon-bill"></i></div>
+            <div class="icon bg-green"><i class="fa fa-eye"></i></div>
             <div class="title">
               <span>Total<br>Observations</span>
               <div class="number"><strong>44</strong></div>
@@ -55,7 +55,7 @@
       <div class="col-xl-3 col-sm-6">
         <a href="schools.html">
           <div class="item d-flex align-items-center">
-            <div class="icon bg-orange"><i class="icon-check"></i></div>
+            <div class="icon bg-orange"><i class="fa fa-pencil-square-o "></i></div>
             <div class="title">
               <span>Total<br>Trainings</span>
               <div class="number"><strong>35</strong></div>

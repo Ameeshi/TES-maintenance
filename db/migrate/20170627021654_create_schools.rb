@@ -4,7 +4,7 @@ class CreateSchools < ActiveRecord::Migration[5.0]
       t.integer :principal_id
       t.string :name
       t.string :state
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps
     end

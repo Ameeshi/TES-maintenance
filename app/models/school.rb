@@ -1,5 +1,7 @@
 class School < ApplicationRecord
-  # get an array of the states in U.S.
+  # Get an array of the states in Palau
+  # I'm not 100% on what '.freeze' does, but it was at the end of the list which I based this on
+  # So if you know, edit as you will
   STATES_LIST = ['Aimeliik', 'Airai', 'Angaur', 'Hatohobei', 'Kayangel', 'Koror', 'Melekeok', 'Ngaraard', 'Ngarchelong', 'Ngardmau', 'Ngeremlengui', 'Ngatpang', 'Ngchesar', 'Ngiwal', 'Peleliu', 'Sonsorol'].freeze
 
   # Relationships
@@ -19,7 +21,7 @@ class School < ApplicationRecord
   validate :school_is_not_a_duplicate, on: :create
 
   def already_exists?
-    School.where(name: self.name, zip: self.zip).size == 1
+    School.where(name: self.name, state: self.state).size == 1
   end
 
   # Callbacks

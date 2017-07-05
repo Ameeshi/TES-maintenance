@@ -45,8 +45,21 @@
 <!-- List of Schools -->
 <section class="dashboard-counts no-padding-bottom">
   <div class="container-fluid">
+    <% if current_user.has_role? :admin %>
+      <div class="row bg-gray">
+        <div class="container-fluid">
+          <h1>Active Schools</h1><br/>
+        </div>
+      </div>
+    <% else %>
+      <div class="row bg-gray">
+        <div class="container-fluid">
+          <h1>All Schools</h1><br/>
+        </div>
+      </div>
+    <% end %>
     <div class="row bg-white has-shadow">
-      <% @schools.each do |school| %>
+      <% @schools.active.alphabetical.each do |school| %>
         <div class="col-xl-4 col-sm-6">
           <%= link_to school do %>
             <div class="item d-flex align-items-center">
@@ -57,177 +70,203 @@
           <% end %>
         </div>
       <% end %>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="school.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Aimeliik<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Airai<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Angaur<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>GB Harris<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Ibobang<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>JFK (Kayangel)<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Koror<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Melekeok<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Meyuns<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Ngaraard<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Ngarchelong<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Ngardmau<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Ngeremlengui<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Palau<br>High<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Peleliu<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Pula Anna<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-4 col-sm-6">
-        <a href="schools.html">
-          <div class="item d-flex align-items-center">
-            <div class="title">
-              <span>Sonsorol<br>Elementary<br>School</span>
-            </div>
-          </div>
-        </a>
-      </div>
     </div>
+    <% if current_user.has_role? :admin %>
+      <div class="row bg-gray">
+        <div class="container-fluid">
+          <h1>Inactive Schools</h1><br/>
+        </div>
+      </div>
+      <div class="row bg-white has-shadow">
+        <% @schools.inactive.alphabetical.each do |school| %>
+          <div class="col-xl-4 col-sm-6">
+            <%= link_to school do %>
+              <div class="item d-flex align-items-center">
+                <div class="title">
+                  <span><%= school.name %></span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="school.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Aimeliik<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Airai<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Angaur<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>GB Harris<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Ibobang<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>JFK (Kayangel)<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Koror<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Melekeok<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Meyuns<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Ngaraard<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Ngarchelong<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Ngardmau<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Ngeremlengui<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Palau<br>High<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Peleliu<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Pula Anna<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-4 col-sm-6">
+          <a href="schools.html">
+            <div class="item d-flex align-items-center">
+              <div class="title">
+                <span>Sonsorol<br>Elementary<br>School</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
-<section></section>
+<section>
+  <div class="container-fluid">
+    <% if current_user.has_role? :admin %>
+      <%= link_to 'New School', new_school_path, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</section>

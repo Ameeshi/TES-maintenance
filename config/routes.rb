@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :users, :only =>[:show]
   
   resources :observations
   resources :training_sessions
@@ -10,4 +12,9 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'home', to: redirect('/')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  # User Routes
+  match '/teachers',   to: 'users#teachers',   via: 'get'
+  match '/users/:id',     to: 'users#show',       via: 'get'
+
 end

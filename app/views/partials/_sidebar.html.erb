@@ -16,19 +16,39 @@
         <i class="fa fa-home fa-fw"></i>Home
       <% end %>
     </li>
-    <li class="<%= 'active' if params[:controller] == 'teachers' %>"> <a href="teachers.html"> <i class="fa fa-users fa-fw"></i>Teachers</a></li>
-    <li class="<%= 'active' if params[:controller] == 'schools' %>"> <a href="schools.html"> <i class="fa fa-graduation-cap fa-fw"></i>Schools</a></li>
-    <li class="<%= 'active' if params[:controller] == 'observations' %>"> <a href="observations.html"> <i class="fa fa-eye fa-fw"></i>Observations</a></li>
+    <li class="<%= 'active' if params[:controller] == 'teachers' %>">
+      <%= link_to teachers_path do %>
+        <i class="fa fa-users fa-fw"></i>Teachers
+      <% end %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'schools' %>">
+      <%= link_to schools_path do %>
+        <i class="fa fa-graduation-cap fa-fw"></i>Schools
+      <% end %>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'observations' %>">
+      <%= link_to observations_path do %>
+        <i class="fa fa-eye fa-fw"></i>Observations
+      <% end %>
+    </li>
     <li class="<%= 'active' if params[:controller] == 'trainings' %>"><a href="#training-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-pencil-square-o fa-fw"></i>Trainings </a>
       <ul id="training-drop" class="collapse list-unstyled">
         <li><a href="trainings.html"><i class="fa fa-calendar-check-o fa-fw"></i>My Trainings</a></li>
-        <li><a href="trainings.html"><i class="fa fa-list fa-fw"></i>All Trainings</a></li>
-        <li><a href="trainings.html"><i class="fa fa-plus fa-fw"></i>New Training</a></li>
+        <li>
+          <%= link_to trainings_path do %>
+            <i class="fa fa-list fa-fw"></i>All Trainings
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_training_path do %>
+            <i class="fa fa-plus fa-fw"></i>New Training
+          <% end %>
+        </li>
       </ul>
     </li>
     <li><a href="#settings-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-gear fa-fw"></i>Settings </a>
       <ul id="settings-drop" class="collapse list-unstyled">
-        <li><a href="trainings.html"><i class="fa fa-user fa-fw"></i>My Account</a></li>
+        <li><a href="/users/<%= current_user.username %>"><i class="fa fa-user fa-fw"></i>My Account</a></li>
         <li>
           <%= link_to edit_user_registration_path do %>
             <i class="fa fa-wrench fa-fw"></i>Edit Account

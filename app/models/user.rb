@@ -28,8 +28,8 @@ class User < ApplicationRecord
     elsif self.has_role? :teacher
       return 'Teacher'
     else
-      # Should never be none when used
-      return 'None'
+      # Should never be default when used
+      return 'Default'
     end
   end
   

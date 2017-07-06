@@ -1,1 +1,51 @@
-<h1><%= @user.username %></h1>
+<!-- Page Header-->
+<header class="page-header">
+  <div class="container-fluid">
+    <h2 class="no-margin-bottom"><%= @user.name %></h2>
+  </div>
+</header>
+
+<!-- Client Section-->
+<section class="client">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Client Profile -->
+      <div class="col-lg-12">
+        <div class="client card">
+          <div class="card-body text-center">
+            <div class="client-avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle">
+              <div class="status bg-green"></div>
+            </div>
+            <div class="client-title">
+              <h3><%= @user.name %></h3>
+              <span>
+                <% @user.roles.each do |role| %>
+                  <span class="capitalize"><%= role.name %></span>
+                <% end %>
+              </span>
+              <span><%= @user.username %></span>
+              <span><%= @user.email %></span>
+            </div>
+            <div class="client-info">
+              <div class="row">
+                <% if current_user.has_role? :admin %>
+                  <div class="col-4">
+                    <%= link_to edit_user_registration_path, class:"btn btn-primary" do %>
+                      <i class="fa fa-wrench fa-fw"></i> Edit <%= @user.first_name %>'s Account
+                    <% end %>
+                  </div>
+                  <div class="col-4"></div>
+                  <div class="col-4">
+                    <%= link_to edit_user_registration_path, class:"btn btn-delete" do %>
+                      <i class="fa fa-trash fa-fw"></i> Deactivate <%= @user.first_name %>'s Account
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2011,6 +2011,18 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 
+.btn-delete {
+  color: #fff;
+  background-color: #ff3f3f;
+  border-color: #ff3f3f;
+}
+
+.btn-delete:hover {
+  color: #fff;
+  background-color: #ff0c0c;
+  border-color: #ff0202;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #379392;

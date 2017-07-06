@@ -4,6 +4,9 @@
   cursor: pointer;
 }
 
+.capitalize::first-letter {
+  text-transform: capitalize;
+}
 
 
 /* Offline Font Stuff */

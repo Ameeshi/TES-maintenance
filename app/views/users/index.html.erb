@@ -19,8 +19,8 @@
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Grade</th>
-                  <th>Content Area(s)</th>
+                  <th>Role</th>
+                  <th>Username</th>
                 </tr>
               </thead>
               <tfoot>
@@ -33,8 +33,8 @@
                   <tr class='clickable-row' data-href='/users/<%= user.username %>'>
                     <th scope="row">1</th>
                     <td><%= user.name %></td>
-                    <td>3rd</td>
-                    <td>Math, Science</td>
+                    <td><%= user.highestRole %></td>
+                    <td><%= user.username %></td>
                   </tr>
                 <% end %>
               </tbody>

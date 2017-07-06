@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   # User Routes
   match '/teachers',   to: 'users#teachers',   via: 'get'
-  match '/users/:id',     to: 'users#show',       via: 'get'
+  match '/users/:id',  to: 'users#show',       via: 'get'
+  match '/users',      to: 'users#index',      via: 'get'
 
 end

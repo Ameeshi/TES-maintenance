@@ -16,10 +16,19 @@
         <i class="fa fa-home fa-fw"></i>Home
       <% end %>
     </li>
-    <li class="<%= 'active' if params[:controller] == 'teachers' %>">
-      <%= link_to teachers_path do %>
-        <i class="fa fa-users fa-fw"></i>Teachers
-      <% end %>
+    <li class="<%= 'active' if params[:controller] == 'users' %>"><a href="#users-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-users fa-fw"></i>Users </a>
+      <ul id="users-drop" class="collapse list-unstyled">
+        <li>
+          <%= link_to teachers_path do %>
+            <i class="fa fa-users fa-fw"></i>Teachers
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_path do %>
+            <i class="fa fa-users fa-fw"></i>All Users
+          <% end %>
+        </li>
+      </ul>
     </li>
     <li class="<%= 'active' if params[:controller] == 'schools' %>">
       <%= link_to schools_path do %>

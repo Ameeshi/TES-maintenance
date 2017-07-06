@@ -19,4 +19,6 @@
 //= require Chart.min
 //= require charts-home
 //= require front
+//= require custom
 //= require turbolinks
+

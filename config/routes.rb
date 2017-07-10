@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   # User Routes
-  match '/teachers',   to: 'users#teachers',   via: 'get'
-  match '/users/:id',  to: 'users#show',       via: 'get'
-  match '/users',      to: 'users#index',      via: 'get'
+  match '/teachers',      to: 'users#teachers',     via: 'get'
+  match '/principals',    to: 'users#principals',   via: 'get'
+  match '/specialists',   to: 'users#specialists',  via: 'get'
+  match '/users/:id',     to: 'users#show',         via: 'get'
+  match '/users',         to: 'users#index',        via: 'get'
 
 end

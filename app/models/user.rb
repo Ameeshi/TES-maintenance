@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   
   # Scopes
-  
+#  scope :for_school, joins(:schools).where(company_types: { name: 'customer' })
+#    ->(school_id) { where(school_id: school_id) }
   
   
   def name

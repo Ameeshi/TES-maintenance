@@ -37,24 +37,26 @@
     <div class="row bg-white has-shadow">
       <!-- Item -->
       <div class="col-xl-6 col-sm-6">
+        <!-- Change this to teachers from that school -->
         <a href="schools.html">
           <div class="item d-flex align-items-center">
             <div class="icon bg-blue"><i class="icon-user"></i></div>
             <div class="title">
               <span>Total<br>Teachers</span>
-              <div class="number"><strong>70</strong></div>
+              <div class="number"><strong><%= @school.teachers.count %></strong></div>
             </div>
           </div>
         </a>
       </div>
       <!-- Item -->
       <div class="col-xl-6 col-sm-6">
+        <!-- Change this to observations from that school -->
         <a href="schools.html">
           <div class="item d-flex align-items-center">
             <div class="icon bg-green"><i class="icon-bill"></i></div>
             <div class="title">
               <span>Total<br>Observations</span>
-              <div class="number"><strong>44</strong></div>
+              <div class="number"><strong><%= @school.observations.count %></strong></div>
             </div>
           </div>
         </a>
@@ -87,36 +89,14 @@
                 </tr>
               </tfoot>
               <tbody>
-                <tr class='clickable-row' data-href='teacher.html'>
-                  <th scope="row">1</th>
-                  <td>Mark Otto</td>
-                  <td>3rd</td>
-                  <td>Math, Science</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob Thornton</td>
-                  <td>8th</td>
-                  <td>English</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry Bird</td>
-                  <td>10th</td>
-                  <td>Social Studies</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Daniel Graf</td>
-                  <td>5th</td>
-                  <td>English, Palauan</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Amy Himes</td>
-                  <td>1st</td>
-                  <td>All</td>
-                </tr>
+                <% @school.teachers.each do |teacher| %>
+                  <tr class='clickable-row' data-href='/users/<%= teacher.username %>'>
+                    <th scope="row">1</th>
+                    <td><%= teacher.name %></td>
+                    <td><%= teacher.highestRole %></td>
+                    <td><%= teacher.username %></td>
+                  </tr>
+                <% end %>
               </tbody>
 
             </table>

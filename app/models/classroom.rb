@@ -2,9 +2,9 @@ class Classroom < ApplicationRecord
   # Get an array of the grades and subjects
   # I'm not 100% on what '.freeze' does, but it was at the end of the list which I based this on
   # So if you know, edit as you will
-  GRADES_LIST = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th'].freeze
+  GRADES_LIST = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', 'N/A'].freeze
   
-  CONTENT_AREAS_LIST = ['English', 'Math', 'Palauan', 'Science', 'Social Studies'].freeze
+  CONTENT_AREAS_LIST = ['English', 'Math', 'Palauan', 'Science', 'Social Studies', 'N/A'].freeze
   
   # Relationships
   belongs_to :school
@@ -21,8 +21,8 @@ class Classroom < ApplicationRecord
   
   # Validations
   validates_presence_of :teacher_id, :school_id, :content_area, :grade
-  validates_inclusion_of :grade, in: GRADES_LIST.map{|key, value| value}, message: "is not an option"
-  validates_inclusion_of :content_area, in: CONTENT_AREAS_LIST.map{|key, value| value}, message: "is not an option"
+  validates_inclusion_of :grade, in: GRADES_LIST.map{|value| value}, message: "is not an option"
+  validates_inclusion_of :content_area, in: CONTENT_AREAS_LIST.map{|value| value}, message: "is not an option"
 #  validate :school_is_not_a_duplicate, on: :create
 
 #  def already_exists?

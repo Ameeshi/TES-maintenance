@@ -37,7 +37,7 @@
                 </tfoot>
                 <tbody>
                   <% @principals.each do |principal| %>
-                    <tr class='clickable-row' data-href='users/<%= principal.username %>'>
+                    <tr class='clickable-row' data-href='/users/<%= principal.username %>'>
                       <th scope="row">1</th>
                       <td><%= principal.name %></td>
                       <td><%= principal.highestRole %></td>

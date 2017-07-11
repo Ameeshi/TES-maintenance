@@ -103,6 +103,7 @@ table {
 }
 
 .content-inner {
+  position: relative;
   width: calc(100% - 250px);
 }
 
@@ -1407,6 +1408,9 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 * ==========================================================
 */
 footer.main-footer{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   background: #2f333e;
   color: #fff;
   padding: 10px;

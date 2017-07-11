@@ -1,0 +1,12 @@
+
+
+<li class="<%= 'active' if params[:controller] == 'observations' %>">
+  <%= link_to observations_path do %>
+    <i class="fa fa-eye fa-fw"></i>My Observations
+  <% end %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'trainings' %>">
+  <%= link_to trainings_path do %>
+    <i class="fa fa-calendar fa-fw"></i>My Trainings
+  <% end %>
+</li>

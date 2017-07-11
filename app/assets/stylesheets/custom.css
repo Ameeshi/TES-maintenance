@@ -1,5 +1,9 @@
 /* your styles go here */
 
+.page-content {
+  min-height: 100vh;
+}
+
 .clickable-row {
   cursor: pointer;
 }

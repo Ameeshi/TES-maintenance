@@ -1,0 +1,29 @@
+<li class="<%= 'active' if params[:controller] == 'users' %>"><a href="#users-drop" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-users fa-fw"></i>Users </a>
+  <ul id="users-drop" class="collapse list-unstyled">
+    <li>
+      <%= link_to teachers_path do %>
+        <i class="fa fa-users fa-fw"></i>Teachers
+      <% end %>
+    </li>
+    <li>
+      <%= link_to principals_path do %>
+        <i class="fa fa-users fa-fw"></i>Principals
+      <% end %>
+    </li>
+  </ul>
+</li>
+<li class="<%= 'active' if params[:controller] == 'schools' %>">
+  <%= link_to schools_path do %>
+    <i class="fa fa-graduation-cap fa-fw"></i>Schools
+  <% end %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'observations' %>">
+  <%= link_to observations_path do %>
+    <i class="fa fa-eye fa-fw"></i>Observations
+  <% end %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'trainings' %>">
+  <%= link_to trainings_path do %>
+    <i class="fa fa-pencil-square-o fa-fw"></i>Trainings
+  <% end %>
+</li>

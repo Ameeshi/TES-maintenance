@@ -30,11 +30,11 @@
               </tfoot>
               <tbody>
                 <% @specialists.each do |specialist| %>
-                  <tr class='clickable-row' data-href='teacher.html'>
+                  <tr class='clickable-row' data-href='users/<%= specialist.username %>'>
                     <th scope="row">1</th>
-                    <td>Mark Otto</td>
-                    <td>3rd</td>
-                    <td>Math, Science</td>
+                    <td><%= specialist.name %></td>
+                    <td><%= specialist.highestRole %></td>
+                    <td><%= specialist.username %></td>
                   </tr>
                 <% end %>
               </tbody>

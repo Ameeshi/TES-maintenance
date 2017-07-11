@@ -18,18 +18,18 @@ class User < ApplicationRecord
   # one role, but it's a safeguard
   def highestRole
     if self.has_role? :admin
-      return 'Admin'
+      return 'admin'
     elsif self.has_role? :specialist
-      return 'Specialist'
+      return 'specialist'
     elsif self.has_role? :manager
-      return 'Manager'
+      return 'manager'
     elsif self.has_role? :principal
-      return 'Principal'
+      return 'principal'
     elsif self.has_role? :teacher
-      return 'Teacher'
+      return 'teacher'
     else
       # Should never be default when used
-      return 'Default'
+      return 'default'
     end
   end
   

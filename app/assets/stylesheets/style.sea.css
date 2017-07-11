@@ -108,7 +108,7 @@ table {
 }
 
 .content-inner.active {
-  width: calc(100% - 90px);
+  width: calc(100% - 120px);
 }
 
 .page-header {
@@ -454,8 +454,8 @@ nav.side-navbar ul ul a {
 }
 
 nav.side-navbar.shrinked {
-  min-width: 90px;
-  max-width: 90px;
+  min-width: 120px;
+  max-width: 120px;
   text-align: center;
 }
 
@@ -510,9 +510,9 @@ nav.side-navbar.shrinked .sidebar-header .title {
 /* SIDBAR MEDIAQUERIES ----------------------------------- */
 @media (max-width: 1200px) {
   nav.side-navbar {
-    margin-left: -90px;
-    min-width: 90px;
-    max-width: 90px;
+    margin-left: -120px;
+    min-width: 120px;
+    max-width: 120px;
     text-align: center;
   }
   nav.side-navbar span.heading {
@@ -562,7 +562,7 @@ nav.side-navbar.shrinked .sidebar-header .title {
     width: 100%;
   }
   .content-inner.active {
-    width: calc(100% - 90px);
+    width: calc(100% - 120px);
   }
 }
 

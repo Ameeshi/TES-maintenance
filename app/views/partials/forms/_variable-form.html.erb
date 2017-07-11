@@ -1,0 +1,19 @@
+<!-- Page Header-->
+<header class="page-header">
+  <div class="container-fluid">
+    <h2 class="no-margin-bottom">Edit <%= resource_name.to_s.humanize %></h2>
+  </div>
+</header>
+<section class="forms"> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <%= render "partials/forms/#{form}" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

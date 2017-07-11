@@ -30,16 +30,18 @@
                 </thead>
                 <tfoot>
                   <tr>
-                    <a href="#">View All</a>
+                    <td>
+                      <a href="#">View All</a>
+                    </td>
                   </tr>
                 </tfoot>
                 <tbody>
                   <% @principals.each do |principal| %>
-                    <tr class='clickable-row' data-href='teacher.html'>
+                    <tr class='clickable-row' data-href='users/<%= principal.username %>'>
                       <th scope="row">1</th>
-                      <td><%= specialist.name %></td>
-                      <td><%= specialist.highestRole %></td>
-                      <td><%= specialist.username %></td>
+                      <td><%= principal.name %></td>
+                      <td><%= principal.highestRole %></td>
+                      <td><%= principal.username %></td>
                     </tr>
                   <% end %>
                 </tbody>

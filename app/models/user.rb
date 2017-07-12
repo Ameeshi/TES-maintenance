@@ -5,15 +5,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  # Relationships
+  has_many :classrooms, :foreign_key => :teacher_id
+  
+  has_many :observations, :foreign_key => :principal_id
+  has_many :observations, :foreign_key => :specialist_id
+  
+  has_many :schools, :foreign_key => :principal_id
+  
+  has_many :training_sessions
+  has_many :trainings, through: :training_sessions
+  
   # Validations
-  validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
+  validates :username, presence: true, :uniqueness => { :case_sensitive => false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
 
 
   # Scopes
-#  scope :for_school, joins(:schools).where(company_types: { name: 'customer' })
-#    ->(school_id) { where(school_id: school_id) }
   
   
   # Login with username or email

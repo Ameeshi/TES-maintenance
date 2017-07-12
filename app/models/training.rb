@@ -1,6 +1,7 @@
 class Training < ApplicationRecord
   # Relationships
   has_many :training_sessions
+  has_many :users, through: :training_sessions
   
   # Scopes
   scope :alphabetical,  -> { order(:title) }

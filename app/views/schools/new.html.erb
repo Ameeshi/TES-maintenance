@@ -1,5 +1,2 @@
-<h1>New School</h1>
+<%= render partial: "partials/forms/variable-form", locals: {type: "New", form: "form", resource: @school, resource_name: 'school'} %>
 
-<%= render partial: "partials/forms/full-form", locals: {title: "Edit", form: "form", resource: @school, resource_name: 'school'} %>
-
-<%= link_to 'Back', schools_path %>

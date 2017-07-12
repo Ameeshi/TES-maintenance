@@ -23,6 +23,8 @@ namespace :db do
     User.create!(first_name: 'Test', last_name:'Manager', username: 'manager', email:'manager@gmail.com', password:'password')
     User.last.add_role 'manager'
     
+    User.create!(first_name: 'Test', last_name:'Default', username: 'default', email:'default@gmail.com', password:'password')
+    
     # Create Schools
     School.create!(name:'Aimeliik Elementary School', state:'Aimeliik')
     School.create!(name:'Airai Elementary School', state:'Airai')

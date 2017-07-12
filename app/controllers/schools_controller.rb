@@ -17,16 +17,19 @@ class SchoolsController < ApplicationController
   # GET /schools/new
   def new
     @school = School.new
+    @principals = User.with_role(:principal)
   end
 
   # GET /schools/1/edit
   def edit
+    @principals = User.with_role(:principal)
   end
 
   # POST /schools
   # POST /schools.json
   def create
     @school = School.new(school_params)
+    @principals = User.with_role(:principal)
 
     respond_to do |format|
       if @school.save
@@ -42,6 +45,7 @@ class SchoolsController < ApplicationController
   # PATCH/PUT /schools/1
   # PATCH/PUT /schools/1.json
   def update
+    @principals = User.with_role(:principal)
     respond_to do |format|
       if @school.update(school_params)
         format.html { redirect_to @school, notice: 'School was successfully updated.' }

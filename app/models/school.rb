@@ -8,7 +8,8 @@ class School < ApplicationRecord
   has_many :classrooms
   has_many :observations, through: :classrooms
   has_many :teachers, through: :classrooms, class_name: "User"
-  belongs_to :principal, class_name: "User"
+  # Optional because a school won't always have an active principal
+  belongs_to :principal, class_name: "User", optional: true
 
   # Scopes
   scope :alphabetical,  -> { order(:name) }
@@ -52,8 +53,9 @@ class School < ApplicationRecord
     end
   end
   
+  # Weird thing here where error only works with 'self.name' (something with text), but anything from principal crashes on case.
   def principal_is_principal
-    return true if ((!self.principal.nil?) && (self.principal.has_role? :principal))
-    errors.add(self, "User is not a principal.")
+    return true if ((self.principal.nil?) || (self.principal.has_role? :principal))
+    errors.add(self.name, "Error : User is not a principal.")
   end
 end

@@ -12,26 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :principal_id %>
-    <%= f.number_field :principal_id %>
+    <div class="form-group-material">
+      <%= f.text_field :name, id:'school-name', class:'input-material' %>
+      <%= f.label :name, for:'school-name', class:'label-material' %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <div class="form-group-material">
+      <%= f.text_field :state, id:'school-state', class:'input-material' %>
+      <%= f.label :state, for:'school-state', class:'label-material' %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :state %>
-    <%= f.text_field :state %>
+    <div class="form-group-material">
+      <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
+      <%= f.label :principal_id, for:'school-state', class:'label-material' %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
+    <div class="form-group-material">
+      <%= f.label :active %>
+      <%= f.check_box :active %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <% if type == 'New' %>
+      <%= f.submit "Create", class:'btn btn-primary' %>
+    <% else %>
+      <%= f.submit "Update", class:'btn btn-primary' %>
+      <%= link_to 'Show', @school, class:'btn' %>
+    <% end %>
+    <%= link_to 'Back', schools_path, class:'btn btn-delete' %>
   </div>
 <% end %>

@@ -1,0 +1,23 @@
+<!-- Page Header-->
+<header class="page-header">
+  <div class="container-fluid">
+    <h2 class="no-margin-bottom"><%= type %> <%= resource_name.to_s.humanize %></h2>
+  </div>
+</header>
+<section class="forms"> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <% if form=='form' %>
+              <%= render partial: "form", locals: {"#{resource_name}": resource, type: type} %>
+            <% else %>
+              <%= render "partials/forms/#{form}" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

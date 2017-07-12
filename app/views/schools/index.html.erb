@@ -1,39 +1,3 @@
-<!--
-<p id="notice"><%= notice %></p>
-
-<h1>Schools</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Principal</th>
-      <th>Name</th>
-      <th>State</th>
-      <th>Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @schools.each do |school| %>
-      <tr>
-        <td><%= school.principal_id %></td>
-        <td><%= school.name %></td>
-        <td><%= school.state %></td>
-        <td><%= school.active %></td>
-        <td><%= link_to 'Show', school %></td>
-        <td><%= link_to 'Edit', edit_school_path(school) %></td>
-        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New School', new_school_path %>
-
--->
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
@@ -72,7 +36,7 @@
       <% end %>
     </div>
     <% if current_user.has_role? :admin %>
-      <% if !@schools.inactive.empty? %>
+      <% if !@inactive_schools.empty? %>
         <div class="row bg-gray">
           <div class="container-fluid">
             <h1>Inactive Schools</h1><br/>

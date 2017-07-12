@@ -59,7 +59,7 @@
       </div>
     <% end %>
     <div class="row bg-white has-shadow">
-      <% @schools.active.alphabetical.each do |school| %>
+      <% @active_schools.each do |school| %>
         <div class="col-xl-4 col-sm-6">
           <%= link_to school do %>
             <div class="item d-flex align-items-center">
@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="row bg-white has-shadow">
-          <% @schools.inactive.alphabetical.each do |school| %>
+          <% @inactive_schools.each do |school| %>
             <div class="col-xl-4 col-sm-6">
               <%= link_to school do %>
                 <div class="item d-flex align-items-center">

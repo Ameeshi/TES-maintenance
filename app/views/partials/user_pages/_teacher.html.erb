@@ -11,9 +11,9 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
                   <th>Grade</th>
-                  <th>Content Area(s)</th>
+                  <th>Content Area</th>
+                  <th>School</th>
                 </tr>
               </thead>
               <tfoot>
@@ -25,8 +25,11 @@
               </tfoot>
               <tbody>
                 <% @user.classrooms.each do |classroom| %>
-                  <tr class='clickable-row'>
+                  <tr class='clickable-row' data-href='/classrooms/<%= classroom.id %>'>
                     <th scope="row">1</th>
+                    <td><%= classroom.grade %></td>
+                    <td><%= classroom.content_area %></td>
+                    <td><%= classroom.school.name %></td>
                   </tr>
                 <% end %>
               </tbody>

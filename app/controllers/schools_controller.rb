@@ -4,7 +4,8 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
+    @active_schools = School.active.alphabetical.all
+    @inactive_schools = School.inactive.alphabetical.all
   end
 
   # GET /schools/1

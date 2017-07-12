@@ -45,6 +45,8 @@ namespace :db do
     School.create!(name:'Pulo Anna Elementary School', state:'Sonsorol')
     School.create!(name:'Sonsorol Elementary School', state:'Sonsorol')
     
+    Classroom.create!(teacher_id: 2, school_id: 1, grade:'7th', content_area:'Math')
+    
     
   end
 end

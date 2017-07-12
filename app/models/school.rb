@@ -35,12 +35,17 @@ class School < ApplicationRecord
   attr_reader :destroyable
   
   private
+  
   def is_destroyable?
     @destroyable = self.classrooms.empty?
+    if !@destroyable
+      throw :abort
+    end
   end
   
   def make_inactive_if_trying_to_destroy
     if !@destroyable.nil? && @destroyable == false
+      deactivate_all_active_classrooms
       self.update_attribute(:active, false)
     end
     @destroyable = nil
@@ -50,6 +55,12 @@ class School < ApplicationRecord
     return true if self.name.nil? || self.state.nil?
     if self.already_exists?
       errors.add(:name, "already exists for this school at this location")
+    end
+  end
+  
+  def deactivate_all_active_classrooms
+    self.classrooms.each do |classroom|
+      classroom.update_attribute(:active, false)
     end
   end
   

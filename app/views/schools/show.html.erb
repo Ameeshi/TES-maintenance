@@ -3,10 +3,18 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom"><%= @school.name %> <%= link_to 'Edit', edit_school_path(@school), class: 'btn btn-primary' %></h2>
-    <% if current_user.has_role? :admin %>
-      <h2><%= link_to 'Edit', edit_school_path(@school), class: 'btn btn-primary' %></h2>
-    <% end %>
+    <div class="row">
+      <div class="col-10">
+        <h2 class="no-margin-bottom"><%= @school.name %></h2>
+      </div>
+      <div class="col-2">
+        <% if current_user.has_role? :admin %>
+          <div class="row">
+            <%= link_to 'Edit', edit_school_path(@school), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </header>
 <!-- Dashboard Counts Section-->

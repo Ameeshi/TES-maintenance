@@ -4,9 +4,15 @@
   <div class="card">
     <div class="card-body text-center">
 -->
-      <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">
-        <i class="fa fa-wrench fa-fw"></i><%= title %> 
-      </button>
+      <% if (title == 'Deactivate' || title == 'Delete') %>
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-delete">
+          <%= title %> 
+        </button>
+      <% else %>
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">
+          <i class="fa fa-wrench fa-fw"></i><%= title %> 
+        </button>
+      <% end %>
       <!-- Modal-->
       <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
         <div role="document" class="modal-dialog">

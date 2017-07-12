@@ -12,6 +12,10 @@
   text-transform: capitalize;
 }
 
+.add-margin {
+  margin: 10px;
+}
+
 
 /* Offline Font Stuff */
 

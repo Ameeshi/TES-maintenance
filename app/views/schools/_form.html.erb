@@ -33,12 +33,15 @@
     </div>
   </div>
 
+<!--Shouldn't see active-->
+<!--
   <div class="field">
     <div class="form-group-material">
       <%= f.label :active %>
       <%= f.check_box :active %>
     </div>
   </div>
+-->
 
   <div class="actions">
     <div class="row">
@@ -48,10 +51,10 @@
       <% else %>
         <%= f.submit "Update", class:'btn btn-primary add-margin' %>
         <%= link_to 'Back', @school, class:'btn btn-secondary add-margin' %>
-        <div class="add-margin">
-          <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/deactivate-school"} %>
-        </div>
       <% end %>
     </div>
   </div>
+<% end %>
+<% if type == 'Edit' %>
+  <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/deactivate-school"} %>
 <% end %>

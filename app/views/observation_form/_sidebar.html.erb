@@ -1,0 +1,25 @@
+<h5 class="text-center text-muted">
+  <strong>PROGRESS BAR</strong>
+</h5>
+
+<ul class="list-unstyled">
+  <% ObservationFormController::STEPS_WITH_TITLES.each do |step_with_title| %>
+
+
+    <%# [step] variable (current step) is passed automatically from the controller it seems %>
+    <% step_item = step_with_title[0] %><%# couldn't think of a good name cause [step] was taken... %>
+    <% title = step_with_title[1] %>
+
+
+    <li>
+      <%# if this step_item is the page being viewed right now %>
+      <% if step == step_item  %>
+        <strong class="text-primary focus-step"><%= title %></strong>
+      <%# all other step_items %>
+      <% else %>
+        <%= link_to title, observation_form_path(id: step_item), class: 'active-step' %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>

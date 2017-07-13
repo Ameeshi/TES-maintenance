@@ -1,20 +1,21 @@
 <% content_for :content do %>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-9">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <%= yield %>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 bg-white has-shadow">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-3 bg-white has-shadow">
+        <div class="well well-lg application-progress-sidebar">
+          <%= render "observation_form/sidebar" %>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-12 col-md-3">
-      <div class="well well-lg application-progress-sidebar">
-        Test
-      </div>
-    </div>
   </div>
-
+</section>
 <% end %>
 <%= render template: "layouts/application" %>

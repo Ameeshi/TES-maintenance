@@ -12,16 +12,54 @@
   <% end %>
 
   <%= render "form_header" %>
-
-  <div class="field">
-    <div class="form-group-material">
-      
-    </div>
-  </div>
-
-  <div class="actions">
-    <div class="row">
-      
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h3 class="h4">Form</h3>
+        </div>
+        <div class="card-body">
+          <table>
+            <colgroup>
+              <col span="1" style="width: 60%;">
+              <col span="1" style="width: 8%;">
+              <col span="1" style="width: 8%;">
+              <col span="1" style="width: 8%;">
+              <col span="1" style="width: 8%;">
+              <col span="1" style="width: 8%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div class="field">
+                <div class="form-group-material">
+                  <tr>
+                    <td>Plan includes unpacking standards and objectives that match the learning targets</td>
+                    <td><%= f.radio_button(:questiona, 0) %></td>
+                    <td><%= f.radio_button(:questiona, 1) %></td>
+                    <td><%= f.radio_button(:questiona, 2) %></td>
+                    <td><%= f.radio_button(:questiona, 3) %></td>
+                    <td><%= f.radio_button(:questiona, 4) %></td>
+                  </tr>
+                </div>
+              </div>
+            </tbody>
+          </table>
+          <div class="actions">
+            <div class="row">
+                <%= render "submit_buttons", f: f %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

@@ -23,7 +23,7 @@ class ObservationFormController < ApplicationController
   CREATE_OR_UPDATE_MANY_CHILDREN = []
 
   # Steps that Observation has_one of. These steps must match the association name to be created/updated to build dynamically
-  CREATE_OR_UPDATE_ONE_CHILD = [:plan, :presentation, :activities, :assessment, :climate]
+  CREATE_OR_UPDATE_ONE_CHILD = [:plan, :presentation, :activity, :assessment, :climate]
 
   # Not used, but keeping it to help categorize steps
   OTHER_STEPS = []

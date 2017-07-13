@@ -6,7 +6,7 @@ class ObservationFormController < ApplicationController
   STEPS_WITH_TITLES =
     [ [:plan,            "Lesson Plan"],
       [:presentation,    "Lesson Presentation"],
-      [:activities,      "Lesson Activities"],
+      [:activity,        "Lesson Activities"],
       [:assessment,      "Assessment and Evaluation"],
       [:climate,         "Classroom Climate"] ]
 

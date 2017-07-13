@@ -17,7 +17,7 @@
         <strong class="text-primary focus-step"><%= title %></strong>
       <%# all other step_items %>
       <% else %>
-        <%= link_to title, observation_form_path(id: step_item), class: 'active-step' %>
+        <%= link_to title, observation_observation_form_path(id: step_item), class: 'active-step' %>
       <% end %>
     </li>
 

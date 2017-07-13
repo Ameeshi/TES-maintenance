@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706051718) do
+ActiveRecord::Schema.define(version: 20170713043229) do
 
   create_table "classrooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "teacher_id"
@@ -29,6 +29,55 @@ ActiveRecord::Schema.define(version: 20170706051718) do
     t.string   "comments"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "observations_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "questiona"
+    t.integer  "questionb"
+    t.integer  "questionc"
+    t.integer  "questiond"
+    t.integer  "questione"
+    t.integer  "observation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "observations_assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "questiona"
+    t.integer  "questionb"
+    t.integer  "questionc"
+    t.integer  "questiond"
+    t.integer  "observation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "observations_climates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "questiona"
+    t.integer  "questionb"
+    t.integer  "questionc"
+    t.integer  "observation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "observations_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "questiona"
+    t.integer  "questionb"
+    t.integer  "questionc"
+    t.integer  "questiond"
+    t.integer  "observation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "observations_presentations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "questiona"
+    t.integer  "questionb"
+    t.integer  "questionc"
+    t.integer  "observation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

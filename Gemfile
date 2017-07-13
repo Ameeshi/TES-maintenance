@@ -42,6 +42,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 
+gem 'wicked'
+
 gem 'bootstrap' #, '~> 4.0.0.alpha3'
 
 group :development, :test do

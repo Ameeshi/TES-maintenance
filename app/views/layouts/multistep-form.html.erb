@@ -1,0 +1,20 @@
+<% content_for :content do %>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-3">
+      <div class="well well-lg application-progress-sidebar">
+        Test
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<%= render template: "layouts/application" %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, :only =>[:show]
   
   resources :observations
+  resources :observation_form
   resources :training_sessions
   resources :trainings
   resources :classrooms

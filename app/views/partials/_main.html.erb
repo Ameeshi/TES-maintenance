@@ -4,8 +4,8 @@
 
   <div class="page-content d-flex align-items-stretch">
     <%= render "partials/sidebar" %>
-    <div class="content-inner">
-      <%= yield %>
+    <div id="content", class="content-inner">
+      <%= content_for?(:content) ? yield(:content) : yield %>
       <%= render "partials/footer" %>
     </div>
   </div>

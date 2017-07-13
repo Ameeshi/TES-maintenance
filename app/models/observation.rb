@@ -4,6 +4,13 @@ class Observation < ApplicationRecord
   belongs_to :principal, class_name: "User"
   belongs_to :specialist, class_name: "User"
   
+  # Category Relationships
+  has_one :plan, class_name: 'Observations::Plan'
+  has_one :presentation, class_name: 'Observations::Presentation'
+  has_one :activity, class_name: 'Observations::Activity'
+  has_one :assessment, class_name: 'Observations::Assessment'
+  has_one :climate, class_name: 'Observations::Climate'
+  
   # Scopes
 #  scope :active,           -> { where(active: true) }
 #  scope :inactive,         -> { where(active: false) }

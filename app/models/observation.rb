@@ -17,12 +17,12 @@ class Observation < ApplicationRecord
   private
   
   def principal_is_principal
-    return true if self.principal.has_role? :principal
+    return true if ((self.principal.nil?) || (self.principal.has_role? :principal))
     errors.add(self.principal.name, "is not a principal.")
   end
   
   def specialist_is_specialist
-    return true if self.specialist.has_role? :specialist
+    return true if ((self.specialist.nil?) || (self.specialist.has_role? :specialist))
     errors.add(self.specialist.name, "is not a specialist.")
   end
   

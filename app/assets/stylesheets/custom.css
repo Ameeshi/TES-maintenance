@@ -16,6 +16,13 @@
   margin: 10px;
 }
 
+.inline {
+  display: inline-block;
+}
+
+.align-right {
+  margin-right: 0;
+}
 
 /* Offline Font Stuff */
 

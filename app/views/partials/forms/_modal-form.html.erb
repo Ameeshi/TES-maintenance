@@ -8,6 +8,10 @@
         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-delete">
           <%= title %> 
         </button>
+      <% elsif title == 'Key' %>
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">
+          <i class="fa fa-key fa-fw"></i>
+        </button>
       <% else %>
         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">
           <i class="fa fa-wrench fa-fw"></i><%= title %> 

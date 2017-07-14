@@ -2,8 +2,9 @@
 <% step_with_title = steps_with_titles.select{|swt| swt[0] == step }[0] %><%# step is automatically passed in by Wicked %>
 
 
-<h3>
+<h3 class="inline">
   <%= step_with_title[1] %>
 </h3>
+<h3><%= render partial: "partials/forms/modal-form", locals: {title: "Key", form: "modals/observation-key"} %></h3>
 
 <hr/>

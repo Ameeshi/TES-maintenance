@@ -45,6 +45,12 @@ class ObservationFormController < ApplicationController
   end
   
   def update
+    @observation = current_observation
+
+    case step
+    when *CREATE_OR_UPDATE_ONE_CHILD
+      create_or_update_then_render_child @observation, step
+    end
   end
   
   private
@@ -70,6 +76,24 @@ class ObservationFormController < ApplicationController
     end
 
     return child_obj
+  end
+  
+  # include this comment elsewhere where needed
+  # give warning that how this is used, child_name must be both the step and the child model attribute name
+  def create_or_update_then_render_child(parent, child_name)
+    child_obj = parent.send(child_name)
+    attribute_name_params_template = "#{child_name}_params"
+    attribute_name_params = send(attribute_name_params_template)
+
+    child_obj = build_has_one_child_if_nil parent, child_name
+    child_obj.assign_attributes(attribute_name_params)
+
+    render_wizard child_obj
+  end
+  
+  
+  def plan_params
+    params.require(:observations_plan).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond)
   end
   
 end

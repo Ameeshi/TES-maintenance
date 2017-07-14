@@ -96,4 +96,20 @@ class ObservationFormController < ApplicationController
     params.require(:observations_plan).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond)
   end
   
+  def presentation_params
+    params.require(:observations_presentation).permit(:id, :observation_id, :questiona, :questionb, :questionc)
+  end
+  
+  def activity_params
+    params.require(:observations_activity).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond, :questione)
+  end
+  
+  def assessment_params
+    params.require(:observations_assessment).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond)
+  end
+  
+  def climate_params
+    params.require(:observations_climate).permit(:id, :observation_id, :questiona, :questionb, :questionc)
+  end
+  
 end

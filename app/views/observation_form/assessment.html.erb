@@ -1,0 +1,94 @@
+<%= form_for(@observation.assessment, url: wizard_path, method: :put) do |f| %>
+  <% if @observation.assessment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.assessment.errors.count, "error") %> prohibited this assessment from being saved:</h2>
+
+      <ul>
+      <% @observation.assessment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h3 class="h4"><%= render "form_header" %></h3>
+        </div>
+        <div class="card-body">
+          <table>
+            <colgroup>
+              <col span="1" style="width: 60%;">
+              <col span="1" style="width: 5%;">
+              <col span="1" style="width: 35%;">
+            </colgroup>
+            <thead>
+              <tr class="bottom-line">
+                <th>Question</th>
+                <th></th>
+                <th>Response</th>
+              </tr>
+            </thead>
+            <tbody class="bottom-line">
+              <div class="field">
+                <div class="form-group-material">
+                  <!-- Question A -->
+                  <tr>
+                    <td>
+                      Uses formative assessment techniques to enhance learning and inform teaching
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questiona, Observations::Assessment.questionas.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question B -->
+                  <tr>
+                    <td>
+                      Uses formative and/or summative assessment tools to enhance and address student learning
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionb, Observations::Assessment.questionbs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question C -->
+                  <tr>
+                    <td>
+                      Checks students’ understanding by using higher order questioning techniques throughout the lesson
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionc, Observations::Assessment.questioncs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question D -->
+                  <tr>
+                    <td>
+                      Using purposeful questions to guide the lesson
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questiond, Observations::Assessment.questionds.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                </div>
+              </div>
+              
+            </tbody>
+          </table>
+          
+          
+          <div class="actions">
+            <div class="modal-footer">
+              <%= render "submit_buttons", f: f %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

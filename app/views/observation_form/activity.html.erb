@@ -1,0 +1,104 @@
+<%= form_for(@observation.activity, url: wizard_path, method: :put) do |f| %>
+  <% if @observation.activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @observation.activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h3 class="h4"><%= render "form_header" %></h3>
+        </div>
+        <div class="card-body">
+          <table>
+            <colgroup>
+              <col span="1" style="width: 60%;">
+              <col span="1" style="width: 5%;">
+              <col span="1" style="width: 35%;">
+            </colgroup>
+            <thead>
+              <tr class="bottom-line">
+                <th>Question</th>
+                <th></th>
+                <th>Response</th>
+              </tr>
+            </thead>
+            <tbody class="bottom-line">
+              <div class="field">
+                <div class="form-group-material">
+                  <!-- Question A -->
+                  <tr>
+                    <td>
+                      Provides appropriate handsKon activities to address learning targets
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questiona, Observations::Activity.questionas.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question B -->
+                  <tr>
+                    <td>
+                      Skillfully manages student to enhance learning
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionb, Observations::Activity.questionbs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question C -->
+                  <tr>
+                    <td>
+                      Provides activities for various learning levels and learning styles that are content appropriate
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionc, Observations::Activity.questioncs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question D -->
+                  <tr>
+                    <td>
+                      Uses a variety of activities to meet individual learning styles of students
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questiond, Observations::Activity.questionds.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question E -->
+                  <tr>
+                    <td>
+                      Allows enough time for students to do assigned class work/activities
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questione, Observations::Activity.questiones.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                </div>
+              </div>
+              
+            </tbody>
+          </table>
+          
+          
+          <div class="actions">
+            <div class="modal-footer">
+              <%= render "submit_buttons", f: f %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

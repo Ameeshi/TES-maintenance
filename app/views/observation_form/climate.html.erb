@@ -1,0 +1,84 @@
+<%= form_for(@observation.climate, url: wizard_path, method: :put) do |f| %>
+  <% if @observation.climate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.climate.errors.count, "error") %> prohibited this climate from being saved:</h2>
+
+      <ul>
+      <% @observation.climate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h3 class="h4"><%= render "form_header" %></h3>
+        </div>
+        <div class="card-body">
+          <table>
+            <colgroup>
+              <col span="1" style="width: 60%;">
+              <col span="1" style="width: 5%;">
+              <col span="1" style="width: 35%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th></th>
+                <th>Response</th>
+              </tr>
+            </thead>
+            <tbody class="bottom-line">
+              <div class="field">
+                <div class="form-group-material">
+                  <!-- Question A -->
+                  <tr>
+                    <td>
+                      Creates positive, supportive, and friendly learning environment
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questiona, Observations::Climate.questionas.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question B -->
+                  <tr>
+                    <td>
+                      Creates expectations and behavior along with physical setting conducive to learning
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionb, Observations::Climate.questionbs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                  <!-- Question C -->
+                  <tr>
+                    <td>
+                      Students have the opportunity to work collaboratively and independently
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= f.select :questionc, Observations::Climate.questioncs.keys.map{ |w| [w.humanize, w] }, class:'form-control' %>
+                    </td>
+                  </tr>
+                </div>
+              </div>
+              
+            </tbody>
+          </table>
+          
+          
+          <div class="actions">
+            <div class="modal-footer">
+              <%= render "submit_buttons", f: f %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

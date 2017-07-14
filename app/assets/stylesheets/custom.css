@@ -1,17 +1,17 @@
 /* your styles go here */
 
+/* For Footer Stick */
 .page-content {
   min-height: 100vh;
 }
 
-.clickable-row {
-  cursor: pointer;
-}
 
+/* Mainly for Roles */
 .capitalize::first-letter {
   text-transform: capitalize;
 }
 
+/* Unify Margins */
 .add-margin {
   margin: 10px;
 }
@@ -20,8 +20,22 @@
   display: inline-block;
 }
 
+/* Don't really use this */
 .align-right {
   margin-right: 0;
+}
+
+/* Use this for tables */
+.clickable-row {
+  cursor: pointer;
+}
+
+.bottom-line tr {
+  border-bottom: 1px solid #eceeef !important;
+}
+
+.bottom-line td {
+  padding: 10px 0px;
 }
 
 /* Offline Font Stuff */

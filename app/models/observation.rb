@@ -1,7 +1,7 @@
 class Observation < ApplicationRecord
   # Relationships
   belongs_to :classroom
-  belongs_to :principal, class_name: "User"
+  belongs_to :principal, class_name: "User", optional: true
   belongs_to :specialist, class_name: "User"
   
   # Category Relationships

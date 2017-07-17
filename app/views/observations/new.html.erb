@@ -1,5 +1,1 @@
-<h1>New Observation</h1>
-
-<%= render 'form', observation: @observation %>
-
-<%= link_to 'Back', observations_path %>
+<%= render partial: "partials/forms/variable-form", locals: {type: "New", form: "form", resource: @observation, resource_name: 'observation'} %>

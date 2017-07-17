@@ -17,6 +17,7 @@ class ObservationsController < ApplicationController
   # GET /observations/new
   def new
     @observation = Observation.new
+    @classroom =  Classroom.find(params[:classroom])
   end
 
   # GET /observations/1/edit
@@ -30,7 +31,7 @@ class ObservationsController < ApplicationController
 
     respond_to do |format|
       if @observation.save
-        format.html { redirect_to @observation, notice: 'Observation was successfully created.' }
+        format.html { redirect_to observation_observation_form_index_url(@observation), notice: 'Observation was finished.' }
         format.json { render :show, status: :created, location: @observation }
       else
         format.html { render :new }
@@ -51,6 +52,13 @@ class ObservationsController < ApplicationController
         format.json { render json: @observation.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def new_observation
+    @foster = Foster.create
+    link_to_current_user(@foster)
+    authorize @foster
+    redirect_to foster_simple_foster_application_index_url(@foster)
   end
 
   # DELETE /observations/1

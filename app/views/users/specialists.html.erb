@@ -22,7 +22,6 @@
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Grade</th>
                     <th>Content Area(s)</th>
@@ -38,8 +37,7 @@
                 <tbody>
                   <% @specialists.each do |specialist| %>
                     <tr class='clickable-row' data-href='/users/<%= specialist.username %>'>
-                      <th scope="row">1</th>
-                      <td><%= specialist.name %></td>
+                      <td><%= specialist.list_name %></td>
                       <td><%= specialist.highestRole %></td>
                       <td><%= specialist.username %></td>
                     </tr>

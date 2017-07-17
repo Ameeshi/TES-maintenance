@@ -22,7 +22,6 @@
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>Username</th>
@@ -38,8 +37,7 @@
                 <tbody>
                   <% @users.each do |user| %>
                     <tr class='clickable-row' data-href='/users/<%= user.username %>'>
-                      <th scope="row">1</th>
-                      <td><%= user.name %></td>
+                      <td><%= user.list_name %></td>
                       <td><%= user.highestRole %></td>
                       <td><%= user.username %></td>
                     </tr>

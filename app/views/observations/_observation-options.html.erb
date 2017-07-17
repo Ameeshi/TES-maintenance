@@ -1,0 +1,6 @@
+<% if current_user == @teacher %>
+  <%= render "completed" %>
+  <%= render "incomplete" %>
+  <%= render "new" %>
+  <%= render "started" %>
+<% end %>

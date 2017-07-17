@@ -43,6 +43,10 @@ class User < ApplicationRecord
     return first_name + ' ' + last_name
   end
   
+  def list_name
+    return last_name + ', ' + first_name
+  end
+  
   ############ Role methods ############
   # Shouldn't be necessary because no one should have more than
   # one role, but it's a safeguard

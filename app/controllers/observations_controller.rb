@@ -10,6 +10,8 @@ class ObservationsController < ApplicationController
   # GET /observations/1
   # GET /observations/1.json
   def show
+    @classroom = @observation.classroom
+    @teacher = @classroom.teacher
   end
 
   # GET /observations/new

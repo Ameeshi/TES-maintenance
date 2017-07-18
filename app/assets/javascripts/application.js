@@ -17,8 +17,6 @@
 //= require jquery.validate.min
 //= require jquery_ujs
 //= require Chart.min
-//= require charts-home
-//= require charts-custom
 //= require front
 //= require custom
 //= require turbolinks

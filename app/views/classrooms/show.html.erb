@@ -68,9 +68,9 @@
           </div>
           <% if current_user.has_any_role?(:admin, :specialist) %>
           <div class="modal-footer">
-            <%= link_to "New Observation", new_observation_path(classroom: @classroom.id) %>
-            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
+            <%= link_to 'Back', url_for(:back),  class:"btn btn-secondary" %>
+            <a href="/users/<%= @classroom.teacher.username %>" class="btn btn-secondary">Back</a>
           </div>
           <% end %>
         </div>

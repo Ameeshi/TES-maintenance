@@ -20,13 +20,7 @@ $(document).on("turbolinks:load", function () {
         },
         data: {
             datasets: [{
-                data: [
-                    11,
-                    16,
-                    12,
-                    11,
-                    7
-                ],
+                data: $('.result_information').data('resultarray'),
                 backgroundColor: [
                     "#e05f5f",
                     "#e96a6a",
@@ -34,14 +28,14 @@ $(document).on("turbolinks:load", function () {
                     "#ff8b8b",
                     "#fc9d9d"
                 ],
-                label: 'My dataset' // for legend
+                label: 'Teacher Overview' // for legend
             }],
             labels: [
-                "A",
-                "B",
-                "C",
-                "D",
-                "E"
+                "Not Observed",
+                "No Relation",
+                "Shows Progress",
+                "Meets Standard",
+                "Exceeds Standard"
             ]
         }
     });

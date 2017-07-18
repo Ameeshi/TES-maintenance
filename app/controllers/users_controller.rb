@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_username(params[:id])
-    @temp = "home test"
+    
+    @result_array = [10, 4, 8, 9, 13]
   end
 end

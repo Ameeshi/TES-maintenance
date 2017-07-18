@@ -20,6 +20,11 @@ class Observation < ApplicationRecord
   validate :principal_is_principal, on: :create
   validate :specialist_is_specialist, on: :create
   
+  def result_array
+    
+    
+  end
+  
   
   private
   

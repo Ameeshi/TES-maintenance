@@ -20,10 +20,25 @@ class Observation < ApplicationRecord
   validate :principal_is_principal, on: :create
   validate :specialist_is_specialist, on: :create
   
-  def result_array
+  
+  # Funtions to sum data in single observation
+  
+  def results
+    not_observed = 0
+    no_relation = 0
+    shows_progress = 0
+    meets_standard = 0
+    exceeds_standard = 0
     
-    
+    return [
+      not_observed,
+      no_relation,
+      shows_progress,
+      meets_standard,
+      exceeds_standard
+    ]
   end
+  
   
   
   private

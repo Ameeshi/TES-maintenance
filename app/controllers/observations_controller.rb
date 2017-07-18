@@ -18,16 +18,23 @@ class ObservationsController < ApplicationController
   def new
     @observation = Observation.new
     @classroom =  Classroom.find(params[:classroom])
+    @principals = User.with_role(:principal)
   end
 
   # GET /observations/1/edit
   def edit
+    @classroom =  @observation.classroom
+    @principals = User.with_role(:principal)
   end
 
   # POST /observations
   # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
+    @classroom =  @observation.classroom
+    @principals = User.with_role(:principal)
+#    @observation.specialist_id = current_user.id
+    
 
     respond_to do |format|
       if @observation.save
@@ -43,6 +50,8 @@ class ObservationsController < ApplicationController
   # PATCH/PUT /observations/1
   # PATCH/PUT /observations/1.json
   def update
+    @classroom =  @observation.classroom
+    @principals = User.with_role(:principal)
     respond_to do |format|
       if @observation.update(observation_params)
         format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }

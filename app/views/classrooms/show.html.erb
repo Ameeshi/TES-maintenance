@@ -57,7 +57,7 @@
                 <tbody>
                   <% @observations.each do |observation| %>
                     <tr class='clickable-row' data-href='/observations/<%= observation.id %>'>
-                      <th scope="row">observation.created_at</th>
+                      <th scope="row"><%= observation.created_at %></th>
 
                     </tr>
                   <% end %>

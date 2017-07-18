@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :classroom_id %>
-    <%= f.number_field :classroom_id %>
-  </div>
+  <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
   <div class="field">
     <%= f.label :specialist_id %>
@@ -22,8 +19,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :principal_id %>
-    <%= f.number_field :principal_id %>
+    <div class="form-group-material">
+      <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
+      <%= f.label :principal_id, for:'school-state', class:'label-material' %>
+    </div>
   </div>
 
   <div class="field">

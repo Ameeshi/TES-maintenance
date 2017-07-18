@@ -8,8 +8,9 @@ class User < ApplicationRecord
   # Relationships
   has_many :classrooms, :foreign_key => :teacher_id
   
-  has_many :observations, :foreign_key => :principal_id
-  has_many :observations, :foreign_key => :specialist_id
+  has_many :t_observations, through: :classrooms, source: :observations, class_name: "Observation"
+  has_many :p_observations, :foreign_key => :principal_id, class_name: "Observation"
+  has_many :s_observations, :foreign_key => :specialist_id, class_name: "Observation"
   
   has_many :schools, :foreign_key => :principal_id
   

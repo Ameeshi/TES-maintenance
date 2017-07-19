@@ -48,6 +48,22 @@ class User < ApplicationRecord
     return last_name + ', ' + first_name
   end
   
+  # Teacher Functions
+  
+  def teacher_results
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
+    results = [0,0,0,0,0]
+    
+    t_observations.each do |observation|
+      observationResults = observation.results
+      
+      (0..4).each do |i|
+        results[i] += observationResults[i]
+      end
+    end
+    return results
+  end
+  
   ############ Role methods ############
   # Shouldn't be necessary because no one should have more than
   # one role, but it's a safeguard

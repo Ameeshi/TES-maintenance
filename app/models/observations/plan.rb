@@ -9,22 +9,20 @@ class Observations::Plan < ApplicationRecord
   enum questiond: [ :not_observed, :no_relation, :shows_progress, :meets_standard, :exceeds_standard ], _prefix: "d-"
   
   def planResults
+    
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
     results = [0,0,0,0,0]
     
-    not_observed = 0
-    no_relation = 0
-    shows_progress = 0
-    meets_standard = 0
-    exceeds_standard = 0
+    a = Observations::Plan.questionas[self.questiona]
+    b = Observations::Plan.questionbs[self.questionb]
+    c = Observations::Plan.questioncs[self.questionc]
+    d = Observations::Plan.questionds[self.questiond]
     
-    
-    
-    return [
-      not_observed,
-      no_relation,
-      shows_progress,
-      meets_standard,
-      exceeds_standard
-    ]
+    results[a] += 1
+    results[b] += 1
+    results[c] += 1
+    results[d] += 1
+
+    return results
   end
 end

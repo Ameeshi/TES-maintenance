@@ -22,21 +22,20 @@ class Observation < ApplicationRecord
   
   
   # Funtions to sum data in single observation
-  
+  # It uses the sum functions for the individual pieces and adds to a result
   def results
-    not_observed = 0
-    no_relation = 0
-    shows_progress = 0
-    meets_standard = 0
-    exceeds_standard = 0
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
+    results = [0,0,0,0,0]
     
-    return [
-      not_observed,
-      no_relation,
-      shows_progress,
-      meets_standard,
-      exceeds_standard
-    ]
+    (0..4).each do |i|
+      results[i] += plan.planResults[i] 
+      results[i] += presentation.presentationResults[i] 
+      results[i] += activity.activityResults[i] 
+      results[i] += assessment.assessmentResults[i] 
+      results[i] += climate.climateResults[i]
+    end
+  
+    return results
   end
   
   

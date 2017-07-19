@@ -18,6 +18,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     
-    @result_array = @user.t_observations.first.results
+    if !@user.t_observations.empty?
+      @result_array = @user.teacher_results
+    else
+      @result_array = [0,0,0,0,0]
+    end
   end
 end

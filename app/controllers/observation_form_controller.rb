@@ -59,6 +59,10 @@ class ObservationFormController < ApplicationController
     # because we're using a nested route, the params are: /fosters/:foster_id/foster_application/:step
     Observation.find(params[:observation_id])
   end
+  
+  def finish_wizard_path
+    observation_path(current_observation)
+  end
 
   
   ######################  Update and Show related methods  ######################

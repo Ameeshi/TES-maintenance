@@ -70,7 +70,6 @@
           <div class="modal-footer">
             <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
             <%= link_to 'Back', url_for(:back),  class:"btn btn-secondary" %>
-            <a href="/users/<%= @classroom.teacher.username %>" class="btn btn-secondary">Back</a>
           </div>
           <% end %>
         </div>

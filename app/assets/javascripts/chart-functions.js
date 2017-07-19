@@ -160,18 +160,24 @@ function bar() {
             scales:
             {
                 xAxes: [{
-                    display: false
+                    display: true,
+                    gridLines: {
+                        color: '#eee'
+                    }
                 }],
                 yAxes: [{
-                    display: false
-                }],
+                    display: true,
+                    gridLines: {
+                        color: '#eee'
+                    }
+                }]
             },
             legend: {
-                display: false
+                display: true
             }
         },
         data: {
-            labels: ["A", "B", "C", "D", "E", "F", "G", "H"],
+            labels: ["A", "B", "C", "D", "E"],
             datasets: [
                 {
                     label: "Data Set 1",
@@ -180,9 +186,6 @@ function bar() {
                         '#44b2d7',
                         '#44b2d7',
                         '#44b2d7',
-                        '#44b2d7',
-                        '#44b2d7',
-                        '#44b2d7',
                         '#44b2d7'
                     ],
                     borderColor: [
@@ -190,13 +193,10 @@ function bar() {
                         '#44b2d7',
                         '#44b2d7',
                         '#44b2d7',
-                        '#44b2d7',
-                        '#44b2d7',
-                        '#44b2d7',
                         '#44b2d7'
                     ],
                     borderWidth: 0,
-                    data: [35, 55, 65, 85, 30, 22, 18, 35]
+                    data: [35, 55, 65, 85, 30]
                 },
                 {
                     label: "Data Set 1",
@@ -205,9 +205,6 @@ function bar() {
                         '#59c2e6',
                         '#59c2e6',
                         '#59c2e6',
-                        '#59c2e6',
-                        '#59c2e6',
-                        '#59c2e6',
                         '#59c2e6'
                     ],
                     borderColor: [
@@ -215,13 +212,10 @@ function bar() {
                         '#59c2e6',
                         '#59c2e6',
                         '#59c2e6',
-                        '#59c2e6',
-                        '#59c2e6',
-                        '#59c2e6',
                         '#59c2e6'
                     ],
                     borderWidth: 0,
-                    data: [49, 68, 85, 40, 27, 35, 20, 25]
+                    data: [49, 68, 85, 40, 27]
                 }
             ]
         }

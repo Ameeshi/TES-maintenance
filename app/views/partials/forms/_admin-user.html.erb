@@ -1,4 +1,5 @@
-<!-- Replace with form content -->
+<!--
+ Replace with form content 
 <p>Lorem ipsum dolor sit amet consectetur.</p>
 <form>
   <div class="form-group">
@@ -16,4 +17,25 @@
 <div class="modal-footer">
   <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
   <button type="button" class="btn btn-primary">Save changes</button>
-</div>
+</div>-->
+
+<%= form_for(@user) do |f| %>
+
+  <div class="row">
+    <label class="col-sm-3 form-control-label">Update Password</label>
+    <div class="col-sm-9">
+
+      <div class="field">
+        <div class="form-group">
+          <%= f.text_field :first_name, id:"register-first-name", class: "input-material" %>
+          <label for="register-first-name" class="label-material">First Name</label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update", class:"btn btn-primary" %>
+        <%= link_to "Back", :back, class:"btn btn-delete" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -11,9 +11,9 @@
                 <div class="card-body negative-margin bg-white d-flex align-items-center card-close">
 
                     <ul class="nav nav-pills card-header-pills">
-                      <li class="nav-item d-flex align-items-center"><a class="nav-link active" data-toggle="pill" href="#home">Summary</a></li>
-                      <li class="nav-item d-flex align-items-center"><a class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
-                      <li class="nav-item d-flex align-items-center"><a class="nav-link " data-toggle="pill" href="#menu2">Comparison</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab1" class="nav-link active" data-toggle="pill" href="#home">Summary</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab2" class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab3" class="nav-link " data-toggle="pill" href="#menu2">Comparison</a></li>
                      </ul>
                 </div>
               </div>
@@ -22,10 +22,15 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active show" aria-expanded="true">
                     <h3>Summary</h3>
+                    
+                    <canvas id="barChart1"></canvas>
+<!--                    <canvas id="polarChartExample"></canvas>-->
                   </div>
                   <div id="polar" class="tab-pane fade">
                     <h3>Summed Ratings</h3>
+<!--                    <canvas id="barChart1"></canvas>-->
                     <canvas id="polarChartExample"></canvas>
+                    <h4><small>This chart provides the amount of each rating that this teacher has had.</small></h4>
                   </div>
                   <div id="menu2" class="tab-pane fade">
                     <h3>Comparison of Most Recent Observations</h3>
@@ -41,8 +46,16 @@
     <!-- Generaltes the Charts -->
     <script>
 //      Replace with custom data
-      polar(<%= @result_array %>);
-      line(<%= @result_array %>);
+      bar();
+      $('#tab1').on('shown.bs.tab', function (e) {
+        bar();
+      });
+      $('#tab2').on('shown.bs.tab', function (e) {
+        polar(<%= @result_array %>);
+      });
+      $('#tab3').on('shown.bs.tab', function (e) {
+        line();
+      });
     </script>
   <% end %>
 <% end %>

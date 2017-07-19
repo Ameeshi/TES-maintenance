@@ -1,52 +1,4 @@
-/*global $, document*/
-function polar(observationData) {
-
-    'use strict';
-  
-  
-    // ------------------------------------------------------- //
-    // Polar Chart
-    // ------------------------------------------------------ //
-    var POLARCHARTEXMPLE  = $('#polarChartExample');
-    var polarChartExample = new Chart(POLARCHARTEXMPLE, {
-        type: 'polarArea',
-        options: {
-            elements: {
-                arc: {
-                    borderWidth: 0,
-                    borderColor: '#aaa'
-                }
-            }
-        },
-        data: {
-            datasets: [{
-                data: observationData,
-                backgroundColor: [
-                    "#e05f5f",
-                    "#e96a6a",
-                    "#ff7676",
-                    "#ff8b8b",
-                    "#fc9d9d"
-                ],
-                label: 'Teacher Overview' // for legend
-            }],
-            labels: [
-                "Not Observed",
-                "No Relation",
-                "Shows Progress",
-                "Meets Standard",
-                "Exceeds Standard"
-            ]
-        }
-    });
-
-    var polarChartExample = {
-        responsive: true
-    };
-  
-};
-
-function line(observationData) {
+function line() {
 
     'use strict';
   
@@ -138,5 +90,140 @@ function line(observationData) {
             ]
         }
     });
+  
+    var lineChartExample = {
+        responsive: true
+    };
     
+};
+
+
+function polar(observationData) {
+
+    'use strict';
+  
+  
+    // ------------------------------------------------------- //
+    // Polar Chart
+    // ------------------------------------------------------ //
+    var POLARCHARTEXMPLE  = $('#polarChartExample');
+    var polarChartExample = new Chart(POLARCHARTEXMPLE, {
+        type: 'polarArea',
+        options: {
+            elements: {
+                arc: {
+                    borderWidth: 0,
+                    borderColor: '#aaa'
+                }
+            }
+        },
+        data: {
+            datasets: [{
+                data: observationData,
+                backgroundColor: [
+                    "rgba(106, 198, 197, .8)",
+                    "rgba(81, 173, 172, .8)",
+                    "rgba(55, 147, 146, .8)",
+                    "rgba(30, 122, 121, .8)",
+                    "rgba(4, 96, 95, .8)"
+                ],
+                label: 'Teacher Overview' // for legend
+            }],
+            labels: [
+                "Not Observed",
+                "No Relation",
+                "Shows Progress",
+                "Meets Standard",
+                "Exceeds Standard"
+            ]
+        }
+    });
+
+    var polarChartExample = {
+        responsive: true
+    };
+  
+};
+
+function bar() {
+
+    'use strict';
+  
+    // ------------------------------------------------------- //
+    // Bar Chart 1
+    // ------------------------------------------------------ //
+    var BARCHART1 = $('#barChart1');
+    var barChartHome = new Chart(BARCHART1, {
+        type: 'bar',
+        options:
+        {
+            scales:
+            {
+                xAxes: [{
+                    display: false
+                }],
+                yAxes: [{
+                    display: false
+                }],
+            },
+            legend: {
+                display: false
+            }
+        },
+        data: {
+            labels: ["A", "B", "C", "D", "E", "F", "G", "H"],
+            datasets: [
+                {
+                    label: "Data Set 1",
+                    backgroundColor: [
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7'
+                    ],
+                    borderColor: [
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7',
+                        '#44b2d7'
+                    ],
+                    borderWidth: 0,
+                    data: [35, 55, 65, 85, 30, 22, 18, 35]
+                },
+                {
+                    label: "Data Set 1",
+                    backgroundColor: [
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6'
+                    ],
+                    borderColor: [
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6',
+                        '#59c2e6'
+                    ],
+                    borderWidth: 0,
+                    data: [49, 68, 85, 40, 27, 35, 20, 25]
+                }
+            ]
+        }
+    });
 };

@@ -8,16 +8,33 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :specialist
-      can :read, :all
-      can :read, User
+      # User Permissions
+      can [:teachers, :principals], User
+#      can :read, User, :with_role => (:teacher)
     elsif user.has_role? :manager
+      # User Permissions
+      can [:teachers, :principals, :specialists], User
       can :read, :all
     elsif user.has_role? :principal
-      can :read, :all
-    elsif user.has_role? :teacher
+      # User Permissions
       can [:show], User, :id => user.id
-    else
+      ### Principals can access teacher accounts from their school
+      can [:show], User do |u|
+        user.p_school.teachers.include?(u)
+      end
+      ### Principal's teachers page loads specific teachers in controller
+      can [:teachers], User
       
+      # School Permissions
+      can [:show], School, :id => user.p_school.id
+      
+    elsif user.has_role? :teacher
+      # User Permissions
+      can [:show], User, :id => user.id
+      
+      can [:show], Observation, :teacher => user
+    else # Default Case
+      can [:show], User, :id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user

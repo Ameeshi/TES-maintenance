@@ -11,3 +11,9 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   </p>
 <% end %>
+<% if flash[:error] %>
+  <p class="alert alert-danger alert-dismissable fade show">
+    <%= flash[:error] unless flash[:error].blank? %>
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  </p>
+<% end %>

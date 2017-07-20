@@ -1,5 +1,6 @@
 class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /observations
   # GET /observations.json

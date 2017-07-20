@@ -1,5 +1,6 @@
 class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /trainings
   # GET /trainings.json

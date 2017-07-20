@@ -66,12 +66,12 @@
             <% end %>
             
           </div>
-          <% if current_user.has_any_role?(:admin, :specialist) %>
           <div class="modal-footer">
-            <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
+            <% if current_user.has_any_role?(:admin, :specialist) %>
+              <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
+            <% end %>
             <%= link_to 'Back', url_for(:back),  class:"btn btn-secondary" %>
           </div>
-          <% end %>
         </div>
       </div>
     </div>

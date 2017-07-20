@@ -1,0 +1,55 @@
+<!-- Dashboard Counts Section-->
+<section class="dashboard-counts no-padding-bottom">
+  <div class="container-fluid">
+    <div class="row bg-white has-shadow">
+      <!-- Item -->
+      <div class="col-xl-3 col-sm-6">
+        <%= link_to schools_path do %>
+          <div class="item d-flex align-items-center">
+            <div class="icon bg-sea"><i class="fa fa-graduation-cap"></i></div>
+            <div class="title">
+              <span>Your<br>Profile</span>
+              <div class="number"><strong>17</strong></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-3 col-sm-6">
+        <%= link_to teachers_path do %>
+          <div class="item d-flex align-items-center">
+            <div class="icon bg-sea"><i class="fa fa-users"></i></div>
+            <div class="title">
+              <span>Total<br>Teachers</span>
+              <div class="number"><strong>70</strong></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-3 col-sm-6">
+        <%= link_to observations_path do %>
+          <div class="item d-flex align-items-center">
+            <div class="icon bg-sea"><i class="fa fa-eye"></i></div>
+            <div class="title">
+              <span>Total<br>Observations</span>
+              <div class="number"><strong>44</strong></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Item -->
+      <div class="col-xl-3 col-sm-6">
+        <%= link_to trainings_path do %>
+          <div class="item d-flex align-items-center">
+            <div class="icon bg-sea"><i class="fa fa-pencil-square-o "></i></div>
+            <div class="title">
+              <span>Total<br>Trainings</span>
+              <div class="number"><strong>35</strong></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,10 @@
-<li class="<%= 'active' if params[:controller] == 'schools' %>">
-  <%= link_to school_path(current_user.p_school) do %>
-    <i class="fa fa-graduation-cap fa-fw"></i>School
-  <% end %>
-</li>
+<% if !current_user.p_school.nil? %>
+  <li class="<%= 'active' if params[:controller] == 'schools' %>">
+    <%= link_to school_path(current_user.p_school) do %>
+      <i class="fa fa-graduation-cap fa-fw"></i> My School
+    <% end %>
+  </li>
+<% end %>
 <li>
   <%= link_to teachers_path do %>
     <i class="fa fa-users fa-fw"></i>Teachers

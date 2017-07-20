@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource find_by: :username
+  
   def teachers
     @teachers = User.with_role :teacher
   end

@@ -18,4 +18,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
   
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      flash[:error] = "Access denied!"
+      redirect_to root_url
+    else
+      flash[:error] = "Please Sign in"
+      redirect_to new_user_session_path
+    end
+  end
+  
 end

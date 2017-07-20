@@ -32,10 +32,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     
-    if !@user.t_observations.empty?
-      @result_array = @user.teacher_results
-    else
-      @result_array = [0,0,0,0,0]
+    if !@user.nil?
+      if !@user.t_observations.empty?
+        @result_array = @user.teacher_results
+      else
+        @result_array = [0,0,0,0,0]
+      end
     end
     
     authorize! :show, @user

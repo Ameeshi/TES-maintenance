@@ -17,9 +17,15 @@ class ObservationsController < ApplicationController
 
   # GET /observations/new
   def new
+    authorize! :new, current_user
     @observation = Observation.new
-    @classroom =  Classroom.find(params[:classroom])
-    @principals = User.with_role(:principal)
+    if !:classroom.nil?
+      @classroom =  Classroom.find(params[:classroom])
+      @principals = User.with_role(:principal)
+    else
+      flash[:error] = "You must access this page from a classroom."
+      redirect_to root_url
+    end
   end
 
   # GET /observations/1/edit

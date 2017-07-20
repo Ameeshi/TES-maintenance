@@ -19,7 +19,7 @@ class ObservationsController < ApplicationController
   def new
     authorize! :new, current_user
     @observation = Observation.new
-    if !:classroom.nil?
+    if !params[:classroom].nil?
       @classroom =  Classroom.find(params[:classroom])
       @principals = User.with_role(:principal)
     else

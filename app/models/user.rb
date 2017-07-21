@@ -51,11 +51,17 @@ class User < ApplicationRecord
   
   # Teacher Functions
   
-  def teacher_results
+  def teacher_results(observation_list=nil)
 #   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
     results = [0,0,0,0,0]
     
-    t_observations.each do |observation|
+    if !observation_list.nil?
+      observations = observation_list
+    else
+      observations = t_observations
+    end
+    
+    observations.each do |observation|
       observationResults = observation.results
       
       (0..4).each do |i|

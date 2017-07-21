@@ -15,6 +15,9 @@ class Observation < ApplicationRecord
   # Scopes
 #  scope :active,           -> { where(active: true) }
 #  scope :inactive,         -> { where(active: false) }
+  scope :for_content_area, ->(content_area) { joins(:classroom).where(classrooms: {content_area: content_area}) }
+  scope :for_grade,        ->(grade) { includes(:classrooms).where(classrooms: {grade: grade}) }
+  scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }
   
   # Validations
   validates_presence_of :specialist_id, :classroom_id

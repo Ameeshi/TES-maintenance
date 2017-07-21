@@ -33,12 +33,15 @@ class Observation < ApplicationRecord
 #   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
     results = [0,0,0,0,0]
     
-    (0..4).each do |i|
-      results[i] += plan.planResults[i] 
-      results[i] += presentation.presentationResults[i] 
-      results[i] += activity.activityResults[i] 
-      results[i] += assessment.assessmentResults[i] 
-      results[i] += climate.climateResults[i]
+    # If application Complete (no section is nil)
+    if (!plan.nil? && !presentation.nil? && !activity.nil? && !assessment.nil? && !climate.nil?)
+      (0..4).each do |i|
+        results[i] += plan.planResults[i] 
+        results[i] += presentation.presentationResults[i] 
+        results[i] += activity.activityResults[i] 
+        results[i] += assessment.assessmentResults[i] 
+        results[i] += climate.climateResults[i]
+      end
     end
   
     return results

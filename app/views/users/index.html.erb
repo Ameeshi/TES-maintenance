@@ -31,7 +31,9 @@
                 <tfoot>
                   <tr>
                     <td colspan="100%">
-                      <%= will_paginate @users %>sadhjkashdkjhaskjdhaskjdhja
+                      <div class="apple_pagination">
+                        <%= will_paginate @users, :container => false %>
+                      </div>
                     </td>
                   </tr>
                 </tfoot>

@@ -23,7 +23,7 @@ class ObservationsController < ApplicationController
       @classroom =  Classroom.find(params[:classroom])
       @principals = User.with_role(:principal)
     else
-      flash[:error] = "You must access this page from a classroom."
+      flash[:error] = "You must access this page from a teacher's classroom."
       redirect_to root_url
     end
   end

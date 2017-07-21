@@ -13,8 +13,8 @@ class Observation < ApplicationRecord
   has_one :climate, class_name: 'Observations::Climate'
   
   # Scopes
-#  scope :active,           -> { where(active: true) }
-#  scope :inactive,         -> { where(active: false) }
+  scope :active,           -> { includes(:classroom).where(:classrooms => { :active => true }) }
+  scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
   scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }

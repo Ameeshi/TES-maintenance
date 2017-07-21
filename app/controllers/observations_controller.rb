@@ -5,7 +5,7 @@ class ObservationsController < ApplicationController
   # GET /observations
   # GET /observations.json
   def index
-    @observations = Observation.all
+    @observations = Observation.filter(params.slice(:active, :for_content_area, :for_grade))
   end
 
   # GET /observations/1

@@ -1,4 +1,6 @@
 class Observation < ApplicationRecord
+  include Filterable
+  
   # Relationships
   belongs_to :classroom
   belongs_to :principal, class_name: "User", optional: true

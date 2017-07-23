@@ -34,7 +34,7 @@ class Observation < ApplicationRecord
     results = [0,0,0,0,0]
     
     # If application Complete (no section is nil)
-    if (!plan.nil? && !presentation.nil? && !activity.nil? && !assessment.nil? && !climate.nil?)
+    if (self.is_completed)
       (0..4).each do |i|
         results[i] += plan.planResults[i] 
         results[i] += presentation.presentationResults[i] 
@@ -47,7 +47,13 @@ class Observation < ApplicationRecord
     return results
   end
   
+  def self.completed
+    where(plan: nil)
+  end
   
+  def is_completed
+    return (!self.plan.nil? && !self.presentation.nil? && !self.activity.nil? && !self.assessment.nil? && !self.climate.nil?)
+  end
   
   private
   

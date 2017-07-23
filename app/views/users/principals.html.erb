@@ -30,8 +30,10 @@
                 </thead>
                 <tfoot>
                   <tr>
-                    <td>
-                      <a href="#">View All</a>
+                    <td colspan="100%">
+                      <div class="apple_pagination">
+                        <%= will_paginate @principals, :container => false %>
+                      </div>
                     </td>
                   </tr>
                 </tfoot>

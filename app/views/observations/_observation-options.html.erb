@@ -1,6 +1,9 @@
-<% if current_user == @teacher %>
+<% if @observation.completed %>
   <%= render "completed" %>
-  <%= render "incomplete" %>
-  <%= render "new" %>
-  <%= render "started" %>
+<% else %>
+  <% if can? :manage, Observation %>
+    <%= render "started" %>
+  <% else %>
+    <%= render "incomplete" %>
+  <% end %>
 <% end %>

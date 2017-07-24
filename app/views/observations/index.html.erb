@@ -48,7 +48,7 @@
                       <% end %>
                       <td><%= o.classroom.grade %></td>
                       <td><%= o.classroom.content_area %></td>
-                      <td><%= o.observation_date %></td>
+                      <td><%= o.observation_date.strftime("%B %d, %Y") %></td>
                     </tr>
                   <% end %>
                 </tbody>

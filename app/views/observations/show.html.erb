@@ -1,7 +1,17 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Observation of <%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class</h2>
+    <h2>Observation of <%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class</h2>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 add-margin">
+        <%= link_to "Back to #{@teacher.name}", user_path(@teacher.username), class:'btn btn-primary' %>
+      </div>
+      <div class="col-md-4 offset-md-2 add-margin">
+        <%= link_to "Back to #{@classroom.grade} grade #{@classroom.content_area} class", classroom_path(@classroom), class:'btn btn-secondary' %>
+      </div>
+    </div>
   </div>
 </header>
 <%= render "partials/alerts" %>

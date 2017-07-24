@@ -77,7 +77,7 @@ class Ability
       can :read, Classroom, :teacher => user
       
       # Observation Permissions
-      can :manage, Observation, :teacher => user
+      can :read, Observation, :teacher => user
       
       # Training Permissions
       can :read, Training

@@ -12,7 +12,11 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1.json
   def show
     @teacher = @classroom.teacher
-    @observations = @classroom.observations
+    if can? :manage, Observation
+      @observations = @classroom.observations.most_recent
+    else
+      @observations = @classroom.observations.complete.most_recent
+    end
   end
 
   # GET /classrooms/new

@@ -16,14 +16,14 @@ class Observation < ApplicationRecord
   has_one :complete, class_name: 'Observations::Complete'
   
   # Scopes
-  scope :most_recent,      -> { order(observation_date) }
+  scope :most_recent,      -> { order(observation_date: :desc) }
   scope :active,           -> { includes(:classroom).where(:classrooms => { :active => true }) }
   scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
   scope :complete,         -> { where(completed: true) }
   scope :incomplete,       -> { where(completed: false) }
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
-  scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }
+  scope :for_teacher,      ->(teacher) { includes(:classroom).where(:classrooms => { teacher: teacher }) }
   
   # Validations
   validates_presence_of :specialist_id, :classroom_id, :observation_date

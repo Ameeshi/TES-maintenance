@@ -6,7 +6,13 @@ class ObservationsController < ApplicationController
   # GET /observations.json
   def index
 #    authorize! :index, Observation
-    @observations = Observation.filter(params.slice(:active, :for_content_area, :for_grade))
+    if current_user.has_role? :teacher
+      @observations = Observation.for_teacher(current_user).filter(params.slice(:active, :for_content_area, :for_grade))
+    elsif
+      @observations = Observation.filter(params.slice(:active, :for_content_area, :for_grade))
+    else
+      @observations = Observation.filter(params.slice(:active, :for_content_area, :for_grade))
+    end
   end
 
   # GET /observations/1
@@ -48,7 +54,7 @@ class ObservationsController < ApplicationController
     
     respond_to do |format|
       if @observation.save
-        format.html { redirect_to observation_observation_form_index_url(@observation), notice: 'Observation was finished.' }
+        format.html { redirect_to observation_observation_form_index_url(@observation), notice: 'Observation was started.' }
         format.json { render :show, status: :created, location: @observation }
       else
         format.html { render :new }

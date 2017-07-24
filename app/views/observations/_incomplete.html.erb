@@ -1,25 +1,12 @@
-<!-- Client Section-->
 <section class="client">
   <div class="container-fluid">
     <div class="row">
       <!-- Client Profile -->
       <div class="col-lg-12">
-        <div class="client card">
+        <div class="card">
           <div class="card-body text-center">
-            
-            <div class="client-info">
-              <div class="row">
-                
-                <% if current_user.has_role? :admin %>
-                  <div class="col-4"></div>
-                  <div class="col-4">
-                    <%= link_to edit_user_registration_path, class:"btn btn-delete" do %>
-                      <i class="fa fa-trash fa-fw"></i> Delete
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
+            <h2>This Observation isn't quite finished</h2>
+            <h4>Please come back later!</h4>
           </div>
         </div>
       </div>

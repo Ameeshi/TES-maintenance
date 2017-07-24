@@ -1,0 +1,18 @@
+<ul class="list-unstyled">
+  <% ObservationFormController::STEPS_WITH_TITLES.each do |step_with_title| %>
+
+
+    <%# [step] variable (current step) is passed automatically from the controller it seems %>
+    <% step_item = step_with_title[0] %><%# couldn't think of a good name cause [step] was taken... %>
+    <% title = step_with_title[1] %>
+    <% step = @observation.send("#{step_item}") %>
+
+    <li>
+      <% if !step.nil? %>
+        <h2><%= title %></h2>
+        <%= render "observations/results/#{step_item}" %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>

@@ -19,6 +19,8 @@
 //= require Chart.min
 //= require chart-functions
 //= require front
+//= require materialize
+//= require forms
 //= require custom
 //= require turbolinks
 

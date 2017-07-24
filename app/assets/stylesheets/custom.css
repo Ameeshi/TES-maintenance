@@ -43,6 +43,11 @@
   padding: 10px 0px;
 }
 
+/* Custom Font Stuff */
+.red-text {
+  color: red !important;
+}
+
 /* Offline Font Stuff */
 
 /* poppins-300 - latin-ext_latin_devanagari */
@@ -246,3 +251,4 @@
 .apple_pagination a:hover, .apple_pagination a:focus {
   text-decoration: underline; 
 }
+

@@ -8,7 +8,8 @@ class ObservationFormController < ApplicationController
       [:presentation,    "Lesson Presentation"],
       [:activity,        "Lesson Activities"],
       [:assessment,      "Assessment and Evaluation"],
-      [:climate,         "Classroom Climate"] ]
+      [:climate,         "Classroom Climate"],
+      [:complete,        "Final Steps"] ]
 
   LIST_OF_STEPS = STEPS_WITH_TITLES.map {|step_with_title| step_with_title[0] }
 
@@ -23,7 +24,7 @@ class ObservationFormController < ApplicationController
   CREATE_OR_UPDATE_MANY_CHILDREN = []
 
   # Steps that Observation has_one of. These steps must match the association name to be created/updated to build dynamically
-  CREATE_OR_UPDATE_ONE_CHILD = [:plan, :presentation, :activity, :assessment, :climate]
+  CREATE_OR_UPDATE_ONE_CHILD = [:plan, :presentation, :activity, :assessment, :climate, :complete]
 
   # Not used, but keeping it to help categorize steps
   OTHER_STEPS = []
@@ -61,6 +62,7 @@ class ObservationFormController < ApplicationController
   end
   
   def finish_wizard_path
+    current_observation.mark_completed
     observation_path(current_observation)
   end
 
@@ -114,6 +116,10 @@ class ObservationFormController < ApplicationController
   
   def climate_params
     params.require(:observations_climate).permit(:id, :observation_id, :questiona, :questionb, :questionc)
+  end
+  
+  def complete_params
+    params.require(:observations_complete).permit(:id, :observation_id, :final_comments, :completed)
   end
   
 end

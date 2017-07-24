@@ -1,0 +1,53 @@
+<%= form_for(@observation.complete, url: wizard_path, method: :put) do |f| %>
+  <% if @observation.complete.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.complete.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+      <% @observation.complete.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <h3 class="h4"><%= render "form_header" %></h3>
+        </div>
+        <div class="col-lg-12">
+          <div class="card">
+            <%= render 'completion-progress' %>
+          </div>
+        </div>
+        <div class="card-body">
+          
+          <div class="field">
+            <div class="form-group-material">
+              <div class="input-field col s12">
+                <%= f.text_area :final_comments, id:'final_comments', class:'materialize-textarea' %>
+                <%= f.label :final_comments, for:'final_comments' %> 
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="actions">
+            <div class="modal-footer">
+              <div class="text-right">
+                <% if (@observation.plan.nil? || @observation.presentation.nil? || @observation.activity.nil? || @observation.assessment.nil? || @observation.climate.nil?) %>
+                  <%= f.submit "Complete Form", class:'btn btn-primary', disabled:true %>
+                <% else %>
+                  <%= f.submit "Complete Form", class:'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

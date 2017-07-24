@@ -1,0 +1,33 @@
+<!-- Completion Progress -->
+
+<div class="card-header d-flex align-items-center text-muted">
+  <h3 class="h4">
+    Step Progress<br>
+    <small>All steps must be completed</small>
+  </h3>
+</div>
+
+<div class="card-body">
+
+  <ul class="list-unstyled">
+    <% ObservationFormController::STEPS_WITH_TITLES.each do |step_with_title| %>
+
+
+      <%# [step] variable (current step) is passed automatically from the controller it seems %>
+      <% step_item = step_with_title[0] %><%# couldn't think of a good name cause [step] was taken... %>
+      <% title = step_with_title[1] %>
+
+      <li>
+        <%# if this step_item is the page being viewed right now %>
+        <% if step != step_item  %>
+          <% if @observation.send("#{step_item}").nil? %>
+            <%= link_to title, observation_observation_form_path(id: step_item), class: 'active-step red-text' %> :: Incomplete
+          <% else %>
+            <%= link_to title, observation_observation_form_path(id: step_item), class: 'active-step' %> :: Complete
+          <% end %>
+        <% end %>
+      </li>
+
+    <% end %>
+  </ul>
+</div>

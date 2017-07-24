@@ -13,8 +13,10 @@ class Observation < ApplicationRecord
   has_one :activity, class_name: 'Observations::Activity'
   has_one :assessment, class_name: 'Observations::Assessment'
   has_one :climate, class_name: 'Observations::Climate'
+  has_one :complete, class_name: 'Observations::Complete'
   
   # Scopes
+  scope :most_recent,      -> { order(observation_date) }
   scope :active,           -> { includes(:classroom).where(:classrooms => { :active => true }) }
   scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
   scope :complete,         -> { where(completed: true) }
@@ -36,7 +38,7 @@ class Observation < ApplicationRecord
     results = [0,0,0,0,0]
     
     # If application Complete (no section is nil)
-    if (complete)
+    if (completed)
       (0..4).each do |i|
         results[i] += plan.planResults[i] 
         results[i] += presentation.presentationResults[i] 
@@ -47,6 +49,10 @@ class Observation < ApplicationRecord
     end
   
     return results
+  end
+  
+  def mark_completed
+    update completed: true
   end
   
   private

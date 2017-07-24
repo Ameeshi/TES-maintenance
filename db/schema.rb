@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723235805) do
+ActiveRecord::Schema.define(version: 20170724001538) do
 
   create_table "classrooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "teacher_id"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20170723235805) do
     t.integer  "specialist_id"
     t.integer  "principal_id"
     t.string   "comments"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.boolean  "completed"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "completed",        default: false
     t.date     "observation_date"
   end
 
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20170723235805) do
     t.integer  "observation_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "observations_completes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "final_comments", limit: 65535
+    t.boolean  "completed"
+    t.integer  "observation_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "observations_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

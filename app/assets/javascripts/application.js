@@ -21,6 +21,9 @@
 //= require front
 //= require materialize
 //= require forms
+//= require date_picker/picker.date
+//= require date_picker/picker
+//= require date_picker/picker.time
 //= require custom
 //= require turbolinks
 

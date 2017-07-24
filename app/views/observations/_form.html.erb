@@ -13,24 +13,41 @@
 
   <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
+  <%= f.hidden_field :specialist_id, :value => current_user.id %>
+
+<!--
   <div class="field">
     <%= f.label :specialist_id %>
     <%= f.number_field :specialist_id %>
   </div>
+-->
 
+<!--
   <div class="field">
     <div class="form-group-material">
       <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
       <%= f.label :principal_id, for:'school-state', class:'label-material' %>
     </div>
   </div>
+-->
 
   <div class="field">
-    <%= f.label :comments %>
-    <%= f.text_field :comments %>
+    <%= f.label :observation_date %>
+    <%= f.text_field :observation_date, class:'datepicker' %>
   </div>
 
   <div class="modal-footer">
     <%= f.submit 'Start Observation', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>

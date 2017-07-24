@@ -711,7 +711,7 @@ nav.navbar .search-box form {
 nav.navbar .search-box form input {
   height: 100%;
   border: none;
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 nav.navbar .dropdown-menu {
@@ -2017,26 +2017,26 @@ fieldset[disabled] a.btn {
 
 .btn-delete {
   color: #fff;
-  background-color: #ff3f3f;
-  border-color: #ff3f3f;
+  background-color: #ff3f3f !important;
+  border-color: #ff3f3f !important;
 }
 
 .btn-delete:hover {
   color: #fff;
-  background-color: #ff0c0c;
-  border-color: #ff0202;
+  background-color: #ff0c0c !important;
+  border-color: #ff0202 !important;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #379392;
-  border-color: #379392;
+  background-color: #379392 !important;
+  border-color: #379392 !important;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #296e6d;
-  border-color: #266666;
+  background-color: #296e6d !important;
+  border-color: #266666 !important;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2057,15 +2057,16 @@ fieldset[disabled] a.btn {
 }
 
 .btn-secondary {
-  color: #292b2c;
-  background-color: #fff;
-  border-color: #ccc;
+  border: 1px !important;
+  color: #292b2c !important;
+  background-color: #fff !important;
+  border-color: #292b2c !important;
 }
 
 .btn-secondary:hover {
-  color: #292b2c;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  color: #292b2c !important;
+  background-color: #e6e6e6 !important;
+  border-color: #adadad !important;
 }
 
 .btn-secondary:focus, .btn-secondary.focus {

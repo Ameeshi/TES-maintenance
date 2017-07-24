@@ -95,6 +95,6 @@ class ObservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.require(:observation).permit(:classroom_id, :specialist_id, :principal_id, :comments)
+      params.require(:observation).permit(:classroom_id, :specialist_id, :principal_id, :comments, :observation_date, :complete)
     end
 end

@@ -26,7 +26,7 @@ class Observation < ApplicationRecord
   scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }
   
   # Validations
-  validates_presence_of :specialist_id, :classroom_id
+  validates_presence_of :specialist_id, :classroom_id, :observation_date
   validate :principal_is_principal, on: :create
   validate :specialist_is_specialist, on: :create
   

@@ -30,19 +30,22 @@
             <div class="client-info">
               <div class="row">
                 <% if @user == current_user %>
-                  <div class="col-4"></div>
-                  <div class="col-4">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
                     <%= link_to edit_user_registration_path, class:"btn btn-primary" do %>
                       <i class="fa fa-wrench fa-fw"></i> Edit Your Account
                     <% end %>
                   </div>
                 <% elsif current_user.has_role? :admin %>
-                  <%= render partial: "partials/forms/modal-form", locals: {title: "Edit #{@user.first_name}'s Account", form: "admin-user"} %>
-                  <div class="col-4"></div>
-                  <div class="col-4">
-                    <%= link_to edit_user_registration_path, class:"btn btn-delete" do %>
-                      <i class="fa fa-trash fa-fw"></i> Deactivate Account
-                    <% end %>
+                  <div class="col-md-4">
+                    <%= render partial: "partials/forms/modal-form", locals: {title: "Edit #{@user.first_name}'s Account", form: "admin-user"} %>
+                  </div>
+                  <div class="col-md-4 offset-md-4">
+                    <div>
+                      <%= link_to edit_user_registration_path, class:"btn btn-delete" do %>
+                        <i class="fa fa-trash fa-fw"></i> Deactivate Account
+                      <% end %>
+                    </div>
                   </div>
                 <% end %>
               </div>

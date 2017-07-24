@@ -1,61 +1,63 @@
-<table class="add-margin">
-  <colgroup>
-    <col span="1" style="width: 60%;">
-    <col span="1" style="width: 5%;">
-    <col span="1" style="width: 35%;">
-  </colgroup>
-  <thead>
-    <tr class="bottom-line">
-      <th>Question</th>
-      <th></th>
-      <th>Response</th>
-    </tr>
-  </thead>
-  <tbody class="bottom-line">
-    <div class="field">
-      <div class="form-group-material">
-        <!-- Question A -->
-        <tr>
-          <td>
-            Uses formative assessment techniques to enhance learning and inform teaching
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.assessment.questiona.humanize %>
-          </td>
-        </tr>
-        <!-- Question B -->
-        <tr>
-          <td>
-            Uses formative and/or summative assessment tools to enhance and address student learning
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.assessment.questionb.humanize %>
-          </td>
-        </tr>
-        <!-- Question C -->
-        <tr>
-          <td>
-            Checks students’ understanding by using higher order questioning techniques throughout the lesson
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.assessment.questionc.humanize %>
-          </td>
-        </tr>
-        <!-- Question D -->
-        <tr>
-          <td>
-            Using purposeful questions to guide the lesson
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.assessment.questiond.humanize %>
-          </td>
-        </tr>
+<div id="assessment" class="collapse">
+  <table class="add-margin">
+    <colgroup>
+      <col span="1" style="width: 60%;">
+      <col span="1" style="width: 5%;">
+      <col span="1" style="width: 35%;">
+    </colgroup>
+    <thead>
+      <tr class="bottom-line">
+        <th>Question</th>
+        <th></th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody class="bottom-line">
+      <div class="field">
+        <div class="form-group-material">
+          <!-- Question A -->
+          <tr>
+            <td>
+              Uses formative assessment techniques to enhance learning and inform teaching
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.assessment.questiona.humanize %>
+            </td>
+          </tr>
+          <!-- Question B -->
+          <tr>
+            <td>
+              Uses formative and/or summative assessment tools to enhance and address student learning
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.assessment.questionb.humanize %>
+            </td>
+          </tr>
+          <!-- Question C -->
+          <tr>
+            <td>
+              Checks students’ understanding by using higher order questioning techniques throughout the lesson
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.assessment.questionc.humanize %>
+            </td>
+          </tr>
+          <!-- Question D -->
+          <tr>
+            <td>
+              Using purposeful questions to guide the lesson
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.assessment.questiond.humanize %>
+            </td>
+          </tr>
+        </div>
       </div>
-    </div>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

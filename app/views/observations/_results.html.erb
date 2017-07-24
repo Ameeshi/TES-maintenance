@@ -9,9 +9,15 @@
 
     <li>
       <% if !step.nil? %>
-        <h2><%= title %></h2>
+        <h2>
+          <a href="#<%= "#{step_item}" %>" data-toggle="collapse">
+            <%= title %>
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+          </a>
+        </h2>
         <%= render "observations/results/#{step_item}" %>
       <% end %>
+      <hr>
     </li>
 
   <% end %>

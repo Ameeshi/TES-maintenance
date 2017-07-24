@@ -1,71 +1,73 @@
-<table class='add-margin'>
-  <colgroup>
-    <col span="1" style="width: 60%;">
-    <col span="1" style="width: 5%;">
-    <col span="1" style="width: 35%;">
-  </colgroup>
-  <thead>
-    <tr class="bottom-line">
-      <th>Question</th>
-      <th></th>
-      <th>Response</th>
-    </tr>
-  </thead>
-  <tbody class="bottom-line">
-    <div class="field">
-      <div class="form-group-material">
-        <!-- Question A -->
-        <tr>
-          <td>
-            Provides appropriate handsKon activities to address learning targets
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.activity.questiona.humanize %>
-          </td>
-        </tr>
-        <!-- Question B -->
-        <tr>
-          <td>
-            Skillfully manages student to enhance learning
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.activity.questionb.humanize %>
-          </td>
-        </tr>
-        <!-- Question C -->
-        <tr>
-          <td>
-            Provides activities for various learning levels and learning styles that are content appropriate
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.activity.questionc.humanize %>
-          </td>
-        </tr>
-        <!-- Question D -->
-        <tr>
-          <td>
-            Uses a variety of activities to meet individual learning styles of students
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.activity.questiond.humanize %>
-          </td>
-        </tr>
-        <!-- Question E -->
-        <tr>
-          <td>
-            Allows enough time for students to do assigned class work/activities
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.activity.questione.humanize %>
-          </td>
-        </tr>
+<div id="activity" class="collapse">
+  <table class='add-margin'>
+    <colgroup>
+      <col span="1" style="width: 60%;">
+      <col span="1" style="width: 5%;">
+      <col span="1" style="width: 35%;">
+    </colgroup>
+    <thead>
+      <tr class="bottom-line">
+        <th>Question</th>
+        <th></th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody class="bottom-line">
+      <div class="field">
+        <div class="form-group-material">
+          <!-- Question A -->
+          <tr>
+            <td>
+              Provides appropriate handsKon activities to address learning targets
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.activity.questiona.humanize %>
+            </td>
+          </tr>
+          <!-- Question B -->
+          <tr>
+            <td>
+              Skillfully manages student to enhance learning
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.activity.questionb.humanize %>
+            </td>
+          </tr>
+          <!-- Question C -->
+          <tr>
+            <td>
+              Provides activities for various learning levels and learning styles that are content appropriate
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.activity.questionc.humanize %>
+            </td>
+          </tr>
+          <!-- Question D -->
+          <tr>
+            <td>
+              Uses a variety of activities to meet individual learning styles of students
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.activity.questiond.humanize %>
+            </td>
+          </tr>
+          <!-- Question E -->
+          <tr>
+            <td>
+              Allows enough time for students to do assigned class work/activities
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.activity.questione.humanize %>
+            </td>
+          </tr>
+        </div>
       </div>
-    </div>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

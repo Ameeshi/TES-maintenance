@@ -1,51 +1,53 @@
-<table class='add-margin'>
-  <colgroup>
-    <col span="1" style="width: 60%;">
-    <col span="1" style="width: 5%;">
-    <col span="1" style="width: 35%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th></th>
-      <th>Response</th>
-    </tr>
-  </thead>
-  <tbody class="bottom-line">
-    <div class="field">
-      <div class="form-group-material">
-        <!-- Question A -->
-        <tr>
-          <td>
-            Instruction provided is concise and clear when communicating subject matter
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.presentation.questiona.humanize %>
-          </td>
-        </tr>
-        <!-- Question B -->
-        <tr>
-          <td>
-            Instruction uses variety of ways to meet individual learning styles using media and manipulative when appropriate
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.presentation.questionb.humanize %>
-          </td>
-        </tr>
-        <!-- Question C -->
-        <tr>
-          <td>
-            Effectively manages instructional time
-          </td>
-          <td></td>
-          <td>
-            <%= @observation.presentation.questionc.humanize %>
-          </td>
-        </tr>
+<div id="presentation" class="collapse">
+  <table class='add-margin'>
+    <colgroup>
+      <col span="1" style="width: 60%;">
+      <col span="1" style="width: 5%;">
+      <col span="1" style="width: 35%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th></th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody class="bottom-line">
+      <div class="field">
+        <div class="form-group-material">
+          <!-- Question A -->
+          <tr>
+            <td>
+              Instruction provided is concise and clear when communicating subject matter
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.presentation.questiona.humanize %>
+            </td>
+          </tr>
+          <!-- Question B -->
+          <tr>
+            <td>
+              Instruction uses variety of ways to meet individual learning styles using media and manipulative when appropriate
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.presentation.questionb.humanize %>
+            </td>
+          </tr>
+          <!-- Question C -->
+          <tr>
+            <td>
+              Effectively manages instructional time
+            </td>
+            <td></td>
+            <td>
+              <%= @observation.presentation.questionc.humanize %>
+            </td>
+          </tr>
+        </div>
       </div>
-    </div>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

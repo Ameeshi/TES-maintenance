@@ -17,6 +17,8 @@ class Observation < ApplicationRecord
   # Scopes
   scope :active,           -> { includes(:classroom).where(:classrooms => { :active => true }) }
   scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
+  scope :complete,         -> { where(completed: true) }
+  scope :incomplete,       -> { where(completed: false) }
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
   scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }
@@ -34,7 +36,7 @@ class Observation < ApplicationRecord
     results = [0,0,0,0,0]
     
     # If application Complete (no section is nil)
-    if (self.is_completed)
+    if (complete)
       (0..4).each do |i|
         results[i] += plan.planResults[i] 
         results[i] += presentation.presentationResults[i] 
@@ -45,14 +47,6 @@ class Observation < ApplicationRecord
     end
   
     return results
-  end
-  
-  def self.completed
-    where(plan: nil)
-  end
-  
-  def is_completed
-    return (!self.plan.nil? && !self.presentation.nil? && !self.activity.nil? && !self.assessment.nil? && !self.climate.nil?)
   end
   
   private

@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
-      flash[:error] = "Access denied!"
+      flash[:error] = "Access denied on #{exception.action} #{exception.subject.inspect}"
       redirect_to root_url
     else
       flash[:error] = "Please Sign in"

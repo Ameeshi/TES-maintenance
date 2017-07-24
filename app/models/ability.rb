@@ -20,13 +20,13 @@ class Ability
       can :read, School
       
       # Classroom Permissions
-      can :read, Classroom
+      can :manage, Classroom
       
       # Observation Permissions
       can :manage, Observation
       
       # Training Permissions
-      can :read, Training
+      can :manage, Training
       
       # TrainingSession Permissions
       can :read, TrainingSession

@@ -1,10 +1,11 @@
 class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  authorize_resource
 
   # GET /observations
   # GET /observations.json
   def index
+#    authorize! :index, Observation
     @observations = Observation.filter(params.slice(:active, :for_content_area, :for_grade))
   end
 
@@ -13,11 +14,12 @@ class ObservationsController < ApplicationController
   def show
     @classroom = @observation.classroom
     @teacher = @classroom.teacher
+#    authorize! :show, @observation
   end
 
   # GET /observations/new
   def new
-    authorize! :new, current_user
+#    authorize! :new, Observation
     @observation = Observation.new
     if !params[:classroom].nil?
       @classroom =  Classroom.find(params[:classroom])
@@ -32,17 +34,18 @@ class ObservationsController < ApplicationController
   def edit
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
+#    authorize! :edit, @observation
   end
 
   # POST /observations
   # POST /observations.json
   def create
+#    authorize! :create, Observation
     @observation = Observation.new(observation_params)
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
-#    @observation.specialist_id = current_user.id
+    @observation.specialist_id = current_user.id
     
-
     respond_to do |format|
       if @observation.save
         format.html { redirect_to observation_observation_form_index_url(@observation), notice: 'Observation was finished.' }
@@ -57,6 +60,7 @@ class ObservationsController < ApplicationController
   # PATCH/PUT /observations/1
   # PATCH/PUT /observations/1.json
   def update
+#    authorize! :update, current_user
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
     respond_to do |format|
@@ -70,12 +74,6 @@ class ObservationsController < ApplicationController
     end
   end
   
-  def new_observation
-    @foster = Foster.create
-    link_to_current_user(@foster)
-    authorize @foster
-    redirect_to foster_simple_foster_application_index_url(@foster)
-  end
 
   # DELETE /observations/1
   # DELETE /observations/1.json

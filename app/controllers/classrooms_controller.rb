@@ -13,9 +13,9 @@ class ClassroomsController < ApplicationController
   def show
     @teacher = @classroom.teacher
     if can? :manage, Observation
-      @observations = @classroom.observations.most_recent
+      @observations = @classroom.observations.most_recent.paginate(:page => params[:page], :per_page => 5)
     else
-      @observations = @classroom.observations.complete.most_recent
+      @observations = @classroom.observations.complete.most_recent.paginate(:page => params[:page], :per_page => 5)
     end
   end
 

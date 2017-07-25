@@ -12,7 +12,6 @@
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Grade</th>
                   <th>Content Area</th>
                   <th>School</th>
@@ -28,7 +27,6 @@
               <tbody>
                 <% @user.classrooms.each do |classroom| %>
                   <tr class='clickable-row' data-href='/classrooms/<%= classroom.id %>'>
-                    <th scope="row">1</th>
                     <td><%= classroom.grade %></td>
                     <td><%= classroom.content_area %></td>
                     <td><%= classroom.school.name %></td>

@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  
 
   <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
@@ -33,15 +34,16 @@
 
   <div class="field">
     <%= f.label :observation_date %>
-    <%= f.text_field :observation_date, class:'datepicker' %>
+    <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
   </div>
 
   <div class="modal-footer">
-    <%= f.submit 'Start Observation', class: 'btn btn-primary' %>
+    <%= f.submit 'Start Observation', id:'submit', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
 <script>
+  
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -50,4 +52,6 @@
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
+  
+  
 </script>

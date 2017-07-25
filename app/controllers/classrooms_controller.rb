@@ -34,6 +34,7 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1/edit
   def edit
     @teacher =  @classroom.teacher
+    @schools = School.alphabetical
   end
 
   # POST /classrooms
@@ -41,6 +42,7 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @teacher =  @classroom.teacher
+    @schools = School.alphabetical
 
     respond_to do |format|
       if @classroom.save

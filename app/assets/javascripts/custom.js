@@ -20,3 +20,12 @@ jQuery(document).on("turbolinks:load", function () {
   });
 });
 
+$(document).ready(function() {
+  $('input.input-material').each(function () {
+    var val = $(this).val().trim();
+    if (val != ''){
+      $(this).siblings('.label-material').addClass('active');
+    }
+  });
+});
+

@@ -11,30 +11,26 @@
                 <div class="card-body negative-margin bg-white d-flex align-items-center card-close">
 
                     <ul class="nav nav-pills card-header-pills">
-                      <li class="nav-item d-flex align-items-center"><a id="tab1" class="nav-link active" data-toggle="pill" href="#home">Summary</a></li>
-                      <li class="nav-item d-flex align-items-center"><a id="tab2" class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
-                      <li class="nav-item d-flex align-items-center"><a id="tab3" class="nav-link " data-toggle="pill" href="#menu2">Comparison</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab1" class="nav-link active" data-toggle="pill" href="#most-recent">Most Recent</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab2" class="nav-link" data-toggle="pill" href="#summary">Summary</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab3" class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
                      </ul>
                 </div>
               </div>
 
               <div class="card-body">
                 <div class="tab-content">
-                  <div id="home" class="tab-pane fade in active show" aria-expanded="true">
+                  <div id="most-recent" class="tab-pane fade in active show">
+                    <%= render 'partials/charts/most-recent' %>
+                  </div>
+                  <div id="summary" class="tab-pane fade" aria-expanded="true">
                     <h3>Summary</h3>
-                    
                     <canvas id="barChart1"></canvas>
-<!--                    <canvas id="polarChartExample"></canvas>-->
                   </div>
                   <div id="polar" class="tab-pane fade">
                     <h3>Summed Ratings</h3>
-<!--                    <canvas id="barChart1"></canvas>-->
                     <canvas id="polarChartExample"></canvas>
                     <h4><small>This chart provides the numerical amount of each rating that this teacher has had.</small></h4>
-                  </div>
-                  <div id="menu2" class="tab-pane fade">
-                    <h3>Comparison of Most Recent Observations</h3>
-                    <canvas id="lineChartExample"></canvas>
                   </div>
                 </div>
               </div>
@@ -46,15 +42,15 @@
     <!-- Generaltes the Charts -->
     <script>
 //      Replace with custom data
-      bar();
+      line();
       $('#tab1').on('shown.bs.tab', function (e) {
-        bar();
+        line();
       });
       $('#tab2').on('shown.bs.tab', function (e) {
-        polar(<%= @result_array %>);
+        bar();
       });
       $('#tab3').on('shown.bs.tab', function (e) {
-        line();
+        polar(<%= @result_array %>);
       });
     </script>
   <% end %>

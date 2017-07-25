@@ -26,12 +26,19 @@ class Classroom < ApplicationRecord
   validates_inclusion_of :content_area, in: CONTENT_AREAS_LIST.map{|value| value}, message: "is not an option"
 #  validate :school_is_not_a_duplicate, on: :create
   validate :teacher_is_teacher, on: :create
+  validate :classroom_is_not_a_duplicate, on: :create
 
-#  def already_exists?
-#    School.where(name: self.name, state: self.state).size == 1
-#  end
+  def already_exists?
+    Classroom.where(teacher: self.teacher, school: self.school, grade: self.grade, content_area: self.content_area).size == 1
+  end
+  
+  def already_active?
+    Classroom.where(teacher: self.teacher, school: self.school, grade: self.grade, content_area: self.content_area).first.active == true
+  end
 
   # Callbacks
+  before_create :is_creatable?
+  after_rollback :make_active_if_trying_to_duplicate
   
   before_destroy :is_destroyable?
   after_rollback :make_inactive_if_trying_to_destroy
@@ -40,8 +47,25 @@ class Classroom < ApplicationRecord
   attr_reader :destroyable
   
   private
+  def is_creatable?
+    @creatable = (!self.already_exists? || self.already_active?)
+    if !@creatable
+      throw :abort
+    end
+  end
+  
   def is_destroyable?
-    @destroyable = false
+    @destroyable = self.observations.empty?
+    if !@destroyable
+      throw :abort
+    end
+  end
+  
+  def make_active_if_trying_to_duplicate
+    if !@creatable.nil? && @creatable == false
+      Classroom.where(teacher: self.teacher, school: self.school, grade: self.grade, content_area: self.content_area).first.update_attribute(:active, true)
+    end
+    @creatable = nil
   end
   
   def make_inactive_if_trying_to_destroy
@@ -56,11 +80,13 @@ class Classroom < ApplicationRecord
     errors.add(self.teacher.name, "is not a teacher.")
   end
   
-#  def classroom_is_not_a_duplicate
-#    return true if self.teacher_id.nil? || self.state.nil?
-#    if self.already_exists?
-#      errors.add(:name, "already exists for this school at this location")
-#    end
-#  end
+  def classroom_is_not_a_duplicate
+    return true if self.teacher.nil? || self.school.nil? || self.grade.nil? || self.content_area.nil?
+    if self.already_exists?
+      if self.already_active?
+        errors.add(:error, ": This class already exists for this teacher")
+      end
+    end
+  end
   
 end

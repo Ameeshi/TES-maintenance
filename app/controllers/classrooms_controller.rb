@@ -45,7 +45,11 @@ class ClassroomsController < ApplicationController
     @schools = School.alphabetical
 
     respond_to do |format|
-      if @classroom.save
+      if @classroom.already_exists? && !@classroom.already_active?
+        old_classroom = Classroom.where(classroom_params).first
+        format.html { redirect_to old_classroom, notice: 'Classroom was successfully reactivated.' }
+        format.json { render :show, status: :created, location: old_classroom }
+      elsif @classroom.save
         format.html { redirect_to @classroom, notice: 'Classroom was successfully created.' }
         format.json { render :show, status: :created, location: @classroom }
       else
@@ -74,7 +78,7 @@ class ClassroomsController < ApplicationController
   def destroy
     @classroom.destroy
     respond_to do |format|
-      format.html { redirect_to classrooms_url, notice: 'Classroom was successfully destroyed.' }
+      format.html { redirect_to classrooms_url, notice: 'Classroom was successfully deactivated/destroyed.' }
       format.json { head :no_content }
     end
   end

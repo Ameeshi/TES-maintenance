@@ -37,5 +37,6 @@
 
   <div class="modal-footer">
     <%= f.submit 'Create Classroom', class: 'btn btn-primary' %>
+    <%= link_to "Back", user_path(@teacher.username), class:'btn btn-secondary' %>
   </div>
 <% end %>

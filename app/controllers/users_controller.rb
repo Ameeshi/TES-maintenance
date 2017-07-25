@@ -36,6 +36,10 @@ class UsersController < ApplicationController
       @classrooms = @user.classrooms.paginate(:page => params[:page], :per_page => 5)
     end
     
+    if @user.has_role?(:specialist)
+      @observations = Observation.where(specialist: @user)
+    end
+    
     if !@user.nil?
       if !@user.t_observations.empty?
         @result_array = @user.teacher_results

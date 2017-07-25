@@ -14,8 +14,10 @@
         <div class="client card">
           <div class="card-body text-center">
             <div class="client-avatar">
-              <%= image_tag("test.jpg", :alt => "user", class: "img-fluid rounded-circle") %>
-              <div class="status bg-green"></div>
+              <%= image_tag("default_user.png", :alt => "user", class: "img-fluid rounded-circle") %>
+              <% if @user == current_user %>
+                <div class="status bg-green"></div>
+              <% end %>
             </div>
             <div class="client-title">
               <h3><%= @user.name %></h3>

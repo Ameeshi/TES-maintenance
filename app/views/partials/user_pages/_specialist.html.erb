@@ -1,0 +1,32 @@
+<section class="tables no-padding-top">   
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-header d-flex align-items-center">
+            <h3 class="h4"><%= @user.name %>'s Observations</h3>
+          </div>
+          <div class="card-body">
+            <section class="dashboard-counts no-padding">
+              <div class="container-fluid">
+                <div class="row bg-white has-shadow">
+                  <div class="col-xl-12">
+                    <%= link_to observations_path do %>
+                      <div class="item d-flex align-items-center">
+                        <div class="icon bg-sea"><i class="fa fa-hashtag"></i></div>
+                        <div class="title">
+                          <span>Observation<br>Count</span>
+                          <div class="number"><strong><%= @observations.count %></strong></div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

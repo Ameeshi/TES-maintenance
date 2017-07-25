@@ -7,7 +7,7 @@
     </colgroup>
     <thead>
       <tr class="bottom-line">
-        <th>Question</th>
+        <th></th>
         <th></th>
         <th>Response</th>
       </tr>
@@ -17,12 +17,16 @@
         <div class="form-group-material">
           <!-- Question A -->
           <tr>
-            <td>
+            <th>
               Final Comments
-            </td>
+            </th>
             <td></td>
             <td>
-              <%= @observation.complete.final_comments %>
+              <% if !@observation.complete.final_comments.blank? %>
+                <%= @observation.complete.final_comments %>
+              <% else %>
+                N/A
+              <% end %>
             </td>
           </tr>
         </div>

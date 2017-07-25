@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724001538) do
+ActiveRecord::Schema.define(version: 20170725003802) do
 
   create_table "classrooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "teacher_id"
@@ -40,8 +40,11 @@ ActiveRecord::Schema.define(version: 20170724001538) do
     t.integer  "questiond"
     t.integer  "questione"
     t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "strengths",       limit: 65535
+    t.text     "weaknesses",      limit: 65535
+    t.text     "recommendations", limit: 65535
   end
 
   create_table "observations_assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,8 +53,11 @@ ActiveRecord::Schema.define(version: 20170724001538) do
     t.integer  "questionc"
     t.integer  "questiond"
     t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "strengths",       limit: 65535
+    t.text     "weaknesses",      limit: 65535
+    t.text     "recommendations", limit: 65535
   end
 
   create_table "observations_climates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,8 +65,11 @@ ActiveRecord::Schema.define(version: 20170724001538) do
     t.integer  "questionb"
     t.integer  "questionc"
     t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "strengths",       limit: 65535
+    t.text     "weaknesses",      limit: 65535
+    t.text     "recommendations", limit: 65535
   end
 
   create_table "observations_completes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -77,8 +86,11 @@ ActiveRecord::Schema.define(version: 20170724001538) do
     t.integer  "questionc"
     t.integer  "questiond"
     t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "strengths",       limit: 65535
+    t.text     "weaknesses",      limit: 65535
+    t.text     "recommendations", limit: 65535
   end
 
   create_table "observations_presentations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,8 +98,11 @@ ActiveRecord::Schema.define(version: 20170724001538) do
     t.integer  "questionb"
     t.integer  "questionc"
     t.integer  "observation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.text     "strengths",       limit: 65535
+    t.text     "weaknesses",      limit: 65535
+    t.text     "recommendations", limit: 65535
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

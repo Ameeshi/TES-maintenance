@@ -99,23 +99,23 @@ class ObservationFormController < ApplicationController
   
   
   def plan_params
-    params.require(:observations_plan).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond)
+    params.require(:observations_plan).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond, :strengths, :weaknesses, :recommendations)
   end
   
   def presentation_params
-    params.require(:observations_presentation).permit(:id, :observation_id, :questiona, :questionb, :questionc)
+    params.require(:observations_presentation).permit(:id, :observation_id, :questiona, :questionb, :questionc, :strengths, :weaknesses, :recommendations)
   end
   
   def activity_params
-    params.require(:observations_activity).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond, :questione)
+    params.require(:observations_activity).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond, :questione, :strengths, :weaknesses, :recommendations)
   end
   
   def assessment_params
-    params.require(:observations_assessment).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond)
+    params.require(:observations_assessment).permit(:id, :observation_id, :questiona, :questionb, :questionc, :questiond, :strengths, :weaknesses, :recommendations)
   end
   
   def climate_params
-    params.require(:observations_climate).permit(:id, :observation_id, :questiona, :questionb, :questionc)
+    params.require(:observations_climate).permit(:id, :observation_id, :questiona, :questionb, :questionc, :strengths, :weaknesses, :recommendations)
   end
   
   def complete_params

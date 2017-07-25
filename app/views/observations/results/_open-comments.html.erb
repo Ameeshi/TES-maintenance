@@ -1,0 +1,58 @@
+<table class='add-margin'>
+  <colgroup>
+    <col span="1" style="width: 35%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 60%;">
+  </colgroup>
+  <tbody class="bottom-line">
+    <div class="field">
+      <div class="form-group-material">
+        <% if !@observation.send(step).nil? %>
+          <!-- Strengths -->
+          <tr>
+            <th>
+              Strengths
+            </th>
+            <td></td>
+            <td>
+              <% if !@observation.send(step).strengths.blank? %>
+                <%= @observation.send(step).strengths %>
+              <% else %>
+                N/A
+              <% end %>
+            </td>
+          </tr>
+          <!-- Weaknesses -->
+          <tr>
+            <th>
+              Areas of Improvement
+            </th>
+            <td></td>
+            <td>
+              <% if !@observation.send(step).weaknesses.blank? %>
+                <%= @observation.send(step).weaknesses %>
+              <% else %>
+                N/A
+              <% end %>
+            </td>
+          </tr>
+          <!-- Next Steps -->
+          <tr>
+            <th>
+              Recommendations for Next Steps
+            </th>
+            <td></td>
+            <td>
+              <% if !@observation.send(step).recommendations.blank? %>
+                <%= @observation.send(step).recommendations %>
+              <% else %>
+                N/A
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </div>
+    </div>
+
+  </tbody>
+</table>

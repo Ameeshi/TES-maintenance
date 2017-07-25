@@ -11,32 +11,31 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :teacher_id, :value => @teacher.id %>
+
+
   <div class="field">
-    <%= f.label :teacher_id %>
-    <%= f.number_field :teacher_id %>
+    <div class="input-field col s12">
+      <%= f.collection_select(:school_id, @schools, :id, :name, prompt:true) %>
+      <%= f.label :school_id %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :school_id %>
-    <%= f.number_field :school_id %>
+    <div class="input-field col s12">
+      <%= f.collection_select(:grade, Classroom::GRADES_LIST, :to_s, :to_s, prompt:true) %>
+      <%= f.label :grade %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :grade %>
-    <%= f.text_field :grade %>
+    <div class="input-field col s12">
+      <%= f.collection_select(:content_area, Classroom::CONTENT_AREAS_LIST, :to_s, :to_s, prompt:true) %>
+      <%= f.label :content_area %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :content_area %>
-    <%= f.text_field :content_area %>
-  </div>
-
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="modal-footer">
+    <%= f.submit 'Create Classroom', class: 'btn btn-primary' %>
   </div>
 <% end %>

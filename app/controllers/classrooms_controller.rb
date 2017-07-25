@@ -22,16 +22,25 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
+    if !params[:teacher].nil?
+      @teacher =  User.find(params[:teacher])
+      @schools = School.alphabetical
+    else
+      flash[:error] = "You must access this page from a teacher's page."
+      redirect_to root_url
+    end
   end
 
   # GET /classrooms/1/edit
   def edit
+    @teacher =  @classroom.teacher
   end
 
   # POST /classrooms
   # POST /classrooms.json
   def create
     @classroom = Classroom.new(classroom_params)
+    @teacher =  @classroom.teacher
 
     respond_to do |format|
       if @classroom.save

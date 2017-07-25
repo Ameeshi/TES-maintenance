@@ -32,6 +32,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     
+    if @user.has_role?(:teacher)
+      @classrooms = @user.classrooms.paginate(:page => params[:page], :per_page => 5)
+    end
+    
     if !@user.nil?
       if !@user.t_observations.empty?
         @result_array = @user.teacher_results

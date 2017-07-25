@@ -19,13 +19,15 @@
               </thead>
               <tfoot>
                 <tr>
-                  <td>
-                    <a href="#">View All</a>
+                  <td colspan="100%">
+                    <div class="apple_pagination">
+                      <%= will_paginate @classrooms, :container => false %>
+                    </div>
                   </td>
                 </tr>
               </tfoot>
               <tbody>
-                <% @user.classrooms.each do |classroom| %>
+                <% @classrooms.each do |classroom| %>
                   <tr class='clickable-row' data-href='/classrooms/<%= classroom.id %>'>
                     <td><%= classroom.grade %></td>
                     <td><%= classroom.content_area %></td>
@@ -35,6 +37,12 @@
               </tbody>
 
             </table>
+            
+            <% if current_user.has_any_role?(:admin, :specialist, :principal) %>
+              <div class="modal-footer">
+                <%= link_to "New Class", new_classroom_path(teacher: @user.id), class:'btn btn-primary' %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

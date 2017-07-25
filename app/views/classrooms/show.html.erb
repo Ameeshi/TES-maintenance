@@ -32,10 +32,15 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom"><%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class</h2>
+    <h2><%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class</h2>
   </div>
 </header>
 <%= render "partials/alerts" %>
+<% if current_user.has_any_role?(:admin, :specialist) %>
+  <div class="modal-footer">
+    <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/delete-classroom"} %>  
+  </div>
+<% end %>
 <section class="tables">   
   <div class="container-fluid">
     <div class="row">

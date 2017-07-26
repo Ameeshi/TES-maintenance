@@ -1,6 +1,9 @@
+<!-- If this ever becomes too much on server, go to -->
+<!-- app/views/partials/user_pages/teacher and follow comments -->
+<!-- also go to user controller -->
 <!-- Teacher Analysis -->
-<% if !@user.classrooms.empty? %>
-  <% if !@user.t_observations.complete.empty? %>
+<% if !@user.classrooms.active.empty? %>
+  <% if !@user.t_observations.complete.active.empty? %>
     <section class="charts no-padding">
       <div class="container-fluid">
         <div class="row">
@@ -44,12 +47,12 @@
     <!-- Generaltes the Charts -->
     <script>
 //      Replace with custom data
-      bar();
+      bar(<%= @result_array %>);
       $('#tab1').on('shown.bs.tab', function (e) {
-        bar();
+        bar(<%= @result_array %>);
       });
       $('#tab3').on('shown.bs.tab', function (e) {
-        polar(<%= @result_array %>);
+        polar(<%= @total_result_array %>);
       });
     </script>
   <% end %>

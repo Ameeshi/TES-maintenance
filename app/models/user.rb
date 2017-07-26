@@ -53,9 +53,11 @@ class User < ApplicationRecord
   
   # Teacher Functions
   
+  # Returns the individual sections
   def teacher_results(observation_list=nil)
 #   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
-    results = [0,0,0,0,0]
+#         For Plan,        Presentation, Activity, Assessment, Climate
+    results = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
     
     if !observation_list.nil?
       observations = observation_list
@@ -67,11 +69,30 @@ class User < ApplicationRecord
       observationResults = observation.results
       
       (0..4).each do |i|
-        results[i] += observationResults[i]
+        (0..4).each do |j|
+          results[i][j] += observationResults[i][j]
+        end
       end
     end
     return results
   end
+
+  # Returns the totals for the polar chart
+  def total_teacher_results(result_array)
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
+    results = [0,0,0,0,0]
+    
+    if !result_array.nil?
+      (0..4).each do |i|
+        (0..4).each do |j|
+          results[j] += result_array[i][j]
+        end
+      end
+    end
+    
+    return results
+  end
+    
   
   ############ Role methods ############
   # Shouldn't be necessary because no one should have more than

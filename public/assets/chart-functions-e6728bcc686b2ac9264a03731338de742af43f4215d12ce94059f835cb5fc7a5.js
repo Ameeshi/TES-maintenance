@@ -121,11 +121,11 @@ function polar(observationData) {
             datasets: [{
                 data: observationData,
                 backgroundColor: [
-                    "rgba(4, 96, 95, .8)",
-                    "rgba(30, 122, 121, .8)",
-                    "rgba(55, 147, 146, .8)",
+                    "rgba(106, 198, 197, .8)",
                     "rgba(81, 173, 172, .8)",
-                    "rgba(106, 198, 197, .8)"
+                    "rgba(55, 147, 146, .8)",
+                    "rgba(30, 122, 121, .8)",
+                    "rgba(4, 96, 95, .8)"
                 ],
                 label: 'Teacher Overview' // for legend
             }],
@@ -178,28 +178,28 @@ function bar(observationData) {
         },
         data: {
             labels: [
-                "Lesson Plan",
-                "Lesson Presentation",
-                "Lesson Activity",
-                "Assessment & Evaluation",
-                "Classroom Climate"
+                "Plan",
+                "Presentation",
+                "Activity",
+                "Assessment",
+                "Climate"
             ],
             datasets: [
                 {
                     label: "Not Observed",
                     backgroundColor: [
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)'
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)'
                     ],
                     borderColor: [
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)',
-                        'rgba(4, 96, 95, .8)'
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)',
+                        'rgba(106, 198, 197, .8)'
                     ],
                     borderWidth: 0,
                     data: observationData[0]
@@ -207,18 +207,18 @@ function bar(observationData) {
                 {
                     label: "No Relation",
                     backgroundColor: [
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)'
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)'
                     ],
                     borderColor: [
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)',
-                        'rgba(30, 122, 121, .8)'
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)',
+                        'rgba(81, 173, 172, .8)'
                     ],
                     borderWidth: 0,
                     data: observationData[1]
@@ -245,18 +245,18 @@ function bar(observationData) {
                 {
                     label: "Meets Standard",
                     backgroundColor: [
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)'
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)'
                     ],
                     borderColor: [
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)',
-                        'rgba(81, 173, 172, .8)'
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)',
+                        'rgba(30, 122, 121, .8)'
                     ],
                     borderWidth: 0,
                     data: observationData[3]
@@ -264,18 +264,18 @@ function bar(observationData) {
                 {
                     label: "Exceeds Standard",
                     backgroundColor: [
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)'
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)'
                     ],
                     borderColor: [
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)',
-                        'rgba(106, 198, 197, .8)'
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)',
+                        'rgba(4, 96, 95, .8)'
                     ],
                     borderWidth: 0,
                     data: observationData[4]

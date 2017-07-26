@@ -36,11 +36,16 @@ class UsersController < ApplicationController
       # Most recent observation. Called Observation for partials
       @observation = @user.t_observations.complete.most_recent.first
       @classrooms = @user.classrooms.paginate(:page => params[:page], :per_page => 5)
+
+#     If too much for server, comment out from here...
       if !@user.t_observations.empty?
-        @result_array = @user.teacher_results
+        @result_array = @user.teacher_results(@user.t_observations.active)
+        @total_result_array = @user.total_teacher_results(@result_array)
       else
-        @result_array = [0,0,0,0,0]
+        @result_array = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+        @total_result_array = [0,0,0,0,0]
       end
+#     ...to here
     end
     
     if @user.has_role?(:specialist)

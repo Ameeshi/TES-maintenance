@@ -178,11 +178,11 @@ function bar(observationData) {
         },
         data: {
             labels: [
-                "Lesson Plan",
-                "Lesson Presentation",
-                "Lesson Activity",
-                "Assessment & Evaluation",
-                "Classroom Climate"
+                "Plan",
+                "Presentation",
+                "Activity",
+                "Assessment",
+                "Climate"
             ],
             datasets: [
                 {

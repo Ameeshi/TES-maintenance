@@ -35,16 +35,17 @@ class Observation < ApplicationRecord
   # It uses the sum functions for the individual pieces and adds to a result
   def results
 #   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
-    results = [0,0,0,0,0]
+#         For Plan,        Presentation, Activity, Assessment, Climate
+    results = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
     
     # If application Complete (no section is nil)
     if (completed)
       (0..4).each do |i|
-        results[i] += plan.planResults[i] 
-        results[i] += presentation.presentationResults[i] 
-        results[i] += activity.activityResults[i] 
-        results[i] += assessment.assessmentResults[i] 
-        results[i] += climate.climateResults[i]
+        results[0][i] += plan.planResults[i] 
+        results[1][i] += presentation.presentationResults[i] 
+        results[2][i] += activity.activityResults[i] 
+        results[3][i] += assessment.assessmentResults[i] 
+        results[4][i] += climate.climateResults[i]
       end
     end
   

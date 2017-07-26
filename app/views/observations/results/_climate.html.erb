@@ -1,54 +1,52 @@
-<div id="climate" class="collapse">
-  <table class="add-margin">
-    <colgroup>
-      <col span="1" style="width: 60%;">
-      <col span="1" style="width: 5%;">
-      <col span="1" style="width: 35%;">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th></th>
-        <th>Response</th>
-      </tr>
-    </thead>
-    <tbody class="bottom-line">
-      <div class="field">
-        <div class="form-group-material">
-          <!-- Question A -->
-          <tr>
-            <td>
-              Creates positive, supportive, and friendly learning environment
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.climate.questiona.humanize %>
-            </td>
-          </tr>
-          <!-- Question B -->
-          <tr>
-            <td>
-              Creates expectations and behavior along with physical setting conducive to learning
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.climate.questionb.humanize %>
-            </td>
-          </tr>
-          <!-- Question C -->
-          <tr>
-            <td>
-              Students have the opportunity to work collaboratively and independently
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.climate.questionc.humanize %>
-            </td>
-          </tr>
-        </div>
+<table class="add-margin">
+  <colgroup>
+    <col span="1" style="width: 60%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 35%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th></th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody class="bottom-line">
+    <div class="field">
+      <div class="form-group-material">
+        <!-- Question A -->
+        <tr>
+          <td>
+            Creates positive, supportive, and friendly learning environment
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.climate.questiona.humanize %>
+          </td>
+        </tr>
+        <!-- Question B -->
+        <tr>
+          <td>
+            Creates expectations and behavior along with physical setting conducive to learning
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.climate.questionb.humanize %>
+          </td>
+        </tr>
+        <!-- Question C -->
+        <tr>
+          <td>
+            Students have the opportunity to work collaboratively and independently
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.climate.questionc.humanize %>
+          </td>
+        </tr>
       </div>
+    </div>
 
-    </tbody>
-  </table>
-  <%= render partial: 'observations/results/open-comments', locals: {step: 'climate'} %>
-</div>
+  </tbody>
+</table>
+<%= render partial: 'observations/results/open-comments', locals: {step: 'climate'} %>

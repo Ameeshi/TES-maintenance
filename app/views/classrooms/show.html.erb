@@ -1,44 +1,19 @@
-<!--
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Teacher:</strong>
-  <%= @classroom.teacher_id %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @classroom.school_id %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @classroom.grade %>
-</p>
-
-<p>
-  <strong>Content area:</strong>
-  <%= @classroom.content_area %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @classroom.active %>
-</p>
-
-<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
-<%= link_to 'Back', classrooms_path %>
--->
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2><%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class</h2>
+    <h2>
+      <%= @teacher.name %>'s <%= @classroom.grade %> grade <%= @classroom.content_area %> class
+      <% if current_user.has_any_role?(:admin, :specialist, :principal) %>
+        - <% if @classroom.active %> Active <% else %> Inactive <% end %>
+      <% end %> 
+    </h2>
   </div>
 </header>
 <%= render "partials/alerts" %>
-<% if current_user.has_any_role?(:admin, :specialist) %>
+<% if current_user.has_any_role?(:admin, :specialist, :principal) %>
   <div class="modal-footer">
-    <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/delete-classroom"} %>  
+    <%= link_to 'Edit', edit_classroom_path(@classroom), class: 'btn btn-primary' %>
+    <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/delete-classroom"} %>
   </div>
 <% end %>
 <section class="tables">   

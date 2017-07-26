@@ -1,0 +1,7 @@
+<h3>Are you sure that you want to deactivate this classroom?</h3>
+<p><small>If you want to reactivate it, simply come back to this page</small></p>
+
+<div class="modal-footer">
+  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+  <%= link_to "Deactivate", switch_active_path(@classroom), method: :put, class: 'btn btn-deactivate' %>
+</div>

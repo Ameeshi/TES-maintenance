@@ -1,64 +1,62 @@
-<div id="plan" class="collapse">
-  <table class='add-margin'>
-    <colgroup>
-      <col span="1" style="width: 60%;">
-      <col span="1" style="width: 5%;">
-      <col span="1" style="width: 35%;">
-    </colgroup>
-    <thead>
-      <tr class="bottom-line">
-        <th>Question</th>
-        <th></th>
-        <th>Response</th>
-      </tr>
-    </thead>
-    <tbody class="bottom-line">
-      <div class="field">
-        <div class="form-group-material">
-          <!-- Question A -->
-          <tr>
-            <td>
-              Plan includes unpacking standards and objectives that match the learning targets
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.plan.questiona.humanize %>
-            </td>
-          </tr>
-          <!-- Question B -->
-          <tr>
-            <td>
-              Plan provides meaningful ways that students can integrate technology or manipulative into their learning and activities 
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.plan.questionb.humanize %>
-            </td>
-          </tr>
-          <!-- Question C -->
-          <tr>
-            <td>
-              Plan includes strategies and activities that meet students learning needs
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.plan.questionc.humanize %>
-            </td>
-          </tr>
-          <!-- Question D -->
-          <tr>
-            <td>
-              Plan includes assessment tools and methods
-            </td>
-            <td></td>
-            <td>
-              <%= @observation.plan.questiond.humanize %>
-            </td>
-          </tr>
-        </div>
+<table class='add-margin'>
+  <colgroup>
+    <col span="1" style="width: 60%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 35%;">
+  </colgroup>
+  <thead>
+    <tr class="bottom-line">
+      <th>Question</th>
+      <th></th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody class="bottom-line">
+    <div class="field">
+      <div class="form-group-material">
+        <!-- Question A -->
+        <tr>
+          <td>
+            Plan includes unpacking standards and objectives that match the learning targets
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.plan.questiona.humanize %>
+          </td>
+        </tr>
+        <!-- Question B -->
+        <tr>
+          <td>
+            Plan provides meaningful ways that students can integrate technology or manipulative into their learning and activities 
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.plan.questionb.humanize %>
+          </td>
+        </tr>
+        <!-- Question C -->
+        <tr>
+          <td>
+            Plan includes strategies and activities that meet students learning needs
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.plan.questionc.humanize %>
+          </td>
+        </tr>
+        <!-- Question D -->
+        <tr>
+          <td>
+            Plan includes assessment tools and methods
+          </td>
+          <td></td>
+          <td>
+            <%= @observation.plan.questiond.humanize %>
+          </td>
+        </tr>
       </div>
+    </div>
 
-    </tbody>
-  </table>
-  <%= render partial: 'observations/results/open-comments', locals: {step: 'plan'} %>
-</div>
+  </tbody>
+</table>
+<%= render partial: 'observations/results/open-comments', locals: {step: 'plan'} %>

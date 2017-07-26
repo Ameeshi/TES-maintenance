@@ -82,6 +82,12 @@ class ClassroomsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def switch_active
+    @classroom = Classroom.find(params[:id])
+    @classroom.update_attributes(active: !@classroom.active)
+    redirect_to classroom_path(@classroom)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

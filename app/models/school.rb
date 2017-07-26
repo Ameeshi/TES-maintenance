@@ -7,7 +7,7 @@ class School < ApplicationRecord
   # Relationships
   has_many :classrooms
   has_many :observations, through: :classrooms
-  has_many :teachers, through: :classrooms, class_name: "User"
+  has_many :teachers, -> { distinct }, through: :classrooms, class_name: "User"
   # Optional because a school won't always have an active principal
   belongs_to :principal, class_name: "User", optional: true
 

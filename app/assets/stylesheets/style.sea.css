@@ -2015,6 +2015,18 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 
+.btn-deactivate {
+  color: #ff3f3f !important;
+  background-color: #fff !important;
+  border-color: #ff3f3f !important;
+}
+
+.btn-deactivate:hover {
+  color: #ff0c0c !important;
+  background-color: #e6e6e6 !important;
+  border-color: #ff0202 !important;
+}
+
 .btn-delete {
   color: #fff;
   background-color: #ff3f3f !important;

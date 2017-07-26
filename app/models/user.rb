@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
 
   # Scopes
+  scope :alphabetical,  -> { order(:last_name, :first_name ) }
+  
   
   
   # Login with username or email

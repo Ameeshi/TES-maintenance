@@ -14,6 +14,8 @@ class Classroom < ApplicationRecord
   # Scopes
   scope :active,           -> { where(active: true) }
   scope :inactive,         -> { where(active: false) }
+  # Doesn't work for 10th - 12th but priorities
+  scope :by_grade,         -> { order(:grade) }
   scope :for_content_area, ->(content_area) { where(content_area: content_area) }
   scope :for_grade,        ->(grade) { where(grade: grade) }
   scope :for_teacher,      ->(teacher_id) { where(teacher_id: teacher_id) }

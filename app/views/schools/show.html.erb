@@ -64,26 +64,31 @@
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Name</th>
-                  <th>Grade</th>
+                  <th>Grade(s)</th>
                   <th>Content Area(s)</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <td>
-                    <a href="#">View All</a>
+                  <td colspan="100%">
+                    <div class="apple_pagination">
+                      <%= will_paginate @teachers, :container => false %>
+                    </div>
                   </td>
                 </tr>
               </tfoot>
               <tbody>
-                <% @school.teachers.each do |teacher| %>
+                <% @teachers.alphabetical.each do |teacher| %>
+                  <% classrooms = @school.classrooms.active.for_teacher(teacher).by_grade %>
                   <tr class='clickable-row' data-href='/users/<%= teacher.username %>'>
-                    <th scope="row">1</th>
-                    <td><%= teacher.name %></td>
-                    <td><%= teacher.highestRole %></td>
-                    <td><%= teacher.username %></td>
+                    <td><%= teacher.list_name %></td>
+                    <td>
+                      <%= classrooms.map { |classroom| classroom.grade }.join(', ').html_safe %>
+                    </td>
+                    <td>
+                      <%= classrooms.map { |classroom| classroom.content_area }.join(', ').html_safe %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>

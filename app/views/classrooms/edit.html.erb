@@ -1,6 +1,4 @@
-<h1>Editing Classroom</h1>
+<%= render partial: "partials/forms/variable-form", locals: {type: "Edit", form: "form", resource: @classroom, resource_name: 'classroom'} %>
 
-<%= render 'form', classroom: @classroom %>
 
-<%= link_to 'Show', @classroom %> |
-<%= link_to 'Back', classrooms_path %>
+

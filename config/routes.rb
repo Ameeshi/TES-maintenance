@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   root to: "home#index"
   get 'home', to: redirect('/')
+  
+  put 'classrooms/:id/switch_active', to: 'classrooms#switch_active', as: :switch_active
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   # User Routes

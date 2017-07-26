@@ -1,37 +1,35 @@
-<div id="complete" class="collapse">
-  <table class='add-margin'>
-    <colgroup>
-      <col span="1" style="width: 35%;">
-      <col span="1" style="width: 5%;">
-      <col span="1" style="width: 60%;">
-    </colgroup>
-    <thead>
-      <tr class="bottom-line">
-        <th></th>
-        <th></th>
-        <th>Response</th>
-      </tr>
-    </thead>
-    <tbody class="bottom-line">
-      <div class="field">
-        <div class="form-group-material">
-          <!-- Question A -->
-          <tr>
-            <th>
-              Final Comments
-            </th>
-            <td></td>
-            <td>
-              <% if !@observation.complete.final_comments.blank? %>
-                <%= @observation.complete.final_comments %>
-              <% else %>
-                N/A
-              <% end %>
-            </td>
-          </tr>
-        </div>
+<table class='add-margin'>
+  <colgroup>
+    <col span="1" style="width: 35%;">
+    <col span="1" style="width: 5%;">
+    <col span="1" style="width: 60%;">
+  </colgroup>
+  <thead>
+    <tr class="bottom-line">
+      <th></th>
+      <th></th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody class="bottom-line">
+    <div class="field">
+      <div class="form-group-material">
+        <!-- Question A -->
+        <tr>
+          <th>
+            Final Comments
+          </th>
+          <td></td>
+          <td>
+            <% if !@observation.complete.final_comments.blank? %>
+              <%= @observation.complete.final_comments %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
       </div>
+    </div>
 
-    </tbody>
-  </table>
-</div>
+  </tbody>
+</table>

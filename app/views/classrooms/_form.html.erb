@@ -36,7 +36,17 @@
   </div>
 
   <div class="modal-footer">
-    <%= f.submit 'Create Classroom', class: 'btn btn-primary' %>
-    <%= link_to "Back", user_path(@teacher.username), class:'btn btn-secondary' %>
+    <% if type == 'New' %>
+      <%= f.submit 'Create Classroom', class: 'btn btn-primary' %>
+      <%= link_to "Back", user_path(@teacher.username), class:'btn btn-secondary' %>
+    <% else %>
+      <%= f.submit 'Update Classroom', class: 'btn btn-primary' %>
+      <% if @classroom.active %>
+        <%= render partial: "partials/forms/modal-form", locals: {title: "Deactivate", form: "activate/deactivate-classroom"} %>
+      <% else %>
+        <%= render partial: "partials/forms/modal-form", locals: {title: "Reactivate", form: "activate/activate-classroom"} %>
+      <% end %>
+      <%= link_to "Back", classroom_path(@classroom), class:'btn btn-secondary' %>
+    <% end %>
   </div>
 <% end %>

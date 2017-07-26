@@ -3,35 +3,49 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="polar-chart-example card">
-          <div class="row">
-            <div class="col-md-6 offset-md-4">
-              <div class="card-body negative-margin bg-white d-flex align-items-center card-close">
-                <ul class="nav nav-pills card-header-pills">
-                  <li class="nav-item d-flex align-items-center"><a id="mr-tab1" class="nav-link active" data-toggle="pill" href="#plan">Plan</a></li>
-                  <li class="nav-item d-flex align-items-center"><a id="mr-tab2" class="nav-link" data-toggle="pill" href="#presentation">Presentation</a></li>
-                  <li class="nav-item d-flex align-items-center"><a id="mr-tab3" class="nav-link " data-toggle="pill" href="#activity">Activity</a></li>
-                  <li class="nav-item d-flex align-items-center"><a id="mr-tab4" class="nav-link" data-toggle="pill" href="#assessment">Assessment</a></li>
-                  <li class="nav-item d-flex align-items-center"><a id="mr-tab5" class="nav-link" data-toggle="pill" href="#climate">Climate</a></li>
-                </ul>
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-6 offset-md-4">
+                <div class="negative-margin bg-white d-flex align-items-center">
+                  <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item d-flex align-items-center"><a id="mr-tab1" class="nav-link active" data-toggle="pill" href="#mr-plan">Plan</a></li>
+                    <li class="nav-item d-flex align-items-center"><a id="mr-tab2" class="nav-link" data-toggle="pill" href="#mr-presentation">Presentation</a></li>
+                    <li class="nav-item d-flex align-items-center"><a id="mr-tab3" class="nav-link " data-toggle="pill" href="#mr-activity">Activity</a></li>
+                    <li class="nav-item d-flex align-items-center"><a id="mr-tab4" class="nav-link" data-toggle="pill" href="#mr-assessment">Assessment</a></li>
+                    <li class="nav-item d-flex align-items-center"><a id="mr-tab5" class="nav-link" data-toggle="pill" href="#mr-climate">Climate</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="tab-content">
-              <div id="plan" class="tab-pane fade in active show">
+              <h3>Most Recent <%= link_to 'Observation', @observation %></h3>
+              <h5>for 
+                <%= link_to @observation.classroom do %>
+                  <%= @observation.classroom.grade %> grade <%= @observation.classroom.content_area %> class at <%= @observation.classroom.school.name %>
+                <% end %>
+              </h5>
+              <h5><small>Recorded: <%= @observation.observation_date.strftime("%B %d, %Y") %></small></h5>
+              <div id="mr-plan" class="tab-pane fade in active show">
                 <h3>Plan</h3>
+                <%= render 'observations/results/plan' %>
               </div>
-              <div id="presentation" class="tab-pane fade" aria-expanded="true">
+              <div id="mr-presentation" class="tab-pane fade" aria-expanded="true">
                 <h3>Presentation</h3>
+                <%= render 'observations/results/presentation' %>
               </div>
-              <div id="activity" class="tab-pane fade">
+              <div id="mr-activity" class="tab-pane fade">
                 <h3>Activity</h3>
+                <%= render 'observations/results/activity' %>
               </div>
-              <div id="assessment" class="tab-pane fade">
+              <div id="mr-assessment" class="tab-pane fade">
                 <h3>Assessment</h3>
+                <%= render 'observations/results/assessment' %>
               </div>
-              <div id="climate" class="tab-pane fade">
+              <div id="mr-climate" class="tab-pane fade">
                 <h3>Climate</h3>
+                <%= render 'observations/results/climate' %>
               </div>
             </div>
           </div>

@@ -43,6 +43,20 @@
                   </div>
                 </div>
               </div>
+              <div class="modal-footer">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <% if params[:for_school_year].nil? || !Observation.valid_date(params[:for_school_year]) %>
+                      <%= select_tag "School Year", options_for_select(@year_list), id:"select_year" %>
+                    <% else %>
+                      <%= select_tag "School Year", options_for_select(@year_list, params[:for_school_year]), id:"select_year" %>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" id='refresh' class="btn btn-secondary">Refresh</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -58,6 +72,11 @@
       });
       $('#tab2').on('shown.bs.tab', function (e) {
         polar(<%= @total_result_array %>);
+      });
+      
+      $("#refresh").on("click", function(){
+        alert($("#select_year").val())
+        window.location.href = window.location.pathname+"?"+$.param({'for_school_year':$("#select_year").val()})
       });
     </script>
 <% end %>

@@ -29,6 +29,23 @@ class SchoolsController < ApplicationController
       @total_result_array = [0,0,0,0,0]
     end
 #     ...to here
+    
+    
+    # School Year Dropdown list
+    current_year = Date.current.year
+    if Date.current < Date.new(current_year,7,1)
+      latest_year = current_year-1
+    else
+      latest_year = current_year
+    end
+    
+    @year_list = []
+    while latest_year >= 2009
+      @year_list.push("#{latest_year}-#{latest_year+1}")
+      latest_year-=1
+    end
+      
+    
   end
 
   # GET /schools/new

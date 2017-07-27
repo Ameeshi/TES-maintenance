@@ -17,7 +17,7 @@
             <div class="icon bg-sea"><i class="fa fa-graduation-cap"></i></div>
             <div class="title">
               <span>Total<br>Schools</span>
-              <div class="number"><strong>17</strong></div>
+              <div class="number"><strong><%= @school_count %></strong></div>
             </div>
           </div>
         <% end %>
@@ -29,19 +29,19 @@
             <div class="icon bg-sea"><i class="fa fa-users"></i></div>
             <div class="title">
               <span>Total<br>Teachers</span>
-              <div class="number"><strong>70</strong></div>
+              <div class="number"><strong><%= @teacher_count %></strong></div>
             </div>
           </div>
         <% end %>
       </div>
       <!-- Item -->
       <div class="col-xl-3 col-sm-6">
-        <%= link_to trainings_path do %>
+        <%= link_to observations_path do %>
           <div class="item d-flex align-items-center">
             <div class="icon bg-sea"><i class="fa fa-pencil-square-o "></i></div>
             <div class="title">
-              <span>Total<br>Trainings</span>
-              <div class="number"><strong>35</strong></div>
+              <span>My<br>Observations</span>
+              <div class="number"><strong><%= @observation_count %></strong></div>
             </div>
           </div>
         <% end %>

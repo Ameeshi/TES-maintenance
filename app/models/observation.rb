@@ -22,6 +22,8 @@ class Observation < ApplicationRecord
   scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
   scope :complete,         -> { where(completed: true) }
   scope :incomplete,       -> { where(completed: false) }
+  
+  # Variable Scopes
   scope :for_school,       ->(school) { includes(:classroom).where(:classrooms => { school: school }) }
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
@@ -57,6 +59,30 @@ class Observation < ApplicationRecord
   
   def mark_completed
     update completed: true
+  end
+  
+  def self.this_school_year
+    current_year = Date.current.year
+    if Date.current < Date.new(current_year,7,1)
+      return self.for_school_year ("#{current_year-1}-#{current_year}")
+    else
+      return self.for_school_year ("#{current_year}-#{current_year+1}")
+    end
+  end
+  
+  def self.for_school_year(date)
+    years = date.split(/-/)
+    year1 = years[0]
+    year2 = years[1]
+    return Observation.this_school_year if (year1.nil? || year2.nil? || year1.length != 4 || year2.length != 4)
+    
+    year1 = year1.to_i
+    year2 = year2.to_i
+    
+    return Observation.this_school_year if (year2 - year1 != 1)
+    
+    return Observation.where("? <= observation_date AND observation_date < ?", Date.new(year1,7,1), Date.new(year2,7,1))
+    
   end
   
   private

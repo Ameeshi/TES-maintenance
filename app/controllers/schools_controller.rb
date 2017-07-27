@@ -13,6 +13,8 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     @teachers = @school.teachers.paginate(:page => params[:page], :per_page => 5)
+    
+    
   end
 
   # GET /schools/new

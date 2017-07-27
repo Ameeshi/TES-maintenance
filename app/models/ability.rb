@@ -25,11 +25,11 @@ class Ability
       # Observation Permissions
       can :manage, Observation
       
-      # Training Permissions
-      can :manage, Training
-      
-      # TrainingSession Permissions
-      can :read, TrainingSession
+#      # Training Permissions
+#      can :manage, Training
+#      
+#      # TrainingSession Permissions
+#      can :read, TrainingSession
     
     # MANAGER PERMISSIONS
     elsif user.has_role? :manager
@@ -46,11 +46,11 @@ class Ability
       # Observation Permissions
       can :read, Observation
       
-      # Training Permissions
-      can :read, Training
-      
-      # TrainingSession Permissions
-      can :read, TrainingSession
+#      # Training Permissions
+#      can :read, Training
+#      
+#      # TrainingSession Permissions
+#      can :read, TrainingSession
     
     # PRINCIPAL PERMISSIONS
     elsif user.has_role? :principal
@@ -60,6 +60,9 @@ class Ability
       ### Principal's teachers page loads specific teachers in controller
       can [:teachers], User
       
+      # Observation Permissions
+      can :index, Observation
+      
       # Permissions based on if they are assigned a school
       if !user.p_school.nil?
         # User
@@ -68,14 +71,21 @@ class Ability
           user.p_school.teachers.include?(u)
         end
         
-        # Classroom Permissions
+        # Classroom
         can :manage, Classroom, :school => user.p_school
         
-        can :read, Observation, :school => user.p_school
+        # Observation
+        can :show, Observation, :school => user.p_school
         
         # School
         can [:show], School, :id => user.p_school.id
       end
+
+#      # Training Permissions
+#      can :read, Training
+#      
+#      # TrainingSession Permissions
+#      can :read, TrainingSession, :user => user
       
     # TEACHER PERMISSIONS
     elsif user.has_role? :teacher
@@ -88,11 +98,11 @@ class Ability
       # Observation Permissions
       can :read, Observation, :teacher => user
       
-      # Training Permissions
-      can :read, Training
-      
-      # TrainingSession Permissions
-      can :read, TrainingSession, :user => user
+#      # Training Permissions
+#      can :read, Training
+#      
+#      # TrainingSession Permissions
+#      can :read, TrainingSession, :user => user
       
     # DEFAULT PERMISSIONS
     else # Default Case

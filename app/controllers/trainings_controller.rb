@@ -72,4 +72,16 @@ class TrainingsController < ApplicationController
     def training_params
       params.require(:training).permit(:title, :location, :start_date, :end_date, :description)
     end
+  
+  protected 
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      flash[:error] = "Trainings coming soon."
+      redirect_to root_path
+    else
+      flash[:error] = "Please Sign in"
+      redirect_to new_user_session_path
+    end
+  end
 end

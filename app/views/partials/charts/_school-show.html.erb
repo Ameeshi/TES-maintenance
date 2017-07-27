@@ -31,19 +31,28 @@
                 <div class="tab-content">
                   <div id="summary" class="tab-pane fade in active show" aria-expanded="true">
                     <h3>Summary</h3>
-                    <canvas id="barChart1"></canvas>
-                    <h4><small>This chart provides the breakdown of each section from this school year.</small></h4>
+                    <% if !@observations.empty? %>
+                      <canvas id="barChart1"></canvas>
+                      <h4><small>This chart provides the breakdown of each section from this school year.</small></h4>
+                    <% else %>
+                      <h2>There are no Observations from this school year.</h2>
+                    <% end %>
                   </div>
                   <div id="polar" class="tab-pane fade">
                     <div class="polar-chart-example" >
                       <h3>Summed Ratings</h3>
-                      <canvas id="polarChartExample"></canvas>
-                      <h4><small>This chart provides the numerical amount of each rating for this school year.</small></h4>
+                      <% if !@observations.empty? %>
+                        <canvas id="polarChartExample"></canvas>
+                        <h4><small>This chart provides the numerical amount of each rating for this school year.</small></h4>
+                      <% else %>
+                        <h2>There are no Observations from this school year.</h2>
+                      <% end %>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
+                <h4>Select School Year</h4>
                 <div class="row">
                   <div class="col-sm-6">
                     <% if params[:for_school_year].nil? || !Observation.valid_date(params[:for_school_year]) %>
@@ -66,16 +75,17 @@
     <!-- Comment this out if needed -->
     <script>
 //    Replace with custom data
-      bar(<%= @result_array %>);
-      $('#tab1').on('shown.bs.tab', function (e) {
-        bar(<%= @result_array %>);
-      });
-      $('#tab2').on('shown.bs.tab', function (e) {
-        polar(<%= @total_result_array %>);
-      });
+      <% if !@observations.empty? %>
+        bar(<%= @result_array %>); 
+        $('#tab1').on('shown.bs.tab', function (e) {
+          bar(<%= @result_array %>);
+        });
+        $('#tab2').on('shown.bs.tab', function (e) {
+          polar(<%= @total_result_array %>);
+        });
+      <% end %>
       
       $("#refresh").on("click", function(){
-        alert($("#select_year").val())
         window.location.href = window.location.pathname+"?"+$.param({'for_school_year':$("#select_year").val()})
       });
     </script>

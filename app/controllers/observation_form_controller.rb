@@ -35,6 +35,7 @@ class ObservationFormController < ApplicationController
   
   def show
     @observation = current_observation
+    authorize! :manage, @observation
 
     case step
     when *CREATE_OR_UPDATE_MANY_CHILDREN
@@ -47,6 +48,7 @@ class ObservationFormController < ApplicationController
   
   def update
     @observation = current_observation
+    authorize! :manage, @observation
 
     case step
     when *CREATE_OR_UPDATE_ONE_CHILD
@@ -120,6 +122,19 @@ class ObservationFormController < ApplicationController
   
   def complete_params
     params.require(:observations_complete).permit(:id, :observation_id, :final_comments, :completed)
+  end
+  
+  
+  protected 
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      flash[:error] = "You do not have access to edit this form."
+      redirect_to observation_path(@observation)
+    else
+      flash[:error] = "Please Sign in"
+      redirect_to new_user_session_path
+    end
   end
   
 end

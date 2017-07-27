@@ -22,9 +22,11 @@ class Observation < ApplicationRecord
   scope :inactive,         -> { includes(:classroom).where(:classrooms => { :active => false }) }
   scope :complete,         -> { where(completed: true) }
   scope :incomplete,       -> { where(completed: false) }
+  scope :for_school,       ->(school) { includes(:classroom).where(:classrooms => { school: school }) }
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
   scope :for_teacher,      ->(teacher) { includes(:classroom).where(:classrooms => { teacher: teacher }) }
+  scope :for_specialist,   ->(specialist) { where(specialist: specialist) }
   
   # Validations
   validates_presence_of :specialist_id, :classroom_id, :observation_date

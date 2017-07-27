@@ -8,8 +8,12 @@ class ObservationsController < ApplicationController
 #    authorize! :index, Observation
     if current_user.has_role? :teacher
       @observations = Observation.for_teacher(current_user).complete.most_recent.filter(params.slice(:active, :for_content_area, :for_grade)).paginate(:page => params[:page], :per_page => 10)
-    elsif
-      @observations = Observation.most_recent.filter(params.slice(:active, :for_content_area, :for_grade)).paginate(:page => params[:page], :per_page => 10)
+    elsif current_user.has_role? :principal
+      if !current_user.p_school.nil?
+        @observations = Observation.for_school(current_user.p_school).most_recent.filter(params.slice(:active, :for_content_area, :for_grade)).paginate(:page => params[:page], :per_page => 10)
+      end
+    elsif current_user.has_role? :specialist
+      @observations = Observation.for_specialist(current_user).most_recent.filter(params.slice(:active, :for_content_area, :for_grade)).paginate(:page => params[:page], :per_page => 10)
     else
       @observations = Observation.most_recent.filter(params.slice(:active, :for_content_area, :for_grade)).paginate(:page => params[:page], :per_page => 10)
     end

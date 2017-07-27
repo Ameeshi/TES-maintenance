@@ -34,6 +34,49 @@ class School < ApplicationRecord
   # Other methods
   attr_reader :destroyable
   
+  # Teacher Functions
+  
+  # Returns the individual sections
+  def school_results(observation_list=nil)
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
+#         For Plan,        Presentation, Activity, Assessment, Climate
+    results = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+    
+    if !observation_list.nil?
+      observations = observation_list
+    else
+      # Safe Guard, I don't think this will ever happen
+      observations = School.observations.this_school_year
+    end
+    
+    observations.each do |observation|
+      observationResults = observation.results
+      
+      (0..4).each do |i|
+        (0..4).each do |j|
+          results[i][j] += observationResults[i][j]
+        end
+      end
+    end
+    return results
+  end
+
+  # Returns the totals for the polar chart
+  def total_school_results(result_array)
+#   not_observed, no_relation, shows_progress, meets_standard, exceeds_standard
+    results = [0,0,0,0,0]
+    
+    if !result_array.nil?
+      (0..4).each do |i|
+        (0..4).each do |j|
+          results[j] += result_array[i][j]
+        end
+      end
+    end
+    
+    return results
+  end
+  
   private
   
   def is_destroyable?

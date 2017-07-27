@@ -61,6 +61,19 @@ class Observation < ApplicationRecord
     update completed: true
   end
   
+  def self.valid_date(date)
+    years = date.split(/-/)
+    year1 = years[0]
+    year2 = years[1]
+    
+    return false if (year1.nil? || year2.nil? || year1.length != 4 || year2.length != 4)
+    
+    year1 = year1.to_i
+    year2 = year2.to_i
+    
+    return false if (year2 - year1 != 1) else return true
+  end
+  
   def self.this_school_year
     current_year = Date.current.year
     if Date.current < Date.new(current_year,7,1)
@@ -71,15 +84,14 @@ class Observation < ApplicationRecord
   end
   
   def self.for_school_year(date)
+    
+    if !valid_date(date)
+      return Observation.this_school_year
+    end
+    
     years = date.split(/-/)
-    year1 = years[0]
-    year2 = years[1]
-    return Observation.this_school_year if (year1.nil? || year2.nil? || year1.length != 4 || year2.length != 4)
-    
-    year1 = year1.to_i
-    year2 = year2.to_i
-    
-    return Observation.this_school_year if (year2 - year1 != 1)
+    year1 = years[0].to_i
+    year2 = years[1].to_i
     
     return Observation.where("? <= observation_date AND observation_date < ?", Date.new(year1,7,1), Date.new(year2,7,1))
     

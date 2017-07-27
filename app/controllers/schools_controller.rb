@@ -14,7 +14,21 @@ class SchoolsController < ApplicationController
   def show
     @teachers = @school.teachers.paginate(:page => params[:page], :per_page => 5)
     
+    if params[:for_school_year].nil?
+      @observations = @school.observations.this_school_year
+    else
+      @observations = @school.observations.filter(params.slice(:for_school_year))
+    end
     
+#     If too much for server, comment out from here...
+    if !@observations.empty?
+      @result_array = @school.school_results(@observations)
+      @total_result_array = @school.total_school_results(@result_array)
+    else
+      @result_array = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+      @total_result_array = [0,0,0,0,0]
+    end
+#     ...to here
   end
 
   # GET /schools/new

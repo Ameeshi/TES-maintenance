@@ -3,6 +3,7 @@ class Observation < ApplicationRecord
   
   # Relationships
   belongs_to :classroom
+  has_one :school, through: :classroom
   belongs_to :principal, class_name: "User", optional: true
   belongs_to :specialist, class_name: "User"
   has_one :teacher, through: :classroom, class_name: "User"

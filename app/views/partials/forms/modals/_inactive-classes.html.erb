@@ -1,0 +1,31 @@
+<!-- Inactive Classes -->
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Content Area</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td colspan="100%">
+        <div class="apple_pagination">
+          <%= will_paginate @inactive_classrooms, :param_name => 'inactive', :container => false %>
+        </div>
+      </td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% @inactive_classrooms.by_grade.each do |classroom| %>
+      <tr class='clickable-row' data-href='/classrooms/<%= classroom.id %>'>
+        <td><%= classroom.grade %></td>
+        <td><%= classroom.content_area %></td>
+        <td><%= classroom.school.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="modal-footer">
+  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+</div>

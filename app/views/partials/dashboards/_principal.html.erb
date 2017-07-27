@@ -21,28 +21,40 @@
           </div>
         <% end %>
       </div>
-      <!-- Item -->
-      <div class="col-xl-3 col-sm-6">
-        <%= link_to school_path(current_user.p_school) do %>
+      <% if !current_user.p_school.nil? %>
+        <!-- Item -->
+        <div class="col-xl-3 col-sm-6">
+          <%= link_to school_path(current_user.p_school) do %>
+            <div class="item d-flex align-items-center">
+              <div class="icon bg-sea"><i class="fa fa-graduation-cap"></i></div>
+              <div class="title">
+                <span>My<br>School</span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- Item -->
+        <div class="col-xl-3 col-sm-6">
+          <%= link_to teachers_path do %>
+            <div class="item d-flex align-items-center">
+              <div class="icon bg-sea"><i class="fa fa-pencil-square-o "></i></div>
+              <div class="title">
+                <span>My<br>Teachers</span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+         <!-- Item -->
+        <div class="col-xl-3 col-sm-6">
           <div class="item d-flex align-items-center">
             <div class="icon bg-sea"><i class="fa fa-graduation-cap"></i></div>
             <div class="title">
-              <span>My<br>School</span>
+              <span>No School<br>Assigned</span>
             </div>
           </div>
-        <% end %>
-      </div>
-      <!-- Item -->
-      <div class="col-xl-3 col-sm-6">
-        <%= link_to teachers_path do %>
-          <div class="item d-flex align-items-center">
-            <div class="icon bg-sea"><i class="fa fa-pencil-square-o "></i></div>
-            <div class="title">
-              <span>My<br>Teachers</span>
-            </div>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>

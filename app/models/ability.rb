@@ -56,15 +56,24 @@ class Ability
     elsif user.has_role? :principal
       # User Permissions
       can [:show], User, :id => user.id
-      ### Principals can access teacher accounts from their school
-      can [:show], User do |u|
-        user.p_school.teachers.include?(u)
-      end
+      
       ### Principal's teachers page loads specific teachers in controller
       can [:teachers], User
       
-      # School Permissions
+      # Permissions based on if they are assigned a school
       if !user.p_school.nil?
+        # User
+        ### Principals can access teacher accounts from their school
+        can [:show], User do |u|
+          user.p_school.teachers.include?(u)
+        end
+        
+        # Classroom Permissions
+        can :manage, Classroom, :school => user.p_school
+        
+        can :read, Observation, :school => user.p_school
+        
+        # School
         can [:show], School, :id => user.p_school.id
       end
       

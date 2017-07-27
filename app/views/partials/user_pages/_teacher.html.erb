@@ -8,6 +8,13 @@
         <div class="card">
           <div class="card-header d-flex align-items-center">
             <h3 class="h4">Classes</h3>
+            <div class="card-body negative-margin bg-white d-flex align-items-center card-close">
+              <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item d-flex align-items-center">
+                  <%= render partial: "partials/forms/modal-form", locals: {title: "Inactive", form: "modals/inactive-classes"} %>
+                </li>
+               </ul>
+            </div>
           </div>
           <div class="card-body">
             <table class="table table-striped table-hover">
@@ -22,13 +29,13 @@
                 <tr>
                   <td colspan="100%">
                     <div class="apple_pagination">
-                      <%= will_paginate @classrooms, :container => false %>
+                      <%= will_paginate @active_classrooms, :param_name => 'active', :container => false %>
                     </div>
                   </td>
                 </tr>
               </tfoot>
               <tbody>
-                <% @classrooms.each do |classroom| %>
+                <% @active_classrooms.by_grade.each do |classroom| %>
                   <tr class='clickable-row' data-href='/classrooms/<%= classroom.id %>'>
                     <td><%= classroom.grade %></td>
                     <td><%= classroom.content_area %></td>

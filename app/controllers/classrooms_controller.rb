@@ -76,9 +76,10 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   # DELETE /classrooms/1.json
   def destroy
+    @teacher = @classroom.teacher
     @classroom.destroy
     respond_to do |format|
-      format.html { redirect_to classrooms_url, notice: 'Classroom was successfully deactivated/destroyed.' }
+      format.html { redirect_to user_path(@teacher.username), notice: 'Classroom was successfully deactivated/destroyed.' }
       format.json { head :no_content }
     end
   end

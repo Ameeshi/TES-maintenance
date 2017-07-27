@@ -1,10 +1,9 @@
 <!-- If this ever becomes too much on server, go to -->
-<!-- app/views/partials/user_pages/teacher and follow comments -->
-<!-- also go to user controller -->
-<!-- Teacher Analysis -->
-<% if !@user.classrooms.active.empty? %>
-  <% if !@user.t_observations.complete.active.empty? %>
-    <section class="charts no-padding">
+<!-- app/views/schools/show and follow comments -->
+<!-- also go to school controller -->
+<!-- School Analysis -->
+<% if !@school.teachers.empty? %>
+    <section class="charts no-padding-bottom">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
@@ -15,8 +14,7 @@
 
                     <ul class="nav nav-pills card-header-pills">
                       <li class="nav-item d-flex align-items-center"><a id="tab1" class="nav-link active" data-toggle="pill" href="#summary">Summary</a></li>
-                      <li class="nav-item d-flex align-items-center"><a id="tab2" class="nav-link" data-toggle="pill" href="#most-recent">Most Recent</a></li>
-                      <li class="nav-item d-flex align-items-center"><a id="tab3" class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
+                      <li class="nav-item d-flex align-items-center"><a id="tab2" class="nav-link " data-toggle="pill" href="#polar">Polar</a></li>
                      </ul>
                 </div>
               </div>
@@ -27,9 +25,6 @@
                     <h3>Summary</h3>
                     <canvas id="barChart1"></canvas>
                     <h4><small>This chart provides the breakdown of each section that this teacher has had reviewed.</small></h4>
-                  </div>
-                  <div id="most-recent" class="tab-pane fade">
-                    <%= render 'partials/charts/most-recent' %>
                   </div>
                   <div id="polar" class="tab-pane fade">
                     <div class="polar-chart-example" >
@@ -46,16 +41,17 @@
       </div>
     </section>
     <!-- Generaltes the Charts -->
+<!--
     <script>
-//      Replace with custom data
-      bar(<%= @result_array %>);
+//    Replace with custom data
+      bar();
       $('#tab1').on('shown.bs.tab', function (e) {
-        bar(<%= @result_array %>);
+        bar();
       });
       $('#tab3').on('shown.bs.tab', function (e) {
-        polar(<%= @total_result_array %>);
+        polar();
       });
     </script>
-  <% end %>
+-->
 <% end %>
 

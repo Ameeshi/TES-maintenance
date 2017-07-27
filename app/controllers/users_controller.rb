@@ -35,7 +35,9 @@ class UsersController < ApplicationController
     if @user.has_role?(:teacher)
       # Most recent observation. Called Observation for partials
       @observation = @user.t_observations.complete.most_recent.first
-      @classrooms = @user.classrooms.paginate(:page => params[:page], :per_page => 5)
+      @active_classrooms = @user.classrooms.active.paginate(:page => params[:active], :per_page => 5)
+      @inactive_classrooms = @user.classrooms.inactive.paginate(:page => params[:inactive], :per_page => 5)
+      
 
 #     If too much for server, comment out from here...
       if !@user.t_observations.empty?

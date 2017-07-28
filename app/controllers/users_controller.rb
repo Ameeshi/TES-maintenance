@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         redirect_to root_url
       end
     else
-      @teachers = User.with_role(:teacher).alphabetical.paginate(:page => params[:page], :per_page => 5)
+      @teachers = User.with_role(:teacher).alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 5)
     end
     authorize! :teachers, current_user
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all.alphabetical.paginate(:page => params[:page], :per_page => 5)
+    @users = User.all.alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 5)
     authorize! :index, current_user
   end
   

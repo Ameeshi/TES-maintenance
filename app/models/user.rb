@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   rolify
+  include Filterable
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,6 +28,7 @@ class User < ApplicationRecord
 
   # Scopes
   scope :alphabetical,  -> { order(:last_name, :first_name ) }
+  scope :name_search,   -> (name) { where("CONCAT_WS(' ', first_name, last_name) LIKE ?", "%#{name}%") }
   
   
   

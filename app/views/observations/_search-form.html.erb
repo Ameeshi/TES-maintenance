@@ -1,5 +1,5 @@
 <!-- Teacher Name -->
-<% if params[:teacher_search].nil? %>
+<% if params[:teacher_search].blank? %>
   <%= text_field_tag :teacher_search, params[:teacher_search], placeholder: "Name..." %>
 <% else %>
   <%= text_field_tag :teacher_search, params[:teacher_search], placeholder: params[:teacher_search] %>

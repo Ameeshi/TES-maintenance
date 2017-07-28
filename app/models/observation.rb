@@ -99,6 +99,10 @@ class Observation < ApplicationRecord
     
   end
   
+  def self.teacher_search(name)
+    Observation.eager_load(:teacher).where("CONCAT_WS(' ', first_name, last_name) LIKE ?", "%#{name}%") 
+  end
+  
   private
   
   def principal_is_principal

@@ -5,7 +5,7 @@
       <h3 class="h4">Search</h3>
     </div>
     <div class="card-body">
-      <%= form_tag(observations_path, :method => "get", id: "search-form") do %>
+      <%= form_tag(path, :method => "get", id: "search-form") do %>
         <%= render 'search-form' %>
         
         <div class="row" >
@@ -13,7 +13,7 @@
             <%= submit_tag "Search", :name => nil, class:'btn btn-primary add-margin' %>
           </div>
           <div class="col-6">
-            <%= link_to "Clear", observations_path, class:'btn btn-secondary add-margin' %>
+            <%= link_to "Clear", path, class:'btn btn-secondary add-margin' %>
           </div>
         </div>
       <% end %>

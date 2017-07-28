@@ -1,3 +1,10 @@
+<!-- Teacher Name -->
+<% if params[:teacher_search].nil? %>
+  <%= text_field_tag :teacher_search, params[:teacher_search], placeholder: "Name..." %>
+<% else %>
+  <%= text_field_tag :teacher_search, params[:teacher_search], placeholder: params[:teacher_search] %>
+<% end %>
+
 <!-- School Year -->
 <% if params[:for_school_year].nil? || !Observation.valid_date(params[:for_school_year]) %>
   <%= select_tag :for_school_year, options_for_select(@year_list), id:"select_year", prompt: "Years..." %>

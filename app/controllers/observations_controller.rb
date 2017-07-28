@@ -7,19 +7,35 @@ class ObservationsController < ApplicationController
   def index
 #    authorize! :index, Observation
     if current_user.has_role? :teacher
-      @observations = Observation.for_teacher(current_user).complete.most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
+      @observations = Observation.for_teacher(current_user).complete.most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
     elsif current_user.has_role? :principal
       if !current_user.p_school.nil?
-        @observations = Observation.for_school(current_user.p_school).most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
+        @observations = Observation.for_school(current_user.p_school).most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
       else
         flash[:error] = "You are not currently assigned to a school"
         redirect_to root_url
       end
     elsif current_user.has_role? :specialist
-      @observations = Observation.for_specialist(current_user).most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
+      @observations = Observation.for_specialist(current_user).most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
     else
-      @observations = Observation.most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
+      @observations = Observation.most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year)).paginate(:page => params[:page], :per_page => 10)
     end
+    
+    # School Year Dropdown list
+    current_year = Date.current.year
+    if Date.current < Date.new(current_year,7,1)
+      latest_year = current_year-1
+    else
+      latest_year = current_year
+    end
+    
+    @year_list = []
+    while latest_year >= 2009
+      @year_list.push("#{latest_year}-#{latest_year+1}")
+      latest_year-=1
+    end
+    
+    @schools = School.active
   end
 
   # GET /observations/1

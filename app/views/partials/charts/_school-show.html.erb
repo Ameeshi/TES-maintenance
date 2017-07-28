@@ -30,7 +30,7 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div id="summary" class="tab-pane fade in active show" aria-expanded="true">
-                    <h3>Summary</h3>
+                    <h3>Summary :: <%= @observation_count %> Observations</h3>
                     <% if !@observations.empty? %>
                       <canvas id="barChart1"></canvas>
                       <h4><small>This chart provides the breakdown of each section from this school year.</small></h4>
@@ -40,7 +40,7 @@
                   </div>
                   <div id="polar" class="tab-pane fade">
                     <div class="polar-chart-example" >
-                      <h3>Summed Ratings</h3>
+                      <h3>Summed Ratings :: <%= @observation_count %> Observations</h3>
                       <% if !@observations.empty? %>
                         <canvas id="polarChartExample"></canvas>
                         <h4><small>This chart provides the numerical amount of each rating for this school year.</small></h4>

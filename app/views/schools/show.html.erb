@@ -5,7 +5,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-10">
-        <h2 class="no-margin-bottom"><%= @school.name %></h2>
+        <h2 class="no-margin-bottom">
+          <%= @school.name %><br>
+          <% if !@school.principal.nil? %>
+            <small>
+              Principal:
+              <%= link_to "#{@school.principal.name}", user_path("#{@school.principal.username}") %>
+            </small>
+          <% end %>
+        </h2>
       </div>
       <div class="col-2">
         <% if current_user.has_role? :admin %>
@@ -27,7 +35,7 @@
         <!-- Change this to teachers from that school -->
         <a href="schools.html">
           <div class="item d-flex align-items-center">
-            <div class="icon bg-blue"><i class="icon-user"></i></div>
+            <div class="icon bg-sea"><i class="fa fa-users"></i></div>
             <div class="title">
               <span>Total<br>Teachers</span>
               <div class="number"><strong><%= @school.teachers.count %></strong></div>
@@ -40,7 +48,7 @@
         <!-- Change this to observations from that school -->
         <a href="schools.html">
           <div class="item d-flex align-items-center">
-            <div class="icon bg-green"><i class="icon-bill"></i></div>
+            <div class="icon bg-sea"><i class="fa fa-eye"></i></div>
             <div class="title">
               <span>Total<br>Observations</span>
               <div class="number"><strong><%= @school.observations.count %></strong></div>

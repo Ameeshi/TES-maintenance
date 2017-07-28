@@ -11,7 +11,7 @@
 <section class="tables">   
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="card">
           <% if @observations.empty? %>
             <div class="card-body">
@@ -44,7 +44,7 @@
                   <% @observations.each do |o| %>
                     <tr class='clickable-row' data-href='/observations/<%= o.id %>'>
                       <% if !current_user.has_role?(:teacher) %>
-                        <td><%= o.teacher.name %></td>
+                        <td><%= o.teacher.list_name %></td>
                       <% end %>
                       <td><%= o.classroom.grade %></td>
                       <td><%= o.classroom.content_area %></td>
@@ -57,6 +57,8 @@
           <% end %>
         </div>
       </div>
+      <%= render 'partials/searchbar' %>
     </div>
   </div>
 </section>
+

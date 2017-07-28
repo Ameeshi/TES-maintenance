@@ -20,6 +20,8 @@ class SchoolsController < ApplicationController
       @observations = @school.observations.filter(params.slice(:for_school_year))
     end
     
+    @observation_count = @observations.complete.count
+    
 #     If too much for server, comment out from here...
     if !@observations.empty?
       @result_array = @school.school_results(@observations)

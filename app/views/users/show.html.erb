@@ -40,11 +40,15 @@
                   </div>
                 <% elsif current_user.has_role? :admin %>
                   <div class="col-md-4">
-                    <%= render partial: "partials/forms/modal-form", locals: {title: "Edit #{@user.first_name}'s Account", form: "admin-user"} %>
+<!--                    <%= render partial: "partials/forms/modal-form", locals: {title: "Edit #{@user.first_name}'s Account", form: "admin-user"} %>-->
+                    <%= link_to edit_user_path(@user.username), class:"btn btn-delete" do %>
+                      <i class="fa fa-trash fa-fw"></i> Edit Account
+                    <% end %>
                   </div>
                   <div class="col-md-4 offset-md-4">
                     <div>
-                      <%= link_to edit_user_registration_path, class:"btn btn-delete" do %>
+                      <%= button_to "Delete", @user, method: :delete, class: 'btn btn-delete' %>
+                      <%= link_to admin_destroy_user_path(@user.username), method: :delete, class:"btn btn-delete" do %>
                         <i class="fa fa-trash fa-fw"></i> Deactivate Account
                       <% end %>
                     </div>

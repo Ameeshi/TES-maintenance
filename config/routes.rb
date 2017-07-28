@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users, :only =>[:show]
+  resources :users, :only =>[:show, :index]
+  
+  scope "/admin" do
+    resources :users, :only =>[:new, :edit, :update, :create, :destroy, :delete]
+  end
   
   resources :observations
   resources :training_sessions
@@ -28,7 +32,10 @@ Rails.application.routes.draw do
   match '/specialists',   to: 'users#specialists',  via: 'get'
   match '/users/:id',     to: 'users#show',         via: 'get'
   match '/users',         to: 'users#index',        via: 'get'
-
+  
+  # Admin Stuff
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  match 'users/:id' => 'users#update', :via => :patch, :as => :admin_edit_user
   
 
   # All unrecognized get requests route to 404

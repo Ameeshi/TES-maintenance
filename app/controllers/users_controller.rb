@@ -56,4 +56,44 @@ class UsersController < ApplicationController
     
     authorize! :show, @user
   end
+  
+  # ADMIN COMMANDS
+  
+  def edit
+    @user = User.find_by_username(params[:id])
+    authorize! :manage, @user
+  end
+  
+  def update
+    @user = User.find_by_username(params[:id])
+    authorize! :manage, @user
+    
+    if @user.update(user_params)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user.username), notice: "User updated." }  
+      end
+    else
+      render 'edit'
+    end
+  end
+
+  
+  ### Should actually make this only deactivate...
+  def destroy
+    @user = User.find_by_username(params[:id])
+    authorize! :manage, @user
+    
+    @user.destroy!
+
+    respond_to do |format|
+      format.json { respond_to_destroy(:ajax) }
+      format.xml  { head :ok }
+      format.html { redirect_to root_url, notice: "User deleted." }      
+    end
+  end
+  
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :username, :email)
+  end
 end

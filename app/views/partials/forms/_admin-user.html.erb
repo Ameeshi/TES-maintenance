@@ -19,7 +19,7 @@
   <button type="button" class="btn btn-primary">Save changes</button>
 </div>-->
 
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :url => admin_edit_user_path(@user.username) do |f| %>
 
   <div class="row">
     <label class="col-sm-3 form-control-label">Update Password</label>

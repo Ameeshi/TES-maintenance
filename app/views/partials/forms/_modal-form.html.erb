@@ -1,3 +1,4 @@
+<!-- This needs to be cleaned up. -->
 <!-- Can't have more than one modal -->
 <!-- Modal Form-->
 <div>
@@ -6,6 +7,10 @@
     <div class="card-body text-center">
 -->
       <% if (title == 'Delete') %>
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-delete">
+          <%= title %> 
+        </button>
+      <% elsif (title == 'Delete User') %>
         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-delete">
           <%= title %> 
         </button>

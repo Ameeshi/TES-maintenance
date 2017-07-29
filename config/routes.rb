@@ -30,13 +30,15 @@ Rails.application.routes.draw do
   match '/teachers',      to: 'users#teachers',     via: 'get'
   match '/principals',    to: 'users#principals',   via: 'get'
   match '/specialists',   to: 'users#specialists',  via: 'get'
+  match '/inactive',      to: 'users#inactive',     via: 'get'
   match '/users/:id',     to: 'users#show',         via: 'get'
   match '/users',         to: 'users#index',        via: 'get'
+  
   
   # Admin Stuff
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   match 'users/:id' => 'users#update', :via => :patch, :as => :admin_edit_user
-  
+  put 'users/:id/reactivate_user', to: 'users#reactivate_user', as: :reactivate_user
 
   # All unrecognized get requests route to 404
   get '*unmatched_route', to: redirect('/404') unless Rails.env.development?

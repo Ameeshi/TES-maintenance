@@ -24,8 +24,8 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Grade</th>
-                    <th>Content Area(s)</th>
+                    <th>Email</th>
+                    <th>Username</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -41,7 +41,7 @@
                   <% @principals.each do |principal| %>
                     <tr class='clickable-row' data-href='/users/<%= principal.username %>'>
                       <td><%= principal.list_name %></td>
-                      <td><%= principal.highestRole %></td>
+                      <td><%= principal.email %></td>
                       <td><%= principal.username %></td>
                     </tr>
                   <% end %>

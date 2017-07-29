@@ -1,0 +1,7 @@
+<h3>Are you sure that you want to reactivate this user?</h3>
+<p><small>If you want to deactivate it, simply come back to this page</small></p>
+
+<div class="modal-footer">
+  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+  <%= link_to "Activate", reactivate_user_path(@user.username), method: :put, class: 'btn btn-primary' %>
+</div>

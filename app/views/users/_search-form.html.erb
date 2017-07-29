@@ -5,3 +5,27 @@
   <%= text_field_tag :name_search, params[:name_search], placeholder: params[:name_search] %>
 <% end %>
 
+<% if action_name=="teachers" %>
+  <!-- School -->
+  <% if params[:for_school].nil? %>
+    <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name'), id:"select_school", prompt: "Schools..." %>
+  <% else %>
+    <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name', params[:for_school]), id:"select_school", prompt: "Schools..." %>
+  <% end %>
+
+  <!-- Grade -->
+  <% if params[:for_grade].nil? %>
+    <%= select_tag :for_grade, options_for_select(Classroom::GRADES_LIST), id:"select_grade", prompt: "Grades..." %>
+  <% else %>
+    <%= select_tag :for_grade, options_for_select(Classroom::GRADES_LIST, params[:for_grade]), id:"select_grade", prompt: "Grades..." %>
+  <% end %>
+
+  <!-- Content Area -->
+  <% if params[:for_content_area].nil? %>
+    <%= select_tag :for_content_area, options_for_select(Classroom::CONTENT_AREAS_LIST), id:"select_content_area", prompt: "Subjects..." %>
+  <% else %>
+    <%= select_tag :for_content_area, options_for_select(Classroom::CONTENT_AREAS_LIST, params[:for_content_area]), id:"select_content_area", prompt: "Subjects..." %>
+  <% end %>
+
+<% end %>
+

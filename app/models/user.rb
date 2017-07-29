@@ -2,6 +2,11 @@ class User < ApplicationRecord
   rolify
   include Filterable
   
+  # Get an array of the grades and subjects
+  # I'm not 100% on what '.freeze' does, but it was at the end of the list which I based this on
+  # So if you know, edit as you will
+  ROLES_LIST = ['admin', 'specialist', 'manager', 'principal', 'teacher', 'default'].freeze
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,10 +32,19 @@ class User < ApplicationRecord
 
 
   # Scopes
-  scope :alphabetical,  -> { order(:last_name, :first_name ) }
-  scope :name_search,   -> (name) { where("CONCAT_WS(' ', first_name, last_name) LIKE ?", "%#{name}%") }
+  scope :active,           -> { where(active: true) }
+  scope :inactive,         -> { where(active: false) }
+  scope :alphabetical,     -> { order(:last_name, :first_name ) }
+  
+  scope :name_search,      -> (name) { where("CONCAT_WS(' ', first_name, last_name) LIKE ?", "%#{name}%") }
+  scope :for_school,       ->(school) { includes(:classrooms).where(:classrooms => { school: school }) }
+  scope :for_content_area, ->(content_area) { includes(:classrooms).where(:classrooms => { :content_area => content_area}) }
+  scope :for_grade,        ->(grade) { includes(:classrooms).where(:classrooms => {:grade => grade}) }
   
   
+  # Callbacks
+  before_destroy :is_destroyable?
+  after_rollback :make_inactive_if_trying_to_destroy
   
   # Login with username or email
   attr_accessor :login
@@ -118,6 +132,21 @@ class User < ApplicationRecord
   end
   
   private
+  
+  def is_destroyable?
+    @destroyable = (self.t_observations.empty? && self.p_observations.empty? && self.s_observations.empty? && self.classrooms.empty? && self.training_sessions.empty?)
+    if !@destroyable
+      throw :abort
+    end
+  end
+  
+  def make_inactive_if_trying_to_destroy
+    if !@destroyable.nil? && @destroyable == false
+      self.update_attribute(:active, false)
+    end
+    @destroyable = nil
+  end
+
   
   def validate_username
     if User.where(email: username).exists?

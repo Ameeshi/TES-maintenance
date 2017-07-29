@@ -1,15 +1,10 @@
 <!-- Page Header-->
 <header class="page-header">
   <div class="container-fluid">
-    <h2 class="no-margin-bottom">Users</h2>
+    <h2 class="no-margin-bottom">Inactive Users</h2>
   </div>
 </header>
 <%= render "partials/alerts" %>
-<% if current_user.has_role?(:admin) %>
-  <div class="modal-footer">
-    <%= link_to 'Inactive', inactive_path, class: 'btn btn-primary' %>
-  </div>
-<% end %>
 <!-- Teacher List -->
 <section class="tables">   
   <div class="container-fluid">

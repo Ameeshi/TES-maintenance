@@ -1,40 +1,47 @@
-<!--
- Replace with form content 
-<p>Lorem ipsum dolor sit amet consectetur.</p>
-<form>
-  <div class="form-group">
-    <label>Email</label>
-    <input type="email" placeholder="Email Address" class="form-control">
-  </div>
-  <div class="form-group">       
-    <label>Password</label>
-    <input type="password" placeholder="Password" class="form-control">
-  </div>
-  <div class="form-group">       
-    <input type="submit" value="Signin" class="btn btn-primary">
-  </div>
-</form>
-<div class="modal-footer">
-  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-  <button type="button" class="btn btn-primary">Save changes</button>
-</div>-->
-
 <%= form_for @user, :url => admin_edit_user_path(@user.username) do |f| %>
 
   <div class="row">
-    <label class="col-sm-3 form-control-label">Update Password</label>
+    <label class="col-sm-3 form-control-label">Update User</label>
     <div class="col-sm-9">
 
       <div class="field">
-        <div class="form-group">
+        <div class="input-field col s12">
           <%= f.text_field :first_name, id:"register-first-name", class: "input-material" %>
           <label for="register-first-name" class="label-material">First Name</label>
         </div>
       </div>
+      
+      <div class="field">
+        <div class="input-field col s12">
+          <%= f.text_field :last_name, id:"register-last-name", class: "input-material" %>
+          <label for="register-last-name" class="label-material">Last Name</label>
+        </div>
+      </div>
+      
+      <!-- Need Role List -->
+      <div class="field">
+        <div class="input-field col s12">
+          <%= select_tag :role, options_for_select(User::ROLES_LIST, @user.highestRole), id:"select_role", prompt: "Select a Role..." %>
+          <label for="select_role" class="label-material">Role</label>
+        </div>
+      </div>
 
       <div class="actions">
-        <%= f.submit "Update", class:"btn btn-primary" %>
-        <%= link_to "Back", :back, class:"btn btn-delete" %>
+        <div class="row">
+          <div class="col-sm-4">
+            <%= f.submit "Update", class:"btn btn-primary" %>
+          </div>
+          <div class="col-sm-4">
+            <% if @user.active %>
+              <%= render partial: "partials/forms/modal-form", locals: {title: "Delete User", form: "delete/delete-user"} %>
+            <% else %>
+              <%= render partial: "partials/forms/modal-form", locals: {title: "Reactivate", form: "activate/activate-user"} %>
+            <% end %>
+          </div>
+          <div class="col-sm-4">
+            <%= link_to "Back", user_path(@user.username), class:"btn btn-secondary" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

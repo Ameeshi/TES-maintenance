@@ -24,8 +24,8 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Grade</th>
-                    <th>Content Area(s)</th>
+                    <th>Email</th>
+                    <th>Username</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -41,7 +41,7 @@
                   <% @specialists.each do |specialist| %>
                     <tr class='clickable-row' data-href='/users/<%= specialist.username %>'>
                       <td><%= specialist.list_name %></td>
-                      <td><%= specialist.highestRole %></td>
+                      <td><%= specialist.email %></td>
                       <td><%= specialist.username %></td>
                     </tr>
                   <% end %>

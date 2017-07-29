@@ -22,36 +22,38 @@
             <div class="client-title">
               <h3><%= @user.name %></h3>
               <span>
+                <% if @user.roles.empty? %>
+                  <span class="capitalize">Default</span>
+                <% end %>
                 <% @user.roles.each do |role| %>
                   <span class="capitalize"><%= role.name %></span>
                 <% end %>
               </span>
               <span><%= @user.username %></span>
               <span><%= @user.email %></span>
+              <% if current_user.has_role? :admin %>
+                <span>
+                  <% if @user.active %>
+                    Active
+                  <% else %>
+                    Inactive
+                  <% end %>
+                </span>
+              <% end %>
             </div>
             <div class="client-info">
               <div class="row">
                 <% if @user == current_user %>
-                  <div class="col-md-4"></div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 offset-md-4">
                     <%= link_to edit_user_registration_path, class:"btn btn-primary" do %>
                       <i class="fa fa-wrench fa-fw"></i> Edit Your Account
                     <% end %>
                   </div>
                 <% elsif current_user.has_role? :admin %>
-                  <div class="col-md-4">
-<!--                    <%= render partial: "partials/forms/modal-form", locals: {title: "Edit #{@user.first_name}'s Account", form: "admin-user"} %>-->
-                    <%= link_to edit_user_path(@user.username), class:"btn btn-delete" do %>
-                      <i class="fa fa-trash fa-fw"></i> Edit Account
-                    <% end %>
-                  </div>
                   <div class="col-md-4 offset-md-4">
-                    <div>
-                      <%= button_to "Delete", @user, method: :delete, class: 'btn btn-delete' %>
-                      <%= link_to admin_destroy_user_path(@user.username), method: :delete, class:"btn btn-delete" do %>
-                        <i class="fa fa-trash fa-fw"></i> Deactivate Account
-                      <% end %>
-                    </div>
+                    <%= link_to edit_user_path(@user.username), class:"btn btn-primary" do %>
+                      <i class="fa fa-wrench fa-fw"></i> Edit <%="#{@user.first_name}'s"%> Account
+                    <% end %>
                   </div>
                 <% end %>
               </div>

@@ -29,6 +29,9 @@
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <% if !current_user.has_role?(:principal) %>
+                      <th>School</th>
+                    <% end %>
                     <th>Grade</th>
                     <th>Content Area(s)</th>
                   </tr>
@@ -44,10 +47,25 @@
                 </tfoot>
                 <tbody>
                   <% @teachers.each do |teacher| %>
+                    <% classrooms = teacher.classrooms.by_grade %>
                     <tr class='clickable-row' data-href='/users/<%= teacher.username %>'>
                       <td><%= teacher.list_name %></td>
-                      <td><%= teacher.highestRole %></td>
-                      <td><%= teacher.username %></td>
+                      <% if !classrooms.empty? %>
+                        <!-- There should be a better way to do this -->
+                        <% if !current_user.has_role?(:principal) %>
+                          <td><%= teacher.t_schools.last.name %></td>
+                        <% end %>
+                        <td>
+                          <%= classrooms.map { |classroom| classroom.grade }.join(', ').html_safe %>
+                        </td>
+                        <td>
+                          <%= classrooms.map { |classroom| classroom.content_area }.join(', ').html_safe %>
+                        </td>
+                      <% else %>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                      <% end %>
                     </tr>
                   <% end %>
                 </tbody>

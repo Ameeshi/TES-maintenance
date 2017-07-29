@@ -1,0 +1,9 @@
+<h3>Are you sure that you want to delete this user?</h3>
+<p><small>If the user ever had any observations, it will only be made inactive.</small></p>
+
+<div class="modal-footer">
+  <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+  <%= link_to admin_destroy_user_path(@user.username), method: :delete, class:"btn btn-delete" do %>
+    <i class="fa fa-trash fa-fw"></i> Deactivate Account
+  <% end %>
+</div>

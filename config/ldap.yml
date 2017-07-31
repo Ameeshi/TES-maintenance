@@ -24,7 +24,7 @@ authorizations: &AUTHORIZATIONS
 development:
   host: ldap.moe
   port: 389
-  attribute: cn
+  attribute: uid #dc=Users
   base: dc=moe
   admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
@@ -43,7 +43,7 @@ test:
 
 production:
   host: ldap.moe
-  port: 636
+  port: 389
   attribute: cn
   base: ou=people,dc=test,dc=com
   admin_user: cn=admin,dc=test,dc=com

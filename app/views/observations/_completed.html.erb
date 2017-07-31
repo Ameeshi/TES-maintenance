@@ -6,14 +6,19 @@
         <div class="card">
           <div class="card-body">
             <%= render 'results' %>
-            <% if can? :manage, Observation %>
+            <% if can? :edit, Observation %>
               <div class="row">
                 <div class="col-md-2">
-                  <%= link_to 'Edit', observation_observation_form_index_path(@observation), class:'btn btn-primary' %>
+                  <%= link_to 'Edit', edit_observation_path(@observation), class:'btn btn-primary' %>
                 </div>
-                <div class="col-md-2">
-                  <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/delete-observation"} %>
-                </div>
+                <% if can? :manage, Observation %>
+                  <div class="col-md-4">
+                    <%= link_to 'Edit Full Observation', observation_observation_form_index_path(@observation), class:'btn btn-primary' %>
+                  </div>
+                  <div class="col-md-2">
+                    <%= render partial: "partials/forms/modal-form", locals: {title: "Delete", form: "delete/delete-observation"} %>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           </div>

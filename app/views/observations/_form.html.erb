@@ -15,27 +15,23 @@
   <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
   <%= f.hidden_field :specialist_id, :value => current_user.id %>
-
-<!--
-  <div class="field">
-    <%= f.label :specialist_id %>
-    <%= f.number_field :specialist_id %>
-  </div>
--->
-
-<!--
-  <div class="field">
-    <div class="form-group-material">
-      <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
-      <%= f.label :principal_id, for:'school-state', class:'label-material' %>
+  <% if can? :manage, @observation %>
+    <div class="field">
+      <%= f.label :observation_date %>
+      <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
     </div>
-  </div>
--->
+  <% end %>
 
-  <div class="field">
-    <%= f.label :observation_date %>
-    <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
-  </div>
+  <% if action_name == 'edit' %>
+    <div class="field">
+      <div class="form-group-material">
+        <div class="input-field col s12">
+          <%= f.text_area :principal_comments, id:'p_comments', class:'materialize-textarea' %>
+          <%= f.label :principal_comments, for:'p_comments' %> 
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <div class="modal-footer">
     <%= f.submit 'Start Observation', id:'submit', class: 'btn btn-primary' %>

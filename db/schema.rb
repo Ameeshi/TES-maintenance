@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725003802) do
+ActiveRecord::Schema.define(version: 20170731053016) do
 
   create_table "classrooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "teacher_id"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 20170725003802) do
     t.integer  "specialist_id"
     t.integer  "principal_id"
     t.string   "comments"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "completed",        default: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.boolean  "completed",                        default: false
     t.date     "observation_date"
+    t.text     "principal_comments", limit: 65535
   end
 
   create_table "observations_activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

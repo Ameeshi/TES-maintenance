@@ -12,11 +12,13 @@
   <%= select_tag :for_school_year, options_for_select(@year_list, params[:for_school_year]), id:"select_year", prompt: "Years..." %>
 <% end %>
 
-<!-- School -->
-<% if params[:for_school].nil? %>
-  <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name'), id:"select_school", prompt: "Schools..." %>
-<% else %>
-  <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name', params[:for_school]), id:"select_school", prompt: "Schools..." %>
+<% if !current_user.has_role? :principal %>
+  <!-- School -->
+  <% if params[:for_school].nil? %>
+    <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name'), id:"select_school", prompt: "Schools..." %>
+  <% else %>
+    <%= select_tag :for_school, options_from_collection_for_select(@schools, 'id', 'name', params[:for_school]), id:"select_school", prompt: "Schools..." %>
+  <% end %>
 <% end %>
 
 <!-- Grade -->
@@ -31,4 +33,20 @@
   <%= select_tag :for_content_area, options_for_select(Classroom::CONTENT_AREAS_LIST), id:"select_content_area", prompt: "Subjects..." %>
 <% else %>
   <%= select_tag :for_content_area, options_for_select(Classroom::CONTENT_AREAS_LIST, params[:for_content_area]), id:"select_content_area", prompt: "Subjects..." %>
+<% end %>
+
+<% if current_user.has_any_role?(:specialist, :principal) %>
+  <!-- Principal -->
+  <div class="field">
+    <div class="form-group-material">
+      <div class="i-checks">
+        <% if params[:my_observations].nil? %>
+          <%= check_box_tag :my_observations, "My Observations", false, class:"checkbox-template" %>
+        <% else %>
+          <%= check_box_tag :my_observations, "My Observations", params[:my_observations], class:"checkbox-template" %>
+        <% end %>
+        <label for="my_observations" class="label-material">My Observations</label>
+      </div>
+    </div>
+  </div>
 <% end %>

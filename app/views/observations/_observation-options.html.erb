@@ -1,7 +1,7 @@
 <% if @observation.completed %>
   <%= render "completed" %>
 <% else %>
-  <% if can? :manage, Observation %>
+  <% if can? :manage, @observation %>
     <%= render "started" %>
   <% else %>
     <%= render "incomplete" %>

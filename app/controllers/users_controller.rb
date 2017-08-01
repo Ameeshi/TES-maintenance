@@ -64,6 +64,10 @@ class UsersController < ApplicationController
       if @user.has_role?(:specialist)
         @observations = @user.s_observations
       end
+      
+      if @user.has_role?(:principal)
+        @observations = @user.p_observations
+      end
     end
     
     authorize! :show, @user

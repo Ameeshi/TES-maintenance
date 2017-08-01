@@ -40,7 +40,7 @@
                 <tbody>
                   <% @observations.each do |observation| %>
                     <tr class='clickable-row' data-href='/observations/<%= observation.id %>'>
-                      <td scope="row"><%= observation.observation_date.strftime("%B %d, %Y") %></td>
+                      <td scope="row"><%= observation.observation_date.strftime("%B %e, %Y") %></td>
                       <% if can? :manage, Observation %>
                         <td><%= observation.completed %></td>
                       <% end %>
@@ -52,7 +52,7 @@
             
           </div>
           <div class="modal-footer">
-            <% if current_user.has_any_role?(:admin, :specialist) %>
+            <% if current_user.has_any_role?(:admin, :specialist, :principal) %>
               <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
             <% end %>
             <%= link_to "Back", user_path(@teacher.username), class:'btn btn-secondary' %>

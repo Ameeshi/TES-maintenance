@@ -7,16 +7,24 @@ class ObservationsController < ApplicationController
   def index
 #    authorize! :index, Observation
     if current_user.has_role? :teacher
-      @observations = Observation.for_teacher(current_user).complete.most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+      @observations = Observation.for_teacher(current_user).complete.most_recent.paginate(:page => params[:page], :per_page => 10)
     elsif current_user.has_role? :principal
       if !current_user.p_school.nil?
-        @observations = Observation.for_school(current_user.p_school).most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+        if params[:my_observations]
+          @observations = current_user.p_observations.most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+        else
+          @observations = Observation.for_school(current_user.p_school).most_recent.filter(params.slice(:active, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+        end
       else
         flash[:error] = "You are not currently assigned to a school"
         redirect_to root_url
       end
     elsif current_user.has_role? :specialist
-      @observations = Observation.for_specialist(current_user).most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+      if params[:my_observations]
+        @observations = Observation.for_specialist(current_user).most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+      else
+        @observations = Observation.most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
+      end
     else
       @observations = Observation.most_recent.filter(params.slice(:active, :for_school, :for_content_area, :for_grade, :for_school_year, :teacher_search)).paginate(:page => params[:page], :per_page => 10)
     end
@@ -73,7 +81,11 @@ class ObservationsController < ApplicationController
     @observation = Observation.new(observation_params)
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
-    @observation.specialist_id = current_user.id
+    if current_user.has_role? :principal
+      @observation.principal_id = current_user.id
+    else
+      @observation.specialist_id = current_user.id
+    end
     
     respond_to do |format|
       if @observation.save
@@ -123,6 +135,6 @@ class ObservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.require(:observation).permit(:classroom_id, :specialist_id, :principal_id, :comments, :observation_date, :complete)
+      params.require(:observation).permit(:classroom_id, :specialist_id, :principal_id, :comments, :observation_date, :complete, :principal_comments)
     end
 end

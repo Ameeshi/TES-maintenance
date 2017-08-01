@@ -75,6 +75,7 @@ class Ability
         can :manage, Classroom, :school => user.p_school
         
         # Observation
+        can :manage, Observation, :school => user.p_school, :specialist => nil
         can [:show, :edit, :update], Observation, :school => user.p_school
         
         # School

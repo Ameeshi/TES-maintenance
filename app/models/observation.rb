@@ -5,7 +5,7 @@ class Observation < ApplicationRecord
   belongs_to :classroom
   has_one :school, through: :classroom
   belongs_to :principal, class_name: "User", optional: true
-  belongs_to :specialist, class_name: "User"
+  belongs_to :specialist, class_name: "User", optional: true
   has_one :teacher, through: :classroom, class_name: "User"
   
   # Category Relationships
@@ -31,7 +31,8 @@ class Observation < ApplicationRecord
   scope :for_specialist,   ->(specialist) { where(specialist: specialist) }
   
   # Validations
-  validates_presence_of :specialist_id, :classroom_id, :observation_date
+  validates_presence_of :classroom_id, :observation_date
+  validate :creator_exists, on: :create
   validate :principal_is_principal, on: :create
   validate :specialist_is_specialist, on: :create
   
@@ -104,6 +105,11 @@ class Observation < ApplicationRecord
   end
   
   private
+  
+  def creator_exists
+    return true if ((!self.specialist.nil?) || (!self.principal.nil?))
+    errors.add_to_base "User is not valid" 
+  end
   
   def principal_is_principal
     return true if ((self.principal.nil?) || (self.principal.has_role? :principal))

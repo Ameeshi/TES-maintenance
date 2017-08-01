@@ -73,7 +73,11 @@ class ObservationsController < ApplicationController
     @observation = Observation.new(observation_params)
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
-    @observation.specialist_id = current_user.id
+    if current_user.has_role? :principal
+      @observation.principal_id = current_user.id
+    else
+      @observation.specialist_id = current_user.id
+    end
     
     respond_to do |format|
       if @observation.save

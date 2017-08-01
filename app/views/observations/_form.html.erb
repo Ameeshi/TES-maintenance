@@ -14,15 +14,27 @@
 
   <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
-  <%= f.hidden_field :specialist_id, :value => current_user.id %>
-  <% if can? :manage, @observation %>
+  <% if action_name == 'new' %>
+    <% if current_user.has_role? :specialist %>
+      <%= f.hidden_field :specialist_id, :value => current_user.id %>
+    <% else %>
+      <%= f.hidden_field :principal_id, :value => current_user.id %>
+    <% end %>
     <div class="field">
       <%= f.label :observation_date %>
       <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
     </div>
   <% end %>
 
+ 
+
   <% if action_name == 'edit' %>
+    <% if can? :manage, @observation %>
+      <div class="field">
+        <%= f.label :observation_date %>
+        <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
+      </div>
+    <% end %>
     <div class="field">
       <div class="form-group-material">
         <div class="input-field col s12">

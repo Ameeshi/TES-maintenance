@@ -52,7 +52,7 @@
             
           </div>
           <div class="modal-footer">
-            <% if current_user.has_any_role?(:admin, :specialist) %>
+            <% if current_user.has_any_role?(:admin, :specialist, :principal) %>
               <%= link_to "New Observation", new_observation_path(classroom: @classroom.id), class:'btn btn-primary' %>
             <% end %>
             <%= link_to "Back", user_path(@teacher.username), class:'btn btn-secondary' %>

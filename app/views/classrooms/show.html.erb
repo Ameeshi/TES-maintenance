@@ -40,7 +40,7 @@
                 <tbody>
                   <% @observations.each do |observation| %>
                     <tr class='clickable-row' data-href='/observations/<%= observation.id %>'>
-                      <td scope="row"><%= observation.observation_date.strftime("%B %d, %Y") %></td>
+                      <td scope="row"><%= observation.observation_date.strftime("%B %e, %Y") %></td>
                       <% if can? :manage, Observation %>
                         <td><%= observation.completed %></td>
                       <% end %>

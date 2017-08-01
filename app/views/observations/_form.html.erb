@@ -32,7 +32,7 @@
     <% if can? :manage, @observation %>
       <div class="field">
         <%= f.label :observation_date %>
-        <%= f.text_field :observation_date, id:'date', class:'datepicker', placeholder:"Click to select a date" %>
+        <%= f.text_field :observation_date, id:'date', value: @observation.observation_date.strftime("%e %B, %Y"), class:'datepicker', placeholder:"Click to select a date" %>
       </div>
     <% end %>
     <div class="field">
@@ -46,6 +46,7 @@
   <% end %>
 
   <div class="modal-footer">
+    <%= link_to 'Back', classroom_path(@classroom), class: 'btn btn-secondary' %>
     <% if action_name == 'edit' %>
       <%= f.submit 'Edit', id:'submit', class: 'btn btn-primary' %>
     <% else %>

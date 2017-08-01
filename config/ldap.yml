@@ -26,8 +26,8 @@ development:
   port: 389
   attribute: uid #dc=Users
   base: dc=moe
-  admin_user: cn=admin,dc=test,dc=com
-  admin_password: admin_password
+#  admin_user: cn=admin,dc=test,dc=com
+#  admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
 
@@ -36,8 +36,8 @@ test:
   port: 3389
   attribute: cn
   base: ou=people,dc=test,dc=com
-  admin_user: cn=admin,dc=test,dc=com
-  admin_password: admin_password
+#  admin_user: cn=admin,dc=test,dc=com
+#  admin_password: admin_password
   ssl: simple_tls
   # <<: *AUTHORIZATIONS
 
@@ -46,7 +46,7 @@ production:
   port: 389
   attribute: cn
   base: ou=people,dc=test,dc=com
-  admin_user: cn=admin,dc=test,dc=com
-  admin_password: admin_password
+#  admin_user: cn=admin,dc=test,dc=com
+#  admin_password: admin_password
   ssl: start_tls
   # <<: *AUTHORIZATIONS

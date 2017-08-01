@@ -28,6 +28,7 @@ class Observation < ApplicationRecord
   scope :for_content_area, ->(content_area) { includes(:classroom).where(:classrooms => { :content_area => content_area}) }
   scope :for_grade,        ->(grade) { includes(:classroom).where(:classrooms => {:grade => grade}) }
   scope :for_teacher,      ->(teacher) { includes(:classroom).where(:classrooms => { teacher: teacher }) }
+  scope :for_principal,    ->(principal) { where(principal: principal) }
   scope :for_specialist,   ->(specialist) { where(specialist: specialist) }
   
   # Validations

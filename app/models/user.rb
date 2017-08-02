@@ -131,6 +131,43 @@ class User < ApplicationRecord
     end
   end
   
+  
+  def self.import_all()
+    
+    credentials = {:method => :simple, :username => "danielgraf", :password => "d13g04"}
+    
+    Net::LDAP.open(:host => "ldap.moe", :port => 389, :base => "ou=Users, dc=moe", :auth => credentials) do |ldap|
+      # Do all your LDAP stuff here...
+      # Build the list
+      filter = Net::LDAP::Filter.eq("uid", "*")
+      attrs = ["givenName", "sn", "uid"]
+      records = new_records = 0
+      ldap.search(:base => "dc=moe", :attributes => attrs, :filter =>  filter,  :return_result => false) do |entry|
+        username = entry.uid[0].to_s.strip
+        first_name = entry.givenName[0].to_s.strip
+        last_name = entry.sn[0].to_s.strip
+        email = username.to_s.strip + "@palaumoe.net"
+#        byebug
+        user = User.find_or_initialize_by :first_name => first_name, :last_name => last_name, :username => username, :email => email#, :password => 'password'
+#        byebug
+        if user.new_record?
+          user.password = 'password'
+          user.save
+          new_records = new_records + 1
+        else
+          user.touch
+        end
+        records = records + 1
+      end
+      p ldap.get_operation_result
+
+      logger.info( "LDAP Import Complete: " + Time.now.to_s )
+      logger.info( "Total Records Processed: " + records.to_s )
+      logger.info( "New Records: " + new_records.to_s )
+    end
+    
+  end
+  
   private
   
   def is_destroyable?

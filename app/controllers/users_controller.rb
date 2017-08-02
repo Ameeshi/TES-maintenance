@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     
     if current_user.has_role?(:principal)
       if !current_user.p_school.nil?
-        @teachers = current_user.p_school.teachers.active.alphabetical.filter(params.slice(:name_search, :for_grade, :for_content_area)).paginate(:page => params[:page], :per_page => 5)
+        @teachers = current_user.p_school.teachers.active.alphabetical.filter(params.slice(:name_search, :for_grade, :for_content_area)).paginate(:page => params[:page], :per_page => 10)
       else
         flash[:error] = "You are not currently assigned to a school"
         redirect_to root_url
@@ -12,28 +12,28 @@ class UsersController < ApplicationController
     else
       @schools = School.active
       
-      @teachers = User.with_role(:teacher).active.alphabetical.filter(params.slice(:name_search, :for_school, :for_grade, :for_content_area)).paginate(:page => params[:page], :per_page => 5)
+      @teachers = User.with_role(:teacher).active.alphabetical.filter(params.slice(:name_search, :for_school, :for_grade, :for_content_area)).paginate(:page => params[:page], :per_page => 10)
     end
     authorize! :teachers, current_user
   end
   
   def principals
-    @principals = User.with_role(:principal).active.alphabetical.paginate(:page => params[:page], :per_page => 5)
+    @principals = User.with_role(:principal).active.alphabetical.paginate(:page => params[:page], :per_page => 10)
     authorize! :principals, current_user
   end
   
   def specialists
-    @specialists = User.with_role(:specialist).active.alphabetical.paginate(:page => params[:page], :per_page => 5)
+    @specialists = User.with_role(:specialist).active.alphabetical.paginate(:page => params[:page], :per_page => 10)
     authorize! :specialists, current_user
   end
   
   def inactive
-    @users = User.inactive.alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 5)
+    @users = User.inactive.alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 10)
     authorize! :inactive, current_user
   end
   
   def index
-    @users = User.active.alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 5)
+    @users = User.active.alphabetical.filter(params.slice(:name_search)).paginate(:page => params[:page], :per_page => 10)
     authorize! :index, current_user
   end
   

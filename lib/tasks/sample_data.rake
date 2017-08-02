@@ -26,10 +26,10 @@ namespace :db do
     User.create!(first_name: 'Test', last_name:'Default', username: 'default', email:'default@gmail.com', password:'password')
     
     User.create!(first_name: 'Daniel', last_name:'Graf', username: 'danielgraf', email:'danielgraf@palaumoe.net', password:'password')
-    User.last.add_role 'teacher'
+    User.last.add_role 'admin'
     
     User.create!(first_name: 'Marcia', last_name:'Inacio', username: 'marciainacio', email:'marciainacio@palaumoe.net', password:'password')
-    User.last.add_role 'admin'
+    User.last.add_role 'specialist'
     
     # Create Schools
     School.create!(name:'Aimeliik Elementary School', state:'Aimeliik')

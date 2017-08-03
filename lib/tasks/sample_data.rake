@@ -1,6 +1,6 @@
 namespace :db do
   desc 'Drop, create, migrate, seed and populate sample data'
-  task prepare_development: [:drop, :create, :migrate, :seed, :populate_sample_data] do
+  task prepare: [:drop, :create, :migrate, :seed, :populate_sample_data] do
     puts 'Ready to go!'
   end
 

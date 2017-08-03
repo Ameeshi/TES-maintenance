@@ -1,6 +1,6 @@
 namespace :db do
   desc 'Drop, create, migrate, seed and populate sample data'
-  task prepare: [:drop, :create, :migrate, :seed, :populate_sample_data] do
+  task prepare_development: [:drop, :create, :migrate, :seed, :populate_sample_data] do
     puts 'Ready to go!'
   end
 
@@ -8,28 +8,23 @@ namespace :db do
   task populate_sample_data: :environment do
 #    10.times { User.create!(email: Faker::Internet.email) }
     # Create Users
-    User.create!(first_name: 'Daniel', last_name:'Graf', username: 'grafmark59', email:'grafmark59@gmail.com', password:'password')
-    User.first.add_role 'admin'
-    
-    User.create!(first_name: 'Test', last_name:'Teacher', username: 'teacher', email:'teacher@gmail.com', password:'password')
-    User.last.add_role 'teacher'
-    
-    User.create!(first_name: 'Test', last_name:'Principal', username: 'principal', email:'principal@gmail.com', password:'password')
-    User.last.add_role 'principal'
-    
-    User.create!(first_name: 'Test', last_name:'Specialist', username: 'specialist', email:'specialist@gmail.com', password:'password')
-    User.last.add_role 'specialist'
-    
-    User.create!(first_name: 'Test', last_name:'Manager', username: 'manager', email:'manager@gmail.com', password:'password')
-    User.last.add_role 'manager'
-    
-    User.create!(first_name: 'Test', last_name:'Default', username: 'default', email:'default@gmail.com', password:'password')
     
     User.create!(first_name: 'Daniel', last_name:'Graf', username: 'danielgraf', email:'danielgraf@palaumoe.net', password:'password')
     User.last.add_role 'admin'
     
     User.create!(first_name: 'Marcia', last_name:'Inacio', username: 'marciainacio', email:'marciainacio@palaumoe.net', password:'password')
     User.last.add_role 'specialist'
+    
+    User.create!(first_name: 'Vivian', last_name:'Ngirngetrang', username: 'vivianngirngetrang', email:'vivianngirngetrang@palaumoe.net', password:'password')
+    User.last.add_role 'specialist'
+    
+    User.create!(first_name: 'Edwel', last_name:'Ongrung', username: 'edwel', email:'edwel@palaumoe.net', password:'password')
+    User.last.add_role 'admin'
+    
+    User.create!(first_name: 'TES', last_name:'Admin', username: 'tesadmin', email:'tesadmin@palaumoe.net', password:'password')
+    User.last.add_role 'admin'
+    
+    
     
     # Create Schools
     School.create!(name:'Aimeliik Elementary School', state:'Aimeliik')
@@ -50,9 +45,6 @@ namespace :db do
     School.create!(name:'Hatohobei Elementary School', state:'Hatohobei')
     School.create!(name:'Pulo Anna Elementary School', state:'Sonsorol')
     School.create!(name:'Sonsorol Elementary School', state:'Sonsorol')
-    
-    Classroom.create!(teacher_id: 2, school_id: 1, grade:'7th', content_area:'Math')
-    
     
   end
 end

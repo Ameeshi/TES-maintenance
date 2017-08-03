@@ -53,12 +53,12 @@ class SchoolsController < ApplicationController
   # GET /schools/new
   def new
     @school = School.new
-    @principals = User.with_role(:principal)
+    @principals = User.active.with_role(:principal)
   end
 
   # GET /schools/1/edit
   def edit
-    @principals = User.with_role(:principal)
+    @principals = User.active.with_role(:principal)
   end
 
   # POST /schools

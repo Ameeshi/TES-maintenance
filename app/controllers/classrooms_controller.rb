@@ -47,6 +47,7 @@ class ClassroomsController < ApplicationController
     respond_to do |format|
       if @classroom.already_exists? && !@classroom.already_active?
         old_classroom = Classroom.where(classroom_params).first
+        old_classroom.update_attributes(active: !old_classroom.active)
         format.html { redirect_to old_classroom, notice: 'Classroom was successfully reactivated.' }
         format.json { render :show, status: :created, location: old_classroom }
       elsif @classroom.save

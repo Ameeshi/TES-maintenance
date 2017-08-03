@@ -15,7 +15,20 @@
   <%= f.hidden_field :classroom_id, :value => @classroom.id %>
 
   <% if action_name == 'new' %>
-    <% if current_user.has_role? :specialist %>
+    <% if current_user.has_role? :admin %>
+      <div class="field">
+        <div class="form-group-material">
+          <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
+          <%= f.label :principal_id, for:'school-state', class:'label-material' %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="form-group-material">
+          <%= f.collection_select(:specialist_id, @specialists, :id, :name, include_blank:true) %>
+          <%= f.label :specialist_id, for:'school-state', class:'label-material' %>
+        </div>
+      </div>
+    <% elsif current_user.has_role? :specialist %>
       <%= f.hidden_field :specialist_id, :value => current_user.id %>
     <% else %>
       <%= f.hidden_field :principal_id, :value => current_user.id %>

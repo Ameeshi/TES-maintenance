@@ -61,6 +61,7 @@ class ObservationsController < ApplicationController
     if !params[:classroom].nil?
       @classroom =  Classroom.find(params[:classroom])
       @principals = User.with_role(:principal)
+      @specialists = User.with_role(:specialist)
     else
       flash[:error] = "You must access this page from a teacher's classroom."
       redirect_to root_url
@@ -71,6 +72,7 @@ class ObservationsController < ApplicationController
   def edit
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
+    @specialists = User.with_role(:specialist)
 #    authorize! :edit, @observation
   end
 
@@ -81,7 +83,15 @@ class ObservationsController < ApplicationController
     @observation = Observation.new(observation_params)
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
-    if current_user.has_role? :principal
+    @specialists = User.with_role(:specialist)
+    if current_user.has_role? :admin
+      if !params[:observation][:specialist].nil?
+        @observation.specialist = params[:observation][:specialist]
+      elsif !params[:observation][:principal].nil?
+        @observation.principal = params[:observation][:principal]
+      end
+      
+    elsif current_user.has_role? :principal
       @observation.principal_id = current_user.id
     else
       @observation.specialist_id = current_user.id

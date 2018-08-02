@@ -42,6 +42,20 @@
  
 
   <% if action_name == 'edit' %>
+    <% if current_user.has_role? :admin %>
+      <div class="field">
+        <div class="form-group-material">
+          <%= f.collection_select(:principal_id, @principals, :id, :name, include_blank:true) %>
+          <%= f.label :principal_id, for:'school-state', class:'label-material' %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="form-group-material">
+          <%= f.collection_select(:specialist_id, @specialists, :id, :name, include_blank:true) %>
+          <%= f.label :specialist_id, for:'school-state', class:'label-material' %>
+        </div>
+      </div>
+    <% end %>
     <% if can? :manage, @observation %>
       <div class="field">
         <%= f.label :observation_date %>

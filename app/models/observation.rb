@@ -75,7 +75,11 @@ class Observation < ApplicationRecord
     year2 = year2.to_i
     current_year = Date.current.year
     
-    return false if ((year2 - year1 != 1) || (year1 < 2009) || (year2 > current_year+1)) else return true
+    if ((year2 - year1 != 1) || (year1 < 2009) || (year2 > current_year+1))
+      return false 
+    else 
+      return true
+    end 
   end
   
   def self.this_school_year

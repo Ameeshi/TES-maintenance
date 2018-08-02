@@ -13,8 +13,10 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['TES_DATABASE_USERNAME'] %>
-  password: <%= ENV['TES_DATABASE_PASSWORD'] %>
+  # username: <%= ENV['TES_DATABASE_USERNAME'] %>
+  # password: <%= ENV['TES_DATABASE_PASSWORD'] %>
+  username: mysql
+  password: mysql
   socket: /var/lib/mysql/mysql.sock
 
 development:
@@ -50,5 +52,7 @@ test:
 production:
   <<: *default
   database: tes_production
-  username: <%= ENV['TES_DATABASE_USERNAME'] %>
-  password: <%= ENV['TES_DATABASE_PASSWORD'] %>
+  # username: <%= ENV['TES_DATABASE_USERNAME'] %>
+  # password: <%= ENV['TES_DATABASE_PASSWORD'] %>
+  username: mysql
+  password: mysql

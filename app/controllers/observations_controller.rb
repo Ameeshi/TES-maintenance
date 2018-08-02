@@ -114,6 +114,14 @@ class ObservationsController < ApplicationController
 #    authorize! :update, current_user
     @classroom =  @observation.classroom
     @principals = User.with_role(:principal)
+    @specialists = User.with_role(:specialist)
+    if current_user.has_role? :admin
+      if !params[:observation][:specialist].nil?
+        @observation.specialist = params[:observation][:specialist]
+      elsif !params[:observation][:principal].nil?
+        @observation.principal = params[:observation][:principal]
+      end
+    end
     respond_to do |format|
       if @observation.update(observation_params)
         format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }
